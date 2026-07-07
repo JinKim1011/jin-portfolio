@@ -1,4 +1,4 @@
-# jin-portfolio
+## About
 
 Personal portfolio and blog — design engineering work, projects, design systems, and case studies. Posts are managed in Notion; images are served from Supabase Storage.
 
