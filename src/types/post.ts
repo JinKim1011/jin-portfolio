@@ -1,10 +1,8 @@
-export type PostCategory = "PROJECT" | "DESIGN SYSTEM" | "CASE STUDY" | "ESSAY";
-
 export interface Post {
   id: string;
   slug: string;
   title: string;
-  categories: PostCategory[];
+  categories: string[];
   excerpt: string;
   publishedAt: string;
   published: boolean;
