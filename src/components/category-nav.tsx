@@ -18,6 +18,7 @@ export default function CategoryNav({ tabs, active }: CategoryNavProps) {
           <Link
             key={category}
             href={href}
+            aria-current={isActive ? "page" : undefined}
             className={
               isActive
                 ? "text-foreground"
