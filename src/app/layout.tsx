@@ -13,7 +13,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const rootClasses =
-    "root layout-root mx-auto max-w-190 w-full overflow-x-hidden px-5 antialiased";
+    "root layout-root mx-auto max-w-190 w-full px-5 antialiased";
 
   return (
     <html lang="en">
