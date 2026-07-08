@@ -35,12 +35,7 @@ export default function PostListItem({ post }: PostListItemProps) {
   return (
     <li key={post.id}>
       {isExternal ? (
-        <a
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group block"
-        >
+        <a href={href} target="_blank" rel="noopener" className="group block">
           {inner}
         </a>
       ) : (
