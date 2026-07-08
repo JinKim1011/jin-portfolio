@@ -10,7 +10,7 @@ export default function PostListItem({ post }: PostListItemProps) {
   const isExternal = post.external && !!post.externalUrl;
   const href = isExternal ? post.externalUrl! : `/posts/${post.slug}`;
   const [y, m, d] = post.publishedAt.split("-");
-  const formattedPublishedAt = `${d}.${m}.${y.slice(2)}`;
+  const formattedPublishedAt = y && m && d ? `${d}.${m}.${y.slice(2)}` : null;
 
   const inner = (
     <>
@@ -24,7 +24,7 @@ export default function PostListItem({ post }: PostListItemProps) {
             {post.categories.join(" · ")}
           </span>
           <span className="text-xs text-muted-foreground">
-            {formattedPublishedAt ?? "none"}
+            {formattedPublishedAt}
           </span>
         </div>
       </div>
