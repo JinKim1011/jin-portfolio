@@ -6,7 +6,7 @@ type HomePageProps = {
   searchParams: Promise<{ category?: string }>;
 };
 
-export const revalidate = 0; // change to 60 when published
+export const revalidate = 60;
 
 export default async function HomePage({ searchParams }: HomePageProps) {
   const posts = await getPosts();
