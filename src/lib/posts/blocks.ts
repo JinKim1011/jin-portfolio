@@ -34,13 +34,13 @@ export function renderBlock(block: BlockObjectResponse): PostBlock | null {
       return {
         id: block.id,
         type: block.type,
-        html: `<ul><li>${toText(block.bulleted_list_item.rich_text)}</li></ul>`,
+        html: `<li>${toText(block.bulleted_list_item.rich_text)}</li>`,
       };
     case "numbered_list_item":
       return {
         id: block.id,
         type: block.type,
-        html: `<ol><li>${toText(block.numbered_list_item.rich_text)}</li></ol>`,
+        html: `<li>${toText(block.numbered_list_item.rich_text)}</li>`,
       };
     case "quote":
       return {
