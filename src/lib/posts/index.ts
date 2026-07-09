@@ -53,6 +53,8 @@ export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
   );
   if (!page) return null;
 
+  cacheTag(`post-id:${page.id}`);
+
   const post = mapNotionPageToPost(page);
 
   const blockRes = await notion.blocks.children.list({ block_id: page.id });

@@ -1,15 +1,21 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import { getPostBySlug } from "@/lib/posts";
+import { getPostBySlug, getPosts } from "@/lib/posts";
 
 type PostDetailPageProps = {
   params: Promise<{ slug: string }>;
 };
 
-async function PostDetailContent({
-  params,
-}: PostDetailPageProps) {
+export async function generateStaticParams() {
+  const posts = await getPosts();
+
+  return posts
+    .filter((post) => !post.external)
+    .map((post) => ({ slug: post.slug }));
+}
+
+async function PostDetailContent({ params }: PostDetailPageProps) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
 
