@@ -3,13 +3,16 @@ import {
   PageObjectResponse,
   BlockObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";
-import { unstable_cache } from "next/cache";
+import { cacheLife } from "next/cache";
 import { notion, notionDatabaseId } from "@/lib/notion";
 import { mapNotionPageToPost } from "./mappers";
 import { renderBlock } from "./blocks";
 import { MOCK_POSTS } from "./mock";
 
-async function fetchPosts(): Promise<Post[]> {
+export async function getPosts(): Promise<Post[]> {
+  "use cache";
+  cacheLife("minutes");
+
   if (!notion || !notionDatabaseId) {
     return MOCK_POSTS.map(({ blocks: _blocks, ...post }) => post);
   }
@@ -25,15 +28,10 @@ async function fetchPosts(): Promise<Post[]> {
     .map(mapNotionPageToPost);
 }
 
-const getCachedPosts = unstable_cache(fetchPosts, ["posts"], {
-  revalidate: 60,
-});
+export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
+  "use cache";
+  cacheLife("minutes");
 
-export function getPosts(): Promise<Post[]> {
-  return getCachedPosts();
-}
-
-async function fetchPostBySlug(slug: string): Promise<PostDetail | null> {
   if (!notion || !notionDatabaseId) {
     return MOCK_POSTS.find((p) => p.slug === slug) ?? null;
   }
@@ -101,12 +99,4 @@ async function fetchPostBySlug(slug: string): Promise<PostDetail | null> {
   flushList();
 
   return { ...post, blocks: groupedBlocks };
-}
-
-const getCachedPostBySlug = unstable_cache(fetchPostBySlug, ["post-by-slug"], {
-  revalidate: 60,
-});
-
-export function getPostBySlug(slug: string): Promise<PostDetail | null> {
-  return getCachedPostBySlug(slug);
 }
