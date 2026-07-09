@@ -8,4 +8,4 @@ if (!notionToken) {
 
 export const notionDataSourceId = process.env.NOTION_DATA_SOURCE_ID;
 
-export const notion = new Client({ auth: notionToken });
+export const notion = notionToken ? new Client({ auth: notionToken }) : null;
