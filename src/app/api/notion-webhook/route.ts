@@ -41,7 +41,12 @@ export async function POST(request: Request) {
     return Response.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const payload = JSON.parse(rawRequestBody) as WebhookPayload;
+  let payload: WebhookPayload;
+  try {
+    payload = JSON.parse(rawRequestBody) as WebhookPayload;
+  } catch {
+    return Response.json({ error: "Invalid JSON payload" }, { status: 400 });
+  }
 
   revalidateTag("posts", { expire: 0 });
 
