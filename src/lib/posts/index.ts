@@ -7,14 +7,13 @@ import { cacheLife } from "next/cache";
 import { notion, notionDatabaseId } from "@/lib/notion";
 import { mapNotionPageToPost } from "./mappers";
 import { renderBlock } from "./blocks";
-import { MOCK_POSTS } from "./mock";
 
 export async function getPosts(): Promise<Post[]> {
   "use cache";
   cacheLife("hours");
 
   if (!notion || !notionDatabaseId) {
-    return MOCK_POSTS.map(({ blocks: _blocks, ...post }) => post);
+    return [];
   }
 
   const res = await notion.databases.query({
@@ -33,7 +32,7 @@ export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
   cacheLife("hours");
 
   if (!notion || !notionDatabaseId) {
-    return MOCK_POSTS.find((p) => p.slug === slug) ?? null;
+    return null;
   }
 
   const res = await notion.databases.query({
