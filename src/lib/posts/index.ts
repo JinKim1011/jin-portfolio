@@ -11,7 +11,7 @@ import { MOCK_POSTS } from "./mock";
 
 export async function getPosts(): Promise<Post[]> {
   "use cache";
-  cacheLife("minutes");
+  cacheLife("hours");
 
   if (!notion || !notionDatabaseId) {
     return MOCK_POSTS.map(({ blocks: _blocks, ...post }) => post);
@@ -30,7 +30,7 @@ export async function getPosts(): Promise<Post[]> {
 
 export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
   "use cache";
-  cacheLife("minutes");
+  cacheLife("hours");
 
   if (!notion || !notionDatabaseId) {
     return MOCK_POSTS.find((p) => p.slug === slug) ?? null;
