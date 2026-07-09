@@ -3,16 +3,17 @@ import {
   PageObjectResponse,
   BlockObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";
-import { cacheLife } from "next/cache";
-import { notion, notionDatabaseId } from "@/lib/notion";
+import { cacheLife, cacheTag } from "next/cache";
+import { notion, notionDataSourceId } from "@/lib/notion";
 import { mapNotionPageToPost } from "./mappers";
 import { renderBlock } from "./blocks";
 
 export async function getPosts(): Promise<Post[]> {
   "use cache";
   cacheLife("hours");
+  cacheTag("posts");
 
-  if (!notion || !notionDatabaseId) {
+  if (!notion || !notionDataSourceId) {
     return [];
   }
 
@@ -30,6 +31,7 @@ export async function getPosts(): Promise<Post[]> {
 export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
   "use cache";
   cacheLife("hours");
+  cacheTag(`post:${slug}`);
 
   if (!notion || !notionDataSourceId) {
     return null;
