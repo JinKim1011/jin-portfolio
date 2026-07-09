@@ -25,10 +25,15 @@ export async function POST(request: Request) {
   }
 
   const rawRequestBody = await request.text();
+  const signature = request.headers.get("x-notion-signature");
+
+  if (!signature) {
+    return Response.json({ error: "Unauthorized" }, { status: 401 });
+  }
 
   const isValid = await verifyWebhookSignature({
     body: rawRequestBody,
-    signature: request.headers.get("x-notion-signature"),
+    signature: signature,
     verificationToken,
   });
 
