@@ -2,8 +2,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPostBySlug } from "@/lib/posts";
 
-export const revalidate = 60;
-
 export default async function PostDetailPage({
   params,
 }: {
