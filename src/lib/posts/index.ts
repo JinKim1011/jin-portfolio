@@ -16,8 +16,8 @@ export async function getPosts(): Promise<Post[]> {
     return [];
   }
 
-  const res = await notion.databases.query({
-    database_id: notionDatabaseId,
+  const res = await notion.dataSources.query({
+    data_source_id: notionDataSourceId,
     filter: { property: "published", checkbox: { equals: true } },
     sorts: [{ property: "time", direction: "descending" }],
   });
@@ -31,12 +31,12 @@ export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
   "use cache";
   cacheLife("hours");
 
-  if (!notion || !notionDatabaseId) {
+  if (!notion || !notionDataSourceId) {
     return null;
   }
 
-  const res = await notion.databases.query({
-    database_id: notionDatabaseId,
+  const res = await notion.dataSources.query({
+    data_source_id: notionDataSourceId,
     filter: {
       and: [
         { property: "slug", rich_text: { equals: slug } },
