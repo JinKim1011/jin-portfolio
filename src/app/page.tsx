@@ -1,14 +1,13 @@
 import { getPosts } from "@/lib/posts";
 import PostList from "@/components/post-list";
 import CategoryNav from "@/components/category-nav";
+import { Suspense } from "react";
 
 type HomePageProps = {
   searchParams: Promise<{ category?: string }>;
 };
 
-export const revalidate = 0; // change to 60 when published
-
-export default async function HomePage({ searchParams }: HomePageProps) {
+async function HomeContent({ searchParams }: HomePageProps) {
   const posts = await getPosts();
 
   const allCategories = Array.from(
@@ -29,5 +28,13 @@ export default async function HomePage({ searchParams }: HomePageProps) {
       <CategoryNav tabs={tabs} active={active} />
       <PostList posts={filtered} />
     </div>
+  );
+}
+
+export default function HomePage(props: HomePageProps) {
+  return (
+    <Suspense fallback={null}>
+      <HomeContent {...props} />
+    </Suspense>
   );
 }

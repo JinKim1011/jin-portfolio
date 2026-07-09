@@ -13,6 +13,12 @@ Personal portfolio and blog — design engineering work, projects, design system
 
 ```bash
 npm install
-cp .env.example .env.local   # fill in your keys
+nano .env.local               # add your personal keys
 npm run dev                  # http://localhost:3000
 ```
+
+Required env vars:
+
+- `NOTION_TOKEN`
+- `NOTION_DATABASE_ID`
+- `NOTION_WEBHOOK_SECRET`

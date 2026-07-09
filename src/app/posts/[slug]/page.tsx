@@ -1,14 +1,15 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import { getPostBySlug } from "@/lib/posts";
 
-export const revalidate = 0; // for dev-only (need to fix to 60 when released)
-
-export default async function PostDetailPage({
-  params,
-}: {
+type PostDetailPageProps = {
   params: Promise<{ slug: string }>;
-}) {
+};
+
+async function PostDetailContent({
+  params,
+}: PostDetailPageProps) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
 
@@ -47,5 +48,13 @@ export default async function PostDetailPage({
         ))}
       </div>
     </article>
+  );
+}
+
+export default function PostDetailPage(props: PostDetailPageProps) {
+  return (
+    <Suspense fallback={null}>
+      <PostDetailContent {...props} />
+    </Suspense>
   );
 }

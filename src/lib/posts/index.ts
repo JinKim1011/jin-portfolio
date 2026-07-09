@@ -3,18 +3,22 @@ import {
   PageObjectResponse,
   BlockObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";
-import { notion, notionDatabaseId } from "@/lib/notion";
+import { cacheLife, cacheTag } from "next/cache";
+import { notion, notionDataSourceId } from "@/lib/notion";
 import { mapNotionPageToPost } from "./mappers";
 import { renderBlock } from "./blocks";
-import { MOCK_POSTS } from "./mock";
 
 export async function getPosts(): Promise<Post[]> {
-  if (!notion || !notionDatabaseId) {
-    return MOCK_POSTS.map(({ blocks: _blocks, ...post }) => post);
+  "use cache";
+  cacheLife("hours");
+  cacheTag("posts");
+
+  if (!notion || !notionDataSourceId) {
+    return [];
   }
 
-  const res = await notion.databases.query({
-    database_id: notionDatabaseId,
+  const res = await notion.dataSources.query({
+    data_source_id: notionDataSourceId,
     filter: { property: "published", checkbox: { equals: true } },
     sorts: [{ property: "time", direction: "descending" }],
   });
@@ -25,12 +29,16 @@ export async function getPosts(): Promise<Post[]> {
 }
 
 export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
-  if (!notion || !notionDatabaseId) {
-    return MOCK_POSTS.find((p) => p.slug === slug) ?? null;
+  "use cache";
+  cacheLife("hours");
+  cacheTag(`post:${slug}`);
+
+  if (!notion || !notionDataSourceId) {
+    return null;
   }
 
-  const res = await notion.databases.query({
-    database_id: notionDatabaseId,
+  const res = await notion.dataSources.query({
+    data_source_id: notionDataSourceId,
     filter: {
       and: [
         { property: "slug", rich_text: { equals: slug } },
