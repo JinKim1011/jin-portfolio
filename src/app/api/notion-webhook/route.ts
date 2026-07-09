@@ -16,6 +16,25 @@ function getVerificationToken() {
 }
 
 export async function POST(request: Request) {
+  const rawRequestBody = await request.text();
+
+  let payload: WebhookPayload;
+  try {
+    payload = JSON.parse(rawRequestBody) as WebhookPayload;
+  } catch {
+    return Response.json({ error: "Invalid JSON payload" }, { status: 400 });
+  }
+
+  if (payload.verification_token) {
+    console.info(
+      "Notion webhook verification token:",
+      payload.verification_token,
+    );
+    return Response.json({
+      ok: true,
+    });
+  }
+
   const verificationToken = getVerificationToken();
   if (!verificationToken) {
     return Response.json(
@@ -24,7 +43,6 @@ export async function POST(request: Request) {
     );
   }
 
-  const rawRequestBody = await request.text();
   const signature = request.headers.get("x-notion-signature");
 
   if (!signature) {
@@ -33,19 +51,12 @@ export async function POST(request: Request) {
 
   const isValid = await verifyWebhookSignature({
     body: rawRequestBody,
-    signature: signature,
+    signature,
     verificationToken,
   });
 
   if (!isValid) {
     return Response.json({ error: "Unauthorized" }, { status: 401 });
-  }
-
-  let payload: WebhookPayload;
-  try {
-    payload = JSON.parse(rawRequestBody) as WebhookPayload;
-  } catch {
-    return Response.json({ error: "Invalid JSON payload" }, { status: 400 });
   }
 
   revalidateTag("posts", { expire: 0 });
