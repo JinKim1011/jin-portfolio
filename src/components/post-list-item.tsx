@@ -1,3 +1,5 @@
+"use client";
+
 import { Post } from "@/types/post";
 import Link from "next/link";
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
