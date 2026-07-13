@@ -1,3 +1,5 @@
+"use client";
+
 import { Post } from "@/types/post";
 import PostListItem from "@/components/post-list-item";
 
