@@ -2,6 +2,21 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { Inter, IBM_Plex_Mono } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const ibmPlexMono = IBM_Plex_Mono({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-ibm-plex-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Jin Kim — Design Engineer",
@@ -16,8 +31,8 @@ export default function RootLayout({
     "root layout-root mx-auto max-w-190 w-full px-5 antialiased";
 
   return (
-    <html lang="en">
-      <body className="antialiased">
+    <html lang="en" className={`${inter.variable} ${ibmPlexMono.variable}`}>
+      <body className="antialiased font-mono">
         <div className={rootClasses}>
           <Header />
           <main className="container">{children}</main>
