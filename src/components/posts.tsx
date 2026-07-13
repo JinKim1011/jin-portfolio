@@ -12,7 +12,7 @@ type PostsProps = {
 
 function readActiveCategory() {
   const params = new URLSearchParams(window.location.search);
-  return params.get("category")?.toUpperCase() ?? "ALL";
+  return (params.get("category") || "ALL").toUpperCase();
 }
 
 export default function Posts({ posts, tabs }: PostsProps) {
