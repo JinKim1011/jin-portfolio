@@ -6,7 +6,7 @@ import { Inter, IBM_Plex_Mono } from "next/font/google";
 
 const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "600"],
+  weight: ["400", "600", "700"],
   variable: "--font-inter",
   display: "swap",
 });
