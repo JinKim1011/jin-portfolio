@@ -9,8 +9,6 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@fontsource/ibm-plex-mono": "^5.2.7",
-    "@fontsource/inter": "^5.2.8",
     "@notionhq/client": "^5.23.0",
     "@radix-ui/react-icons": "^1.3.2",
     "@supabase/supabase-js": "^2.110.0",
