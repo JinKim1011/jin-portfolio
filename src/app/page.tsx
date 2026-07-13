@@ -1,5 +1,6 @@
 import { getPosts } from "@/lib/posts";
 import Posts from "@/components/posts";
+import { Suspense } from "react";
 
 export default async function HomePage() {
   const posts = await getPosts();
@@ -9,5 +10,9 @@ export default async function HomePage() {
   ).sort();
   const tabs = ["ALL", ...allCategories];
 
-  return <Posts posts={posts} tabs={tabs} />;
+  return (
+    <Suspense>
+      <Posts posts={posts} tabs={tabs} />
+    </Suspense>
+  );
 }
