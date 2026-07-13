@@ -22,43 +22,43 @@
 @layer components {
   .text-heading {
     font-size: var(--text-title1);
-    font-width: var(--font-bold);
+    font-weight: var(--font-bold);
     line-height: var(--leading-tight);
   }
 
   .text-heading-small {
     font-size: var(--text-title2);
-    font-width: var(--font-bold);
+    font-weight: var(--font-bold);
     line-height: var(--leading-tight);
   }
 
   .text-body-strong {
     font-size: var(--text-regular);
-    font-width: var(--font-semibold);
+    font-weight: var(--font-semibold);
     line-height: var(--leading-relaxed);
   }
 
   .text-body {
     font-size: var(--text-regular);
-    font-width: var(--font-regular);
+    font-weight: var(--font-regular);
     line-height: var(--leading-relaxed);
   }
 
   .text-caption {
     font-size: var(--text-small);
-    font-width: var(--font-semibold);
-    font-width: var(--font-regular);
+    font-weight: var(--font-regular);
+    line-height: var(--leading-relaxed);
   }
 
   .text-label {
     font-size: var(--text-small);
-    font-width: var(--font-regular);
+    font-weight: var(--font-regular);
     line-height: var(--leading-tight);
   }
 
   .text-label-small {
     font-size: var(--text-mini);
-    font-width: var(--font-regular);
+    font-weight: var(--font-regular);
     line-height: var(--leading-tight);
   }
 }
