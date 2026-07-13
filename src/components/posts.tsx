@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import type { Post } from "@/types/post";
 import CategoryNav from "@/components/category-nav";
 import PostList from "@/components/post-list";
+import { useSearchParams } from "next/navigation";
 
 type PostsProps = {
   posts: Post[];
@@ -27,6 +28,8 @@ export default function Posts({ posts, tabs }: PostsProps) {
     return () => window.removeEventListener("popstate", updateActive);
   }, []);
 
+  const searchParams = useSearchParams();
+  const active = (searchParams.get("category") || "ALL").toUpperCase();
   const filteredPosts =
     active === "ALL"
       ? posts
