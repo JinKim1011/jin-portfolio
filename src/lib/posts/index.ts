@@ -7,6 +7,7 @@ import { cacheLife, cacheTag } from "next/cache";
 import { notion, notionDataSourceId } from "@/lib/notion";
 import { mapNotionPageToPost } from "./mappers";
 import { renderBlock } from "./blocks";
+import { postListClassName } from "./block-styles";
 
 export async function getPosts(): Promise<Post[]> {
   "use cache";
@@ -74,7 +75,7 @@ export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
     groupedBlocks.push({
       id: `${currentListType}-${groupedBlocks.length}`,
       type: currentListType,
-      html: `${currentListType === "bulleted_list_item" ? "<ul>" : "<ol>"}${currentListItems.join("")}${currentListType === "bulleted_list_item" ? "</ul>" : "</ol>"}`,
+      html: `${currentListType === "bulleted_list_item" ? `<ul class="${postListClassName({ type: currentListType })}">` : `<ol class="${postListClassName({ type: currentListType })}">`}${currentListItems.join("")}${currentListType === "bulleted_list_item" ? "</ul>" : "</ol>"}`,
     });
 
     currentListType = null;
