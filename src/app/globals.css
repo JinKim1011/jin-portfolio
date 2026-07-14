@@ -4,10 +4,11 @@
   --font-mono: var(--font-ibm-plex-mono), ui-monospace, monospace;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
-  --text-mini: 0.6875rem; /* 11px */
-  --text-small: 0.75rem; /* 12px */
-  --text-regular: 0.9375rem; /* 15px */
-  --text-title2: 1.0625rem; /* 17px */
+  --text-mirco: 0.6875rem; /* 11px */
+  --text-mini: 0.75rem; /* 12px */
+  --text-small: 0.875rem; /* 14px */
+  --text-regular: 1rem; /* 16px */
+  --text-title2: 1.125rem; /* 18px */
   --text-title1: 1.25rem; /* 20px */
 
   --font-regular: 400;
@@ -45,19 +46,25 @@
   }
 
   .text-caption {
-    font-size: var(--text-small);
+    font-size: var(--text-mini);
     font-weight: var(--font-regular);
     line-height: var(--leading-relaxed);
   }
 
-  .text-label {
+  .text-label-large {
     font-size: var(--text-small);
     font-weight: var(--font-regular);
     line-height: var(--leading-tight);
   }
 
-  .text-label-small {
+  .text-label {
     font-size: var(--text-mini);
+    font-weight: var(--font-regular);
+    line-height: var(--leading-tight);
+  }
+
+  .text-label-small {
+    font-size: var(--text-mirco);
     font-weight: var(--font-regular);
     line-height: var(--leading-tight);
   }
