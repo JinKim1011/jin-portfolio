@@ -15,19 +15,23 @@ export default function PostListItem({ post }: PostListItemProps) {
   const formattedPublishedAt = y && m && d ? `${d}.${m}.${y.slice(2)}` : null;
 
   const inner = (
-    <>
-      <div className="flex items-baseline justify-between">
-        <h2 className="text-label-large group-hover:underline">
+    <div className="">
+      <div className="border-stroke bg-surface-interactive hover:bg-surface-interactive-hover active:bg-surface-interactive-active flex items-baseline justify-between border-b-[0.5px]">
+        <h2 className="text-label-large text-content-interactive group-hover:text-content-interactive-hover group-hover:underline">
           {post.title}
           {isExternal && <ArrowTopRightIcon />}
         </h2>
         <div className="flex w-fit gap-2">
-          <span className="text-label">{post.categories.join(" · ")}</span>
-          <span className="text-label-small">{formattedPublishedAt}</span>
+          <span className="text-label text-content-interactive">
+            {post.categories.join(" · ")}
+          </span>
+          <span className="text-label-small text-content-muted">
+            {formattedPublishedAt}
+          </span>
         </div>
       </div>
-      <p className="text-sm">{post.excerpt}</p>
-    </>
+      <p className="text-content-muted text-sm">{post.excerpt}</p>
+    </div>
   );
 
   return (
