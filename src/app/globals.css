@@ -28,6 +28,32 @@
   --base-red-500: oklch(63.7% 0.237 25.331);
 }
 
+.dark {
+  --base-neutral-0: oklch(14.5% 0 0);
+  --base-neutral-50: oklch(20.5% 0 0);
+  --base-neutral-100: oklch(26.9% 0 0);
+  --base-neutral-200: oklch(37.1% 0 0);
+  --base-neutral-400: oklch(43.9% 0 0);
+  --base-neutral-600: oklch(70.8% 0 0);
+  --base-neutral-900: oklch(98.5% 0 0);
+
+  --base-cyan-500: oklch(71.5% 0.143 215.221);
+  --base-fuchsia-500: oklch(66.7% 0.295 322.15);
+  --base-blue-500: oklch(62.3% 0.214 259.815);
+
+  --base-amber-50: oklch(27.9% 0.077 45.635);
+  --base-amber-100: oklch(41.4% 0.112 45.904);
+  --base-amber-500: oklch(76.9% 0.188 70.08);
+
+  --base-lime-50: oklch(27.4% 0.072 132.109);
+  --base-lime-100: oklch(40.5% 0.101 131.063);
+  --base-lime-500: oklch(76.8% 0.233 130.85);
+
+  --base-red-50: oklch(25.8% 0.092 26.042);
+  --base-red-100: oklch(39.6% 0.141 25.723);
+  --base-red-500: oklch(63.7% 0.237 25.331);
+}
+
 @theme {
   --font-mono: var(--font-ibm-plex-mono), ui-monospace, monospace;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
