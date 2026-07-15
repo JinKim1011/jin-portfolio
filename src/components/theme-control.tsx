@@ -15,13 +15,15 @@ export default function ThemeControl() {
   const options = ["system", "light", "dark"] as const;
 
   return (
-    <div className="flex w-fit gap-1">
+    <div className="flex w-fit gap-1" role="radiogroup" aria-label="theme">
       {options.map((option) => {
         const isActive = theme === option;
         return (
           <button
             key={option}
+            role="radio"
             onClick={() => setTheme(option)}
+            aria-checked={isActive}
             className={cn(
               "text-label-small",
               isActive
