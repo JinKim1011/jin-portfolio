@@ -3,6 +3,8 @@ import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { Inter, IBM_Plex_Mono } from "next/font/google";
+import { AppProviders } from "./app-providers";
+import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -30,13 +32,19 @@ export default function RootLayout({
   const rootClasses = "root layout-root antialiased";
 
   return (
-    <html lang="en" className={`${inter.variable} ${ibmPlexMono.variable}`}>
-      <body className="antialiased font-mono bg-surface">
-        <div className={rootClasses}>
-          <Header />
-          <main className="mx-auto max-w-190 w-full px-5">{children}</main>
-          <Footer />
-        </div>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${inter.variable} ${ibmPlexMono.variable}`}
+    >
+      <body className="bg-surface font-mono antialiased">
+        <AppProviders>
+          <div className={rootClasses}>
+            <Header />
+            <main className="mx-auto w-full max-w-190 px-5">{children}</main>
+            <Footer />
+          </div>
+        </AppProviders>
       </body>
     </html>
   );
