@@ -8,17 +8,20 @@ type CategoryNavProps = {
   active: string;
 };
 
-const navLinkItem = cva("text-label -ml-1 px-1 hover:bg-gray-900/10", {
-  variants: {
-    active: {
-      true: "",
-      false: "",
+const navLinkItem = cva(
+  "text-label -ml-1 px-1 py-0.5 hover:bg-surface-interactive-hover hover:underline",
+  {
+    variants: {
+      active: {
+        true: "text-content-interactive-active",
+        false: "text-content-interactive",
+      },
+    },
+    defaultVariants: {
+      active: false,
     },
   },
-  defaultVariants: {
-    active: false,
-  },
-});
+);
 
 export default function CategoryNav({ tabs, active }: CategoryNavProps) {
   return (
