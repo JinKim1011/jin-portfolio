@@ -1,15 +1,28 @@
 "use client";
 
 import Link from "next/link";
+import { cva } from "class-variance-authority";
 
 type CategoryNavProps = {
   tabs: string[];
   active: string;
 };
 
+const navLinkItem = cva("text-label -ml-1 px-1 hover:bg-gray-900/10", {
+  variants: {
+    active: {
+      true: "",
+      false: "",
+    },
+  },
+  defaultVariants: {
+    active: false,
+  },
+});
+
 export default function CategoryNav({ tabs, active }: CategoryNavProps) {
   return (
-    <nav className="flex flex-wrap gap-1.5 text-sm">
+    <nav className="flex flex-wrap gap-2 text-sm">
       {tabs.map((category) => {
         const href =
           category === "ALL"
@@ -21,11 +34,7 @@ export default function CategoryNav({ tabs, active }: CategoryNavProps) {
             key={category}
             href={href}
             aria-current={isActive ? "page" : undefined}
-            className={
-              isActive
-                ? "text-foreground"
-                : "text-muted-foreground hover:text-foreground"
-            }
+            className={navLinkItem({ active: isActive })}
           >
             {category}
           </Link>

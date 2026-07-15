@@ -22,7 +22,7 @@ async function PostDetailContent({ params }: PostDetailPageProps) {
   if (!post) notFound();
 
   return (
-    <article className="">
+    <article className="font-sans">
       <header className="">
         <h1>{post.title}</h1>
         <div className="flex gap-1">
