@@ -9,7 +9,7 @@
   --base-neutral-200: oklch(87% 0 0);
   --base-neutral-400: oklch(70.8% 0 0);
   --base-neutral-600: oklch(55.6% 0 0);
-  --base-neutral-900: oklch(20.5% 0 0);
+  --base-neutral-900: oklch(14.5% 0 0);
 
   --base-cyan-500: oklch(71.5% 0.143 215.221);
   --base-fuchsia-500: oklch(66.7% 0.295 322.15);
@@ -34,7 +34,7 @@
   --base-neutral-100: oklch(26.9% 0 0);
   --base-neutral-200: oklch(37.1% 0 0);
   --base-neutral-400: oklch(43.9% 0 0);
-  --base-neutral-600: oklch(70.8% 0 0);
+  --base-neutral-600: oklch(55.6% 0 0);
   --base-neutral-900: oklch(98.5% 0 0);
 
   --base-cyan-500: oklch(71.5% 0.143 215.221);
