@@ -1,5 +1,59 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --base-neutral-0: oklch(98.5% 0 0);
+  --base-neutral-50: oklch(97% 0 0);
+  --base-neutral-100: oklch(92.2% 0 0);
+  --base-neutral-200: oklch(87% 0 0);
+  --base-neutral-400: oklch(70.8% 0 0);
+  --base-neutral-600: oklch(55.6% 0 0);
+  --base-neutral-900: oklch(14.5% 0 0);
+
+  --base-cyan-500: oklch(71.5% 0.143 215.221);
+  --base-fuchsia-500: oklch(66.7% 0.295 322.15);
+  --base-blue-500: oklch(62.3% 0.214 259.815);
+
+  --base-amber-50: oklch(98.7% 0.022 95.277);
+  --base-amber-100: oklch(96.2% 0.059 95.617);
+  --base-amber-500: oklch(76.9% 0.188 70.08);
+
+  --base-lime-50: oklch(98.6% 0.031 120.757);
+  --base-lime-100: oklch(96.7% 0.067 122.328);
+  --base-lime-500: oklch(76.8% 0.233 130.85);
+
+  --base-red-50: oklch(97.1% 0.013 17.38);
+  --base-red-100: oklch(93.6% 0.032 17.717);
+  --base-red-500: oklch(63.7% 0.237 25.331);
+}
+
+.dark {
+  --base-neutral-0: oklch(14.5% 0 0);
+  --base-neutral-50: oklch(20.5% 0 0);
+  --base-neutral-100: oklch(26.9% 0 0);
+  --base-neutral-200: oklch(37.1% 0 0);
+  --base-neutral-400: oklch(43.9% 0 0);
+  --base-neutral-600: oklch(55.6% 0 0);
+  --base-neutral-900: oklch(98.5% 0 0);
+
+  --base-cyan-500: oklch(71.5% 0.143 215.221);
+  --base-fuchsia-500: oklch(66.7% 0.295 322.15);
+  --base-blue-500: oklch(62.3% 0.214 259.815);
+
+  --base-amber-50: oklch(27.9% 0.077 45.635);
+  --base-amber-100: oklch(41.4% 0.112 45.904);
+  --base-amber-500: oklch(76.9% 0.188 70.08);
+
+  --base-lime-50: oklch(27.4% 0.072 132.109);
+  --base-lime-100: oklch(40.5% 0.101 131.063);
+  --base-lime-500: oklch(76.8% 0.233 130.85);
+
+  --base-red-50: oklch(25.8% 0.092 26.042);
+  --base-red-100: oklch(39.6% 0.141 25.723);
+  --base-red-500: oklch(63.7% 0.237 25.331);
+}
+
 @theme {
   --font-mono: var(--font-ibm-plex-mono), ui-monospace, monospace;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
@@ -18,6 +72,49 @@
   --leading-tight: 1.3;
   --leading-normal: 1.5;
   --leading-relaxed: 1.7;
+
+  --color-*: initial;
+
+  /* ---------------- SURFACE ---------------- */
+  --color-surface: var(--base-neutral-0);
+
+  --color-surface-interactive: var(--base-neutral-0);
+  --color-surface-interactive-hover: var(--base-neutral-100);
+  --color-surface-interactive-active: var(--base-neutral-200);
+  --color-surface-interactive-disabled: var(--base-neutral-0);
+
+  --color-surface-feedback-success: var(--base-lime-50);
+  --color-surface-feedback-warning: var(--base-amber-50);
+  --color-surface-feedback-error: var(--base-red-50);
+
+  /* ---------------- CONTENT ---------------- */
+  --color-content-default: var(--base-neutral-900);
+  --color-content-muted: var(--base-neutral-600);
+
+  --color-content-interactive: var(--base-neutral-600);
+  --color-content-interactive-muted: var(--base-neutral-400);
+  --color-content-interactive-hover: var(--base-neutral-900);
+  --color-content-interactive-focus: var(--base-neutral-900);
+  --color-content-interactive-active: var(--base-neutral-900);
+  --color-content-interactive-disabled: var(--base-neutral-400);
+
+  --color-content-feedback-success: var(--base-lime-500);
+  --color-content-feedback-warning: var(--base-amber-500);
+  --color-content-feedback-error: var(--base-red-500);
+
+  /* ---------------- BORDER ---------------- */
+  --color-stroke: var(--base-neutral-100);
+  --color-stroke-muted: var(--base-neutral-50);
+
+  --color-stroke-interactive: var(--base-neutral-100);
+  --color-stroke-interactive-hover: var(--base-neutral-200);
+  --color-stroke-interactive-active: var(--base-neutral-200);
+  --color-stroke-interactive-focus: var(--base-neutral-400);
+  --color-stroke-interactive-disabled: var(--base-neutral-50);
+
+  --color-stroke-feedback-success: var(--base-lime-100);
+  --color-stroke-feedback-warning: var(--base-amber-100);
+  --color-stroke-feedback-error: var(--base-red-100);
 }
 
 @layer components {
