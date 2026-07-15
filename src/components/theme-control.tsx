@@ -4,7 +4,7 @@ import { cn } from "@/lib/util";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
-export default function ThemeContol() {
+export default function ThemeControl() {
   const { theme, setTheme } = useTheme();
   const [mount, setMounted] = useState(false);
 
