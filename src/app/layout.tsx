@@ -27,15 +27,14 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const rootClasses =
-    "root layout-root mx-auto max-w-190 w-full px-5 antialiased";
+  const rootClasses = "root layout-root antialiased";
 
   return (
     <html lang="en" className={`${inter.variable} ${ibmPlexMono.variable}`}>
       <body className="antialiased font-mono">
         <div className={rootClasses}>
           <Header />
-          <main className="container">{children}</main>
+          <main className="mx-auto max-w-190 w-full px-5">{children}</main>
           <Footer />
         </div>
       </body>
