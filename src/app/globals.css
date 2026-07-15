@@ -44,6 +44,49 @@
   --leading-tight: 1.3;
   --leading-normal: 1.5;
   --leading-relaxed: 1.7;
+
+  --color-*: initial;
+
+  /* ---------------- SURFACE ---------------- */
+  --color-surface: var(--base-neutral-0);
+
+  --color-surface-interactive: var(--base-neutral-0);
+  --color-surface-interactive-hover: var(--base-neutral-100);
+  --color-surface-interactive-active: var(--base-neutral-200);
+  --color-surface-interactive-disabled: var(--base-neutral-0);
+
+  --color-surface-feedback-success: var(--base-lime-50);
+  --color-surface-feedback-warning: var(--base-amber-50);
+  --color-surface-feedback-error: var(--base-red-50);
+
+  /* ---------------- CONTENT ---------------- */
+  --color-content-default: var(--base-neutral-900);
+  --color-content-muted: var(--base-neutral-600);
+
+  --color-content-interactive: var(--base-neutral-600);
+  --color-content-interactive-muted: var(--base-neutral-400);
+  --color-content-interactive-hover: var(--base-neutral-900);
+  --color-content-interactive-focus: var(--base-neutral-900);
+  --color-content-interactive-active: var(--base-neutral-900);
+  --color-content-interactive-disabled: var(--base-neutral-400);
+
+  --color-content-feedback-success: var(--base-lime-500);
+  --color-content-feedback-warning: var(--base-amber-500);
+  --color-content-feedback-error: var(--base-red-500);
+
+  /* ---------------- BORDER ---------------- */
+  --color-stroke: var(--base-neutral-200);
+  --color-stroke-muted: var(--base-neutral-100);
+
+  --color-stroke-interactive: var(--base-neutral-100);
+  --color-stroke-interactive-hover: var(--base-neutral-200);
+  --color-stroke-interactive-active: var(--base-neutral-200);
+  --color-stroke-interactive-focus: var(--base-neutral-400);
+  --color-stroke-interactive-disabled: var(--base-neutral-50);
+
+  --color-stroke-feedback-success: var(--base-lime-100);
+  --color-stroke-feedback-warning: var(--base-amber-100);
+  --color-stroke-feedback-error: var(--base-red-100);
 }
 
 @layer components {
