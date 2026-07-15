@@ -4,7 +4,6 @@ import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { Inter, IBM_Plex_Mono } from "next/font/google";
 import { AppProviders } from "./app-providers";
-import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
