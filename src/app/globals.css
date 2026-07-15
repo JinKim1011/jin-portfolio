@@ -103,8 +103,8 @@
   --color-content-feedback-error: var(--base-red-500);
 
   /* ---------------- BORDER ---------------- */
-  --color-stroke: var(--base-neutral-200);
-  --color-stroke-muted: var(--base-neutral-100);
+  --color-stroke: var(--base-neutral-100);
+  --color-stroke-muted: var(--base-neutral-50);
 
   --color-stroke-interactive: var(--base-neutral-100);
   --color-stroke-interactive-hover: var(--base-neutral-200);
