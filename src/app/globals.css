@@ -4,7 +4,7 @@
   --font-mono: var(--font-ibm-plex-mono), ui-monospace, monospace;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 
-  --text-mirco: 0.6875rem; /* 11px */
+  --text-micro: 0.6875rem; /* 11px */
   --text-mini: 0.75rem; /* 12px */
   --text-small: 0.875rem; /* 14px */
   --text-regular: 1rem; /* 16px */
@@ -64,7 +64,7 @@
   }
 
   .text-label-small {
-    font-size: var(--text-mirco);
+    font-size: var(--text-micro);
     font-weight: var(--font-regular);
     line-height: var(--leading-tight);
   }
