@@ -31,7 +31,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" className={`${inter.variable} ${ibmPlexMono.variable}`}>
-      <body className="antialiased font-mono">
+      <body className="antialiased font-mono bg-surface">
         <div className={rootClasses}>
           <Header />
           <main className="mx-auto max-w-190 w-full px-5">{children}</main>
