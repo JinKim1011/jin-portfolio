@@ -1,4 +1,4 @@
-import ThemeContol from "./theme-control";
+import ThemeControl from "./theme-control";
 
 export default async function Footer() {
   "use cache";
@@ -8,7 +8,7 @@ export default async function Footer() {
         <span className="text-caption text-content-muted">
           © {new Date().getFullYear()} JINSU KIM
         </span>
-        <ThemeContol />
+        <ThemeControl />
       </div>
     </footer>
   );
