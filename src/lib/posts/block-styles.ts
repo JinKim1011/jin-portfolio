@@ -3,12 +3,12 @@ import { cva } from "class-variance-authority";
 export const postBlockClassName = cva("", {
   variants: {
     type: {
-      heading1: "text-heading",
-      heading2: "text-heading-small mt-14 mb-5",
-      heading3: "text-body-strong mb-5",
-      paragraph: "text-body mb-5",
-      listItem: "text-body",
-      quote: "text-body",
+      heading1: "text-heading text-content-default",
+      heading2: "text-heading-small mt-14 mb-5 text-content-default",
+      heading3: "text-body-strong mb-5 text-content-default",
+      paragraph: "text-body mb-3 text-content-muted",
+      listItem: "text-body text-content-muted",
+      quote: "text-body text-content-muted",
       codeBlock: "overflow-x-auto p-3",
       code: "font-mono text-caption",
     },
