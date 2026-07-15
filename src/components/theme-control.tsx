@@ -6,11 +6,11 @@ import { useEffect, useState } from "react";
 
 export default function ThemeControl() {
   const { theme, setTheme } = useTheme();
-  const [mount, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);
 
-  if (!mount) return null;
+  if (!mounted) return null;
 
   const options = ["system", "light", "dark"] as const;
 
