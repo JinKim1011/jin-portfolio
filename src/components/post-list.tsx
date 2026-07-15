@@ -9,7 +9,7 @@ type PostListProps = {
 
 export default function PostList({ posts }: PostListProps) {
   return (
-    <ul className="flex flex-col gap-0">
+    <ul className="flex flex-col gap-0 pb-10">
       {posts.map((post) => (
         <PostListItem post={post} key={post.id} />
       ))}
