@@ -11,7 +11,7 @@ import { postListClassName } from "./block-styles";
 
 export async function getPosts(): Promise<Post[]> {
   "use cache";
-  cacheLife("hours");
+  cacheLife("minutes");
   cacheTag("posts");
 
   if (!notion || !notionDataSourceId) {
@@ -31,7 +31,7 @@ export async function getPosts(): Promise<Post[]> {
 
 export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
   "use cache";
-  cacheLife("hours");
+  cacheLife("minutes");
   cacheTag(`post:${slug}`);
 
   if (!notion || !notionDataSourceId) {
