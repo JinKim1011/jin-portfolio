@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --base-neutral-0: oklch(98.5% 0 0);
   --base-neutral-50: oklch(97% 0 0);
