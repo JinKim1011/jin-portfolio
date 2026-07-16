@@ -67,8 +67,8 @@ function CardView({ post, isExternal, date }: ViewTypeProps) {
 export default function PostListItem({ post, view }: PostListItemProps) {
   const { isExternal, href } = getPostLink(post);
   const [y, m, d] = post.publishedAt.split("-");
-  const formattedPublishedAt =
-    y && m && d ? `${d}.${m}.${y.slice(2)}` : "undefined";
+  const day = d?.slice(0, 2);
+  const formattedPublishedAt = y && m && d ? `${day}.${m}.${y.slice(2)}` : "";
 
   const inner =
     view === "card" ? (
