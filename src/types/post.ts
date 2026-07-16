@@ -20,3 +20,5 @@ export interface PostBlock {
 export interface PostDetail extends Post {
   blocks: PostBlock[];
 }
+
+export type PostView = "list" | "card";
