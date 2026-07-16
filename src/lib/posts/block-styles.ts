@@ -13,8 +13,8 @@ export const postBlockClassName = cva("", {
       code: "font-mono text-caption",
     },
     listType: {
-      bulleted_list_item: "marker:text-foreground/70",
-      numbered_list_item: "marker:text-foreground/70",
+      bulleted_list_item: "marker:text-content-muted",
+      numbered_list_item: "marker:text-content-muted",
     },
   },
   defaultVariants: {
