@@ -8,14 +8,13 @@ type PostListItemProps = {
   post: Post;
 };
 
-export default function PostListItem({ post }: PostListItemProps) {
+function ListView({ post }: { post: Post }) {
   const isExternal = post.external && !!post.externalUrl;
-  const href = isExternal ? post.externalUrl! : `/posts/${post.slug}`;
   const [y, m, d] = post.publishedAt.split("-");
   const formattedPublishedAt = y && m && d ? `${d}.${m}.${y.slice(2)}` : null;
 
-  const inner = (
-    <div className="">
+  return (
+    <>
       <div className="border-stroke bg-surface-interactive hover:bg-surface-interactive-hover active:bg-surface-interactive-active flex items-baseline justify-between border-b-[0.5px]">
         <h2 className="text-label-large text-content-interactive group-hover:text-content-interactive-hover group-hover:underline">
           {post.title}
@@ -31,8 +30,15 @@ export default function PostListItem({ post }: PostListItemProps) {
         </div>
       </div>
       <p className="text-content-muted text-sm">{post.excerpt}</p>
-    </div>
+    </>
   );
+}
+
+export default function PostListItem({ post }: PostListItemProps) {
+  const isExternal = post.external && !!post.externalUrl;
+  const href = isExternal ? post.externalUrl! : `/posts/${post.slug}`;
+
+  const inner = <ListView post={post} />;
 
   return (
     <li key={post.id}>
