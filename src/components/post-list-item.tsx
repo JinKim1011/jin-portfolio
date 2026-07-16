@@ -8,6 +8,15 @@ type PostListItemProps = {
   post: Post;
 };
 
+function getPostLink(post: Post) {
+  const isExternal = post.external && !!post.externalUrl;
+
+  return {
+    isExternal,
+    href: isExternal ? post.externalUrl! : `/posts/${post.slug}`,
+  };
+}
+
 function ListView({ post }: { post: Post }) {
   const isExternal = post.external && !!post.externalUrl;
   const [y, m, d] = post.publishedAt.split("-");
@@ -35,8 +44,7 @@ function ListView({ post }: { post: Post }) {
 }
 
 export default function PostListItem({ post }: PostListItemProps) {
-  const isExternal = post.external && !!post.externalUrl;
-  const href = isExternal ? post.externalUrl! : `/posts/${post.slug}`;
+  const { isExternal, href } = getPostLink(post);
 
   const inner = <ListView post={post} />;
 
