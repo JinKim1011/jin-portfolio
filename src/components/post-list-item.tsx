@@ -69,9 +69,20 @@ export default function PostListItem({ post }: PostListItemProps) {
   const formattedPublishedAt =
     y && m && d ? `${d}.${m}.${y.slice(2)}` : "undefined";
 
-  const inner = (
-    <ListView post={post} isExternal={isExternal} date={formattedPublishedAt} />
-  );
+  const inner =
+    view === "card" ? (
+      <CardView
+        post={post}
+        isExternal={isExternal}
+        date={formattedPublishedAt}
+      />
+    ) : (
+      <ListView
+        post={post}
+        isExternal={isExternal}
+        date={formattedPublishedAt}
+      />
+    );
 
   return (
     <li key={post.id}>
