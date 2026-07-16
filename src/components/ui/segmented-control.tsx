@@ -38,7 +38,9 @@ export default function SegmentedControl({
             aria-checked={isActive}
             aria-label={option.value}
             className={cn(
-              "bg-surface-interactive hover:bg-surface-interactive-hover h-fit w-fit cursor-pointer p-1.5",
+              "h-fit w-fit cursor-pointer p-1.5",
+              "bg-surface-interactive hover:bg-surface-interactive-hover active:bg-surface-interactive-active h-fit w-fit cursor-pointer p-1.5",
+              "transition-transform duration-75 active:translate-y-0.5 active:scale-[0.98]",
               isActive
                 ? "text-content-interactive-active"
                 : "text-content-interactive-muted",
