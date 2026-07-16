@@ -29,13 +29,33 @@ function ListView({ post, isExternal, date }: ViewTypeProps) {
       <div className="border-stroke bg-surface-interactive hover:bg-surface-interactive-hover active:bg-surface-interactive-active flex items-baseline justify-between border-b-[0.5px]">
         <h2 className="text-label-large text-content-interactive group-hover:text-content-interactive-hover group-hover:underline">
           {post.title}
-          {isExternal && <ArrowTopRightIcon />}
         </h2>
         <div className="flex w-fit gap-2">
           <span className="text-label text-content-interactive">
             {post.categories.join(" · ")}
           </span>
           <span className="text-label-small text-content-muted">{date}</span>
+          {isExternal && <ArrowTopRightIcon />}
+        </div>
+      </div>
+      <p className="text-content-muted text-sm">{post.excerpt}</p>
+    </>
+  );
+}
+
+function CardView({ post, isExternal, date }: ViewTypeProps) {
+  return (
+    <>
+      <div className="border-stroke bg-surface-interactive hover:bg-surface-interactive-hover active:bg-surface-interactive-active flex flex-col items-baseline border-b-[0.5px]">
+        <h2 className="text-label-large text-content-interactive group-hover:text-content-interactive-hover group-hover:underline">
+          {post.title}
+        </h2>
+        <div className="flex w-fit gap-2">
+          <span className="text-label text-content-interactive">
+            {post.categories.join(" · ")}
+          </span>
+          <span className="text-label-small text-content-muted">{date}</span>
+          {isExternal && <ArrowTopRightIcon />}
         </div>
       </div>
       <p className="text-content-muted text-sm">{post.excerpt}</p>
