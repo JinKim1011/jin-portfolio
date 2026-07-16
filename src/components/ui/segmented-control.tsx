@@ -13,6 +13,7 @@ type SegmentedControlProps = {
   value: string;
   onChange: (selected: string) => void;
   className?: string;
+  ariaLabel?: string;
 };
 
 export default function SegmentedControl({
@@ -20,11 +21,13 @@ export default function SegmentedControl({
   value,
   onChange,
   className,
+  ariaLabel,
 }: SegmentedControlProps) {
   return (
     <div
       className={cn("-mx-1.5 flex w-fit gap-0", className)}
       role="radiogroup"
+      aria-label={ariaLabel}
     >
       {options.map((option) => {
         const isActive = option.value === value;
