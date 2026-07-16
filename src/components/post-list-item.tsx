@@ -8,6 +8,12 @@ type PostListItemProps = {
   post: Post;
 };
 
+type ViewTypeProps = {
+  post: Post;
+  isExternal: boolean;
+  date: string;
+};
+
 function getPostLink(post: Post) {
   const isExternal = post.external && !!post.externalUrl;
 
@@ -17,15 +23,7 @@ function getPostLink(post: Post) {
   };
 }
 
-function ListView({
-  post,
-  isExternal,
-  date,
-}: {
-  post: Post;
-  isExternal: boolean;
-  date: string;
-}) {
+function ListView({ post, isExternal, date }: ViewTypeProps) {
   return (
     <>
       <div className="border-stroke bg-surface-interactive hover:bg-surface-interactive-hover active:bg-surface-interactive-active flex items-baseline justify-between border-b-[0.5px]">
