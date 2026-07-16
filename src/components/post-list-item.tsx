@@ -17,10 +17,15 @@ function getPostLink(post: Post) {
   };
 }
 
-function ListView({ post, isExternal }: { post: Post; isExternal: boolean }) {
-  const [y, m, d] = post.publishedAt.split("-");
-  const formattedPublishedAt = y && m && d ? `${d}.${m}.${y.slice(2)}` : null;
-
+function ListView({
+  post,
+  isExternal,
+  date,
+}: {
+  post: Post;
+  isExternal: boolean;
+  date: string;
+}) {
   return (
     <>
       <div className="border-stroke bg-surface-interactive hover:bg-surface-interactive-hover active:bg-surface-interactive-active flex items-baseline justify-between border-b-[0.5px]">
@@ -32,9 +37,7 @@ function ListView({ post, isExternal }: { post: Post; isExternal: boolean }) {
           <span className="text-label text-content-interactive">
             {post.categories.join(" · ")}
           </span>
-          <span className="text-label-small text-content-muted">
-            {formattedPublishedAt}
-          </span>
+          <span className="text-label-small text-content-muted">{date}</span>
         </div>
       </div>
       <p className="text-content-muted text-sm">{post.excerpt}</p>
@@ -44,8 +47,13 @@ function ListView({ post, isExternal }: { post: Post; isExternal: boolean }) {
 
 export default function PostListItem({ post }: PostListItemProps) {
   const { isExternal, href } = getPostLink(post);
+  const [y, m, d] = post.publishedAt.split("-");
+  const formattedPublishedAt =
+    y && m && d ? `${d}.${m}.${y.slice(2)}` : "undefined";
 
-  const inner = <ListView post={post} isExternal={isExternal} />;
+  const inner = (
+    <ListView post={post} isExternal={isExternal} date={formattedPublishedAt} />
+  );
 
   return (
     <li key={post.id}>
