@@ -1,6 +1,7 @@
 "use client";
 
 import { Post, PostView } from "@/types/post";
+import { cva } from "class-variance-authority";
 import PostListItem from "@/components/post-list-item";
 
 type PostListProps = {
