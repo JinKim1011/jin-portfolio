@@ -1,11 +1,12 @@
 "use client";
 
-import { Post } from "@/types/post";
+import { Post, PostView } from "@/types/post";
 import Link from "next/link";
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 
 type PostListItemProps = {
   post: Post;
+  view: PostView;
 };
 
 type ViewTypeProps = {
@@ -63,7 +64,7 @@ function CardView({ post, isExternal, date }: ViewTypeProps) {
   );
 }
 
-export default function PostListItem({ post }: PostListItemProps) {
+export default function PostListItem({ post, view }: PostListItemProps) {
   const { isExternal, href } = getPostLink(post);
   const [y, m, d] = post.publishedAt.split("-");
   const formattedPublishedAt =
