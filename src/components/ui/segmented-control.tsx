@@ -37,12 +37,13 @@ export default function SegmentedControl({
           <button
             key={option.value}
             role="radio"
+            type="button"
             onClick={() => onChange(option.value)}
             aria-checked={isActive}
             aria-label={option.value}
             className={cn(
               "h-fit w-fit cursor-pointer p-1.5",
-              "bg-surface-interactive hover:bg-surface-interactive-hover active:bg-surface-interactive-active h-fit w-fit cursor-pointer p-1.5",
+              "bg-surface-interactive hover:bg-surface-interactive-hover active:bg-surface-interactive-active",
               "transition-transform duration-75 active:translate-y-0.5 active:scale-[0.98]",
               isActive
                 ? "text-content-interactive-active"
