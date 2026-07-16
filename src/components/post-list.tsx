@@ -8,9 +8,21 @@ type PostListProps = {
   view: PostView;
 };
 
+const postLayout = cva("pb-10", {
+  variants: {
+    view: {
+      list: "flex flex-col gap-0",
+      card: "grid grid-cols-2 md:grid-cols-3 gap-2.5",
+    },
+  },
+  defaultVariants: {
+    view: "list",
+  },
+});
+
 export default function PostList({ posts, view }: PostListProps) {
   return (
-    <ul className="flex flex-col gap-0 pb-10">
+    <ul className={postLayout({ view })}>
       {posts.map((post) => (
         <PostListItem post={post} key={post.id} view={view} />
       ))}
