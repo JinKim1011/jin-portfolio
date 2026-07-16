@@ -27,6 +27,7 @@ export default function PostViewTypeControl({
       options={options}
       onChange={handleThemeChange}
       value={view as PostView}
+      ariaLabel="post-view-type-control"
     />
   );
 }

@@ -32,6 +32,7 @@ export default function ThemeControl() {
       options={options}
       onChange={handleThemeChange}
       value={theme as ThemeMode}
+      ariaLabel="theme-control"
     />
   );
 }
