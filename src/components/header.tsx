@@ -8,12 +8,6 @@ export default function Header() {
           <span className="text-label text-content-default">JIN KIM</span>
           <span className="text-label text-content-muted">DESIGN ENGINEER</span>
         </Link>
-        {/* <a
-          href="mailto:jinsu.kim1011@gmail.com"
-          className="text-muted-foreground hover:text-foreground"
-        >
-          Contact
-        </a> */}
       </div>
     </header>
   );
