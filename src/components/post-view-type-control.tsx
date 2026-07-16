@@ -18,15 +18,17 @@ export default function PostViewTypeControl({
     { value: "card", iconName: ViewGridIcon },
   ];
 
-  const handleThemeChange = (selected: string) => {
-    onViewChange(selected as PostView);
+  const handleViewTypeChange = (selected: string) => {
+    if (selected === "list" || selected === "card") {
+      onViewChange(selected as PostView);
+    }
   };
 
   return (
     <SegmentedControl
       options={options}
-      onChange={handleThemeChange}
-      value={view as PostView}
+      onChange={handleViewTypeChange}
+      value={view}
       ariaLabel="post-view-type-control"
     />
   );
