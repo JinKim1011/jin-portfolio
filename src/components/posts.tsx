@@ -1,9 +1,10 @@
 "use client";
 
-import type { Post } from "@/types/post";
+import type { Post, PostView } from "@/types/post";
 import CategoryNav from "@/components/category-nav";
 import PostList from "@/components/post-list";
 import { useSearchParams } from "next/navigation";
+import { useState } from "react";
 
 type PostsProps = {
   posts: Post[];
@@ -18,10 +19,17 @@ export default function Posts({ posts, tabs }: PostsProps) {
       ? posts
       : posts.filter((post) => post.categories.includes(active));
 
+  const [view, setView] = useState<PostView>("list");
+
   return (
     <div>
-      <CategoryNav tabs={tabs} active={active} />
-      <PostList posts={filteredPosts} />
+      <CategoryNav
+        tabs={tabs}
+        active={active}
+        view={view}
+        onViewChange={setView}
+      />
+      <PostList posts={filteredPosts} view={view} />
     </div>
   );
 }

@@ -28,10 +28,7 @@ async function PostDetailContent({ params }: PostDetailPageProps) {
         <div className="flex gap-1">
           {post.categories.map((category, index) => (
             <span key={category}>
-              <Link
-                href={`/?category=${encodeURIComponent(category)}`}
-                className="hover:text-foreground"
-              >
+              <Link href={`/?category=${encodeURIComponent(category)}`}>
                 {category}
               </Link>
               {index < post.categories.length - 1 && (

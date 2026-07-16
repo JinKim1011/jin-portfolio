@@ -40,7 +40,7 @@ export default function RootLayout({
         <AppProviders>
           <div className={rootClasses}>
             <Header />
-            <main className="mx-auto w-full max-w-190 px-5">{children}</main>
+            <main className="mx-auto w-full max-w-3xl px-5">{children}</main>
             <Footer />
           </div>
         </AppProviders>
