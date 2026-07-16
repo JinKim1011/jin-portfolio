@@ -20,8 +20,13 @@ export default function Posts({ posts, tabs }: PostsProps) {
 
   return (
     <div>
-      <CategoryNav tabs={tabs} active={active} />
-      <PostList posts={filteredPosts} />
+      <CategoryNav
+        tabs={tabs}
+        active={active}
+        view={view}
+        onViewChange={setView}
+      />
+      <PostList posts={filteredPosts} view={view} />
     </div>
   );
 }
