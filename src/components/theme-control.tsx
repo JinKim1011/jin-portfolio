@@ -31,7 +31,7 @@ export default function ThemeControl() {
     <SegmentedControl
       options={options}
       onChange={handleThemeChange}
-      value={theme as ThemeMode}
+      value={theme ?? "system"}
       ariaLabel="theme-control"
     />
   );
