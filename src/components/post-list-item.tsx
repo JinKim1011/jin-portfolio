@@ -17,8 +17,7 @@ function getPostLink(post: Post) {
   };
 }
 
-function ListView({ post }: { post: Post }) {
-  const isExternal = post.external && !!post.externalUrl;
+function ListView({ post, isExternal }: { post: Post; isExternal: boolean }) {
   const [y, m, d] = post.publishedAt.split("-");
   const formattedPublishedAt = y && m && d ? `${d}.${m}.${y.slice(2)}` : null;
 
@@ -46,7 +45,7 @@ function ListView({ post }: { post: Post }) {
 export default function PostListItem({ post }: PostListItemProps) {
   const { isExternal, href } = getPostLink(post);
 
-  const inner = <ListView post={post} />;
+  const inner = <ListView post={post} isExternal={isExternal} />;
 
   return (
     <li key={post.id}>
