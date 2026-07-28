@@ -97,7 +97,10 @@ function ListView({ post, isExternal, date, view }: ViewTypeProps) {
     <>
       <div className={viewLayout({ view })}>
         <div className={titleWrapper({ view })}>
-          <h2 className={titleStyle({ view })}>{post.title}</h2>
+          <h2 className={titleStyle({ view })}>
+            {post.title}
+            {isExternal && <ArrowTopRightIcon />}
+          </h2>
           <h3 className={subTitleStyle({ view })}>{post.excerpt}</h3>
         </div>
         <div className="flex w-fit gap-2">
@@ -105,7 +108,6 @@ function ListView({ post, isExternal, date, view }: ViewTypeProps) {
             {post.categories.join(" · ")}
           </span>
           <span className="text-label-small text-content-muted">{date}</span>
-          {isExternal && <ArrowTopRightIcon />}
         </div>
       </div>
     </>
@@ -117,7 +119,10 @@ function CardView({ post, isExternal, date, view }: ViewTypeProps) {
     <>
       <div className={viewLayout({ view })}>
         <div className={titleWrapper({ view })}>
-          <h2 className={titleStyle({ view })}>{post.title}</h2>
+          <h2 className={titleStyle({ view })}>
+            {post.title}
+            {isExternal && <ArrowTopRightIcon />}
+          </h2>
           <h3 className={subTitleStyle({ view })}>{post.excerpt}</h3>
         </div>
         <div className="flex w-fit gap-2">
@@ -125,7 +130,6 @@ function CardView({ post, isExternal, date, view }: ViewTypeProps) {
             {post.categories.join(" · ")}
           </span>
           <span className="text-label-small text-content-muted">{date}</span>
-          {isExternal && <ArrowTopRightIcon />}
         </div>
       </div>
     </>
