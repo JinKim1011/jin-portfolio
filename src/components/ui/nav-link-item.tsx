@@ -13,7 +13,7 @@ type navLinkItemProps = {
 };
 
 const styleClasses = cva(
-  "-mx-1 px-1 py-0.5 hover:bg-surface-interactive-hoverStrong hover:underline press-effect",
+  "py-0.5 hover:bg-surface-interactive-hoverStrong press-effect",
   {
     variants: {
       active: {
@@ -24,9 +24,14 @@ const styleClasses = cva(
         md: "text-label",
         sm: "text-label-small",
       },
+      isBadge: {
+        true: "-mr-1 pr-1",
+        false: "-mx-1 px-1",
+      },
     },
     defaultVariants: {
       active: false,
+      isBadge: false,
       size: "md",
     },
   },
