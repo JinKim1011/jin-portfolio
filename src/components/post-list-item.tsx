@@ -96,10 +96,12 @@ const subTitleStyle = cva("text-label-small", {
   },
 });
 
-const tagWrapper = cva("flex w-fit items-center", {
+const rightAdorn = cva("flex w-fit items-center", {
   variants: { view: { list: "gap-3", card: "gap-1" } },
   defaultVariants: { view: "list" },
 });
+
+const tagWrapper = "relative z-10 flex w-fit items-center gap-1";
 
 const badgeColor = cva("", {
   variants: {
@@ -137,8 +139,8 @@ function ListView({ post, isExternal, date, view, href }: ViewTypeProps) {
           </h2>
           <h3 className={subTitleStyle({ view })}>{post.excerpt}</h3>
         </div>
-        <div className={tagWrapper({ view })}>
-          <div className="relative z-10 flex w-fit items-center gap-1">
+        <div className={rightAdorn({ view })}>
+          <div className={tagWrapper}>
             {post.categories.map((category) => (
               <NavLinkItem
                 key={category}
@@ -180,9 +182,9 @@ function CardView({ post, isExternal, date, view, href }: ViewTypeProps) {
           </h2>
           <h3 className={subTitleStyle({ view })}>{post.excerpt}</h3>
         </div>
-        <div className={tagWrapper({ view })}>
+        <div className={rightAdorn({ view })}>
           <span className={dateStyle}>{date}</span>
-          <div className="relative z-10 flex w-fit items-center gap-1">
+          <div className={tagWrapper}>
             {post.categories.map((category) => (
               <NavLinkItem
                 key={category}
