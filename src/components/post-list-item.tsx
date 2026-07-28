@@ -43,6 +43,9 @@ function getPostLink(post: Post) {
   };
 }
 
+const ItemBase =
+  "group relative isolate flex bg-surface-interactive hover:bg-surface-interactive-hover active:bg-surface-interactive-active press-effect";
+
 const listItemBase =
   "items-center justify-between px-2.5 -mx-2.5 w-[calc(100%+1.25rem)]";
 
@@ -54,20 +57,17 @@ const carddItemBase =
 
 const dateStyle = "text-label-small text-content-muted";
 
-const viewLayout = cva(
-  "group relative isolate flex bg-surface-interactive hover:bg-surface-interactive-hover active:bg-surface-interactive-active press-effect",
-  {
-    variants: {
-      view: {
-        list: `${listItemBase} ${listItemDivider}`,
-        card: `${carddItemBase}`,
-      },
-    },
-    defaultVariants: {
-      view: "list",
+const viewLayout = cva(`${ItemBase}`, {
+  variants: {
+    view: {
+      list: `${listItemBase} ${listItemDivider}`,
+      card: `${carddItemBase}`,
     },
   },
-);
+  defaultVariants: {
+    view: "list",
+  },
+});
 
 const titleWrapper = cva("flex", {
   variants: {
@@ -128,7 +128,7 @@ function ListView({ post, isExternal, date, view, href }: ViewTypeProps) {
               <a href={href} target="_blank" rel="noopener noreferrer">
                 {post.title}
                 <ArrowTopRightIcon />
-                <span className="absolute inset-0" />
+                <span className="absolute inset-0 z-10" />
               </a>
             ) : (
               <Link href={href}>
