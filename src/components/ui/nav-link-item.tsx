@@ -55,7 +55,8 @@ export default function NavLinkItem({
         isBadge: isBadge,
       })}
     >
-      {label}
+      {isBadge && <span className={cn("mr-1", badgeClassName)}>•</span>}
+      <span className="group-hover:underline">{label}</span>
     </Link>
   );
 }
