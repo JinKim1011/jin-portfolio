@@ -83,7 +83,7 @@ function ListView({ post, isExternal, date, view }: ViewTypeProps) {
       <div className={viewLayout({ view })}>
         <div className={titleWrapper({ view })}>
           <h2 className={titleStyle({ view })}>{post.title}</h2>
-          <p className="text-content-muted text-sm">{post.excerpt}</p>
+          <h3 className="text-content-muted text-sm">{post.excerpt}</h3>
         </div>
         <div className="flex w-fit gap-2">
           <span className="text-label text-content-interactive">
@@ -93,7 +93,6 @@ function ListView({ post, isExternal, date, view }: ViewTypeProps) {
           {isExternal && <ArrowTopRightIcon />}
         </div>
       </div>
-      <p className="text-content-muted text-sm">{post.excerpt}</p>
     </>
   );
 }
@@ -102,7 +101,10 @@ function CardView({ post, isExternal, date, view }: ViewTypeProps) {
   return (
     <>
       <div className={viewLayout({ view })}>
-        <h2 className={titleStyle({ view })}>{post.title}</h2>
+        <div className={titleWrapper({ view })}>
+          <h2 className={titleStyle({ view })}>{post.title}</h2>
+          <h3 className="text-content-muted text-sm">{post.excerpt}</h3>
+        </div>
         <div className="flex w-fit gap-2">
           <span className="text-label text-content-interactive">
             {post.categories.join(" · ")}
@@ -111,7 +113,6 @@ function CardView({ post, isExternal, date, view }: ViewTypeProps) {
           {isExternal && <ArrowTopRightIcon />}
         </div>
       </div>
-      <p className="text-content-muted text-sm">{post.excerpt}</p>
     </>
   );
 }
