@@ -82,7 +82,7 @@ const titleWrapper = cva("flex", {
 });
 
 const titleStyle =
-  "text-label text-content-interactive group-hover:text-content-interactive-hover group-hover:underline truncate";
+  "text-label text-content-interactive group-hover:text-content-interactive-hover group-hover:underline group-has-[.tag-wrapper:hover]:!text-content-interactive group-has-[.tag-wrapper:hover]:!no-underline truncate";
 
 const subTitleStyle = cva("text-label-small", {
   variants: {
