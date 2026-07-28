@@ -101,7 +101,7 @@ const rightAdorn = cva("flex w-fit items-center", {
   defaultVariants: { view: "list" },
 });
 
-const tagWrapper = "relative z-10 flex w-fit items-center gap-1";
+const tagWrapper = "tag-wrapper relative z-10 flex w-fit items-center gap-1";
 
 const badgeColor = cva("", {
   variants: {
