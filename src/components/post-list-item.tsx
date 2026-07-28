@@ -83,6 +83,11 @@ const subTitleStyle = cva(
   },
 );
 
+const tagWrapper = cva("flex w-fit items-center", {
+  variants: { view: { list: "gap-3", card: "gap-0.5" } },
+  defaultVariants: { view: "list" },
+});
+
 function ListView({ post, isExternal, date, view }: ViewTypeProps) {
   return (
     <>
@@ -94,7 +99,7 @@ function ListView({ post, isExternal, date, view }: ViewTypeProps) {
           </h2>
           <h3 className={subTitleStyle({ view })}>{post.excerpt}</h3>
         </div>
-        <div className="flex w-fit items-center gap-3">
+        <div className={tagWrapper({ view })}>
           {post.categories.map((category) => (
             <NavLinkItem
               key={category}
