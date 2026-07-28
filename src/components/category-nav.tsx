@@ -4,6 +4,7 @@ import Link from "next/link";
 import { cva } from "class-variance-authority";
 import type { PostView } from "@/types/post";
 import PostViewTypeControl from "./post-view-type-control";
+import NavLinkItem from "./ui/nav-link-item";
 
 type CategoryNavProps = {
   tabs: string[];
@@ -43,14 +44,13 @@ export default function CategoryNav({
               : `/?category=${encodeURIComponent(category)}`;
           const isActive = active === category;
           return (
-            <Link
+            <NavLinkItem
               key={category}
               href={href}
-              aria-current={isActive ? "page" : undefined}
-              className={navLinkItem({ active: isActive })}
-            >
-              {category}
-            </Link>
+              label={category}
+              isActive={isActive}
+              size="md"
+            />
           );
         })}
       </nav>
