@@ -166,6 +166,9 @@ function CardView({ post, isExternal, date, view }: ViewTypeProps) {
               label={category}
               size="sm"
               isBadge={true}
+              badgeClassName={badgeColor({
+                tag: getCategoryVariant(category),
+              })}
             />
           ))}
         </div>
