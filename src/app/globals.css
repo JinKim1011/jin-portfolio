@@ -79,7 +79,8 @@
   --color-surface: var(--base-neutral-0);
 
   --color-surface-interactive: var(--base-neutral-0);
-  --color-surface-interactive-hover: var(--base-neutral-100);
+  --color-surface-interactive-hover: var(--base-neutral-50);
+  --color-surface-interactive-hoverStrong: var(--base-neutral-100);
   --color-surface-interactive-active: var(--base-neutral-200);
   --color-surface-interactive-disabled: var(--base-neutral-0);
 
