@@ -14,7 +14,7 @@ type navLinkItemProps = {
 };
 
 const styleClasses = cva(
-  "py-0.5 hover:bg-surface-interactive-hoverStrong press-effect",
+  "py-0.5 hover:bg-surface-interactive-hoverStrong press-effect active:bg-surface-interactive-active",
   {
     variants: {
       active: {
@@ -57,7 +57,7 @@ export default function NavLinkItem({
       })}
     >
       {isBadge && <span className={cn("mr-1", badgeClassName)}>•</span>}
-      <span className="group-hover:underline">{label}</span>
+      <span>{label}</span>
     </Link>
   );
 }
