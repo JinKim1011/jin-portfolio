@@ -106,6 +106,7 @@ function ListView({ post, isExternal, date, view }: ViewTypeProps) {
               href={`/?category=${encodeURIComponent(category)}`}
               label={category}
               size="sm"
+              isBadge={true}
             />
           ))}
           <span className={dateStyle}>{date}</span>
@@ -134,6 +135,7 @@ function CardView({ post, isExternal, date, view }: ViewTypeProps) {
               href={`/?category=${encodeURIComponent(category)}`}
               label={category}
               size="sm"
+              isBadge={true}
             />
           ))}
         </div>
