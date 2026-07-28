@@ -172,6 +172,6 @@
   transition-duration: 75ms;
 
   &:active {
-    transform: translateY(0.125rem) scale(0.98);
+    transform: translateY(0.125rem);
   }
 }
