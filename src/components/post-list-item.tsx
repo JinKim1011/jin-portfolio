@@ -35,6 +35,8 @@ const listItemDivider =
 const carddItemBase =
   "flex-col w-[calc(100%+0.75rem)] h-[calc(100%+1.5rem)] px-1.5 -mx-1.5 pt-1.5 -mt-1.5 pb-3 -mb-3";
 
+const dateStyle = "text-label-small text-content-muted";
+
 const viewLayout = cva(
   "flex bg-surface-interactive hover:bg-surface-interactive-hover active:bg-surface-interactive-active press-effect",
   {
@@ -104,10 +106,10 @@ function ListView({ post, isExternal, date, view }: ViewTypeProps) {
           <h3 className={subTitleStyle({ view })}>{post.excerpt}</h3>
         </div>
         <div className="flex w-fit gap-2">
-          <span className="text-label text-content-interactive">
+          <span className={"text-label text-content-interactive"}>
             {post.categories.join(" · ")}
           </span>
-          <span className="text-label-small text-content-muted">{date}</span>
+          <span className={dateStyle}>{date}</span>
         </div>
       </div>
     </>
@@ -126,10 +128,10 @@ function CardView({ post, isExternal, date, view }: ViewTypeProps) {
           <h3 className={subTitleStyle({ view })}>{post.excerpt}</h3>
         </div>
         <div className="flex w-fit gap-2">
+          <span className={dateStyle}>{date}</span>
           <span className="text-label text-content-interactive">
             {post.categories.join(" · ")}
           </span>
-          <span className="text-label-small text-content-muted">{date}</span>
         </div>
       </div>
     </>
