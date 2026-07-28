@@ -13,7 +13,7 @@ type navLinkItemProps = {
 };
 
 const styleClasses = cva(
-  "-mx-1 px-1 py-0.5 hover:bg-surface-interactive-hover hover:underline press-effect",
+  "-mx-1 px-1 py-0.5 hover:bg-surface-interactive-hoverStrong hover:underline press-effect",
   {
     variants: {
       active: {
