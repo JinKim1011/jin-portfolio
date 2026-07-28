@@ -50,6 +50,18 @@ const viewLayout = cva(
   },
 );
 
+const titleWrapper = cva("flex", {
+  variants: {
+    view: {
+      list: "gap-2 items-center",
+      card: "flex-col gap-0.5",
+    },
+  },
+  defaultVariants: {
+    view: "list",
+  },
+});
+
 const titleStyle = cva(
   "text-label text-content-interactive group-hover:text-content-interactive-hover group-hover:underline",
   {
@@ -69,7 +81,10 @@ function ListView({ post, isExternal, date, view }: ViewTypeProps) {
   return (
     <>
       <div className={viewLayout({ view })}>
-        <h2 className={titleStyle({ view })}>{post.title}</h2>
+        <div className={titleWrapper({ view })}>
+          <h2 className={titleStyle({ view })}>{post.title}</h2>
+          <p className="text-content-muted text-sm">{post.excerpt}</p>
+        </div>
         <div className="flex w-fit gap-2">
           <span className="text-label text-content-interactive">
             {post.categories.join(" · ")}
