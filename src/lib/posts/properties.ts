@@ -39,3 +39,17 @@ export function readMultiSelect(
 export function normalizeCategories(raw: string[]): string[] {
   return raw.map((r) => r.toUpperCase());
 }
+
+export function readCover(page: PageObjectResponse): string | null {
+  if (!page.cover) return null;
+
+  if (page.cover.type === "external") {
+    return page.cover.external.url;
+  }
+
+  if (page.cover.type === "file") {
+    return page.cover.file.url;
+  }
+
+  return null;
+}
