@@ -64,20 +64,8 @@ const titleWrapper = cva("flex", {
   },
 });
 
-const titleStyle = cva(
-  "text-label text-content-interactive group-hover:text-content-interactive-hover group-hover:underline",
-  {
-    variants: {
-      view: {
-        list: "truncate",
-        card: "line-clamp-1",
-      },
-    },
-    defaultVariants: {
-      view: "list",
-    },
-  },
-);
+const titleStyle =
+  "text-label text-content-interactive group-hover:text-content-interactive-hover group-hover:underline truncate";
 
 const subTitleStyle = cva(
   "text-label-small group-hover:text-content-interactive-hover",
@@ -85,7 +73,7 @@ const subTitleStyle = cva(
     variants: {
       view: {
         list: "text-content-interactive-muted",
-        card: "text-content-interactive",
+        card: "text-content-interactive line-clamp-1",
       },
     },
     defaultVariants: {
@@ -99,7 +87,7 @@ function ListView({ post, isExternal, date, view }: ViewTypeProps) {
     <>
       <div className={viewLayout({ view })}>
         <div className={titleWrapper({ view })}>
-          <h2 className={titleStyle({ view })}>
+          <h2 className={titleStyle}>
             {post.title}
             {isExternal && <ArrowTopRightIcon />}
           </h2>
@@ -121,7 +109,7 @@ function CardView({ post, isExternal, date, view }: ViewTypeProps) {
     <>
       <div className={viewLayout({ view })}>
         <div className={titleWrapper({ view })}>
-          <h2 className={titleStyle({ view })}>
+          <h2 className={titleStyle}>
             {post.title}
             {isExternal && <ArrowTopRightIcon />}
           </h2>
