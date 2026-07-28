@@ -53,7 +53,7 @@ const viewLayout = cva(
 const titleWrapper = cva("flex", {
   variants: {
     view: {
-      list: "gap-2 items-center",
+      list: "gap-3 items-center",
       card: "flex-col gap-0.5",
     },
   },
@@ -77,13 +77,28 @@ const titleStyle = cva(
   },
 );
 
+const subTitleStyle = cva(
+  "text-label-small group-hover:text-content-interactive-hover",
+  {
+    variants: {
+      view: {
+        list: "text-content-interactive-muted",
+        card: "text-content-interactive",
+      },
+    },
+    defaultVariants: {
+      view: "list",
+    },
+  },
+);
+
 function ListView({ post, isExternal, date, view }: ViewTypeProps) {
   return (
     <>
       <div className={viewLayout({ view })}>
         <div className={titleWrapper({ view })}>
           <h2 className={titleStyle({ view })}>{post.title}</h2>
-          <h3 className="text-content-muted text-sm">{post.excerpt}</h3>
+          <h3 className={subTitleStyle({ view })}>{post.excerpt}</h3>
         </div>
         <div className="flex w-fit gap-2">
           <span className="text-label text-content-interactive">
@@ -103,7 +118,7 @@ function CardView({ post, isExternal, date, view }: ViewTypeProps) {
       <div className={viewLayout({ view })}>
         <div className={titleWrapper({ view })}>
           <h2 className={titleStyle({ view })}>{post.title}</h2>
-          <h3 className="text-content-muted text-sm">{post.excerpt}</h3>
+          <h3 className={subTitleStyle({ view })}>{post.excerpt}</h3>
         </div>
         <div className="flex w-fit gap-2">
           <span className="text-label text-content-interactive">
