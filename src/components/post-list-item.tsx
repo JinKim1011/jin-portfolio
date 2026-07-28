@@ -3,6 +3,7 @@
 import { Post, PostView } from "@/types/post";
 import Link from "next/link";
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
+import { cva } from "class-variance-authority";
 
 type PostListItemProps = {
   post: Post;
@@ -10,6 +11,7 @@ type PostListItemProps = {
 };
 
 type ViewTypeProps = {
+  view: PostView;
   post: Post;
   isExternal: boolean;
   date: string;
@@ -24,7 +26,46 @@ function getPostLink(post: Post) {
   };
 }
 
-function ListView({ post, isExternal, date }: ViewTypeProps) {
+const listItemBase =
+  "items-center justify-between px-2.5 -mx-2.5 w-[calc(100%+1.25rem)]";
+
+const listItemDivider =
+  "relative after:content-[''] after:absolute after:inset-x-2.5 after:bottom-0 after:border-b-[0.5px] after:border-stroke";
+
+const carddItemBase =
+  "flex-col w-[calc(100%+0.75rem)] h-[calc(100%+0.625rem)] px-1.5 -mx-1.5 pt-1.5 -mt-1.5";
+
+const viewLayout = cva(
+  "flex bg-surface-interactive hover:bg-surface-interactive-hover active:bg-surface-interactive-active press-effect",
+  {
+    variants: {
+      view: {
+        list: `${listItemBase} ${listItemDivider}`,
+        card: `${carddItemBase}`,
+      },
+    },
+    defaultVariants: {
+      view: "list",
+    },
+  },
+);
+
+const titleStyle = cva(
+  "text-label text-content-interactive group-hover:text-content-interactive-hover group-hover:underline",
+  {
+    variants: {
+      view: {
+        list: "truncate",
+        card: "line-clamp-1",
+      },
+    },
+    defaultVariants: {
+      view: "list",
+    },
+  },
+);
+
+function ListView({ post, isExternal, date, view }: ViewTypeProps) {
   return (
     <>
       <div className="border-stroke bg-surface-interactive hover:bg-surface-interactive-hover active:bg-surface-interactive-active flex items-baseline justify-between border-b-[0.5px]">
