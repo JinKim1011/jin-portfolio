@@ -55,7 +55,7 @@ const carddItemBase =
 const dateStyle = "text-label-small text-content-muted";
 
 const viewLayout = cva(
-  "flex bg-surface-interactive hover:bg-surface-interactive-hover active:bg-surface-interactive-active press-effect",
+  "group relative isolate flex bg-surface-interactive hover:bg-surface-interactive-hover active:bg-surface-interactive-active press-effect",
   {
     variants: {
       view: {
@@ -138,18 +138,20 @@ function ListView({ post, isExternal, date, view, href }: ViewTypeProps) {
           <h3 className={subTitleStyle({ view })}>{post.excerpt}</h3>
         </div>
         <div className={tagWrapper({ view })}>
-          {post.categories.map((category) => (
-            <NavLinkItem
-              key={category}
-              href={`/?category=${encodeURIComponent(category)}`}
-              label={category}
-              size="sm"
-              isBadge={true}
-              badgeClassName={badgeColor({
-                tag: getCategoryVariant(category),
-              })}
-            />
-          ))}
+          <div className="relative z-10 flex w-fit items-center gap-1">
+            {post.categories.map((category) => (
+              <NavLinkItem
+                key={category}
+                href={`/?category=${encodeURIComponent(category)}`}
+                label={category}
+                size="sm"
+                isBadge={true}
+                badgeClassName={badgeColor({
+                  tag: getCategoryVariant(category),
+                })}
+              />
+            ))}
+          </div>
           <span className={dateStyle}>{date}</span>
         </div>
       </div>
@@ -180,18 +182,20 @@ function CardView({ post, isExternal, date, view, href }: ViewTypeProps) {
         </div>
         <div className={tagWrapper({ view })}>
           <span className={dateStyle}>{date}</span>
-          {post.categories.map((category) => (
-            <NavLinkItem
-              key={category}
-              href={`/?category=${encodeURIComponent(category)}`}
-              label={category}
-              size="sm"
-              isBadge={true}
-              badgeClassName={badgeColor({
-                tag: getCategoryVariant(category),
-              })}
-            />
-          ))}
+          <div className="relative z-10 flex w-fit items-center gap-1">
+            {post.categories.map((category) => (
+              <NavLinkItem
+                key={category}
+                href={`/?category=${encodeURIComponent(category)}`}
+                label={category}
+                size="sm"
+                isBadge={true}
+                badgeClassName={badgeColor({
+                  tag: getCategoryVariant(category),
+                })}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </>
