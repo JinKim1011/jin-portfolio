@@ -68,10 +68,8 @@ const titleStyle = cva(
 function ListView({ post, isExternal, date, view }: ViewTypeProps) {
   return (
     <>
-      <div className="border-stroke bg-surface-interactive hover:bg-surface-interactive-hover active:bg-surface-interactive-active flex items-baseline justify-between border-b-[0.5px]">
-        <h2 className="text-label-large text-content-interactive group-hover:text-content-interactive-hover group-hover:underline">
-          {post.title}
-        </h2>
+      <div className={viewLayout({ view })}>
+        <h2 className={titleStyle({ view })}>{post.title}</h2>
         <div className="flex w-fit gap-2">
           <span className="text-label text-content-interactive">
             {post.categories.join(" · ")}
@@ -85,13 +83,11 @@ function ListView({ post, isExternal, date, view }: ViewTypeProps) {
   );
 }
 
-function CardView({ post, isExternal, date }: ViewTypeProps) {
+function CardView({ post, isExternal, date, view }: ViewTypeProps) {
   return (
     <>
-      <div className="border-stroke bg-surface-interactive hover:bg-surface-interactive-hover active:bg-surface-interactive-active flex flex-col items-baseline border-b-[0.5px]">
-        <h2 className="text-label-large text-content-interactive group-hover:text-content-interactive-hover group-hover:underline">
-          {post.title}
-        </h2>
+      <div className={viewLayout({ view })}>
+        <h2 className={titleStyle({ view })}>{post.title}</h2>
         <div className="flex w-fit gap-2">
           <span className="text-label text-content-interactive">
             {post.categories.join(" · ")}
@@ -117,12 +113,14 @@ export default function PostListItem({ post, view }: PostListItemProps) {
         post={post}
         isExternal={isExternal}
         date={formattedPublishedAt}
+        view={view}
       />
     ) : (
       <ListView
         post={post}
         isExternal={isExternal}
         date={formattedPublishedAt}
+        view={view}
       />
     );
 
