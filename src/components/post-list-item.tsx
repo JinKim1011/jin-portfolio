@@ -12,6 +12,7 @@ type PostListItemProps = {
 };
 
 type ViewTypeProps = {
+  href: string;
   view: PostView;
   post: Post;
   isExternal: boolean;
@@ -115,14 +116,24 @@ const badgeColor = cva("", {
   },
 });
 
-function ListView({ post, isExternal, date, view }: ViewTypeProps) {
+function ListView({ post, isExternal, date, view, href }: ViewTypeProps) {
   return (
     <>
       <div className={viewLayout({ view })}>
         <div className={titleWrapper({ view })}>
           <h2 className={titleStyle}>
-            {post.title}
-            {isExternal && <ArrowTopRightIcon />}
+            {isExternal ? (
+              <a href={href} target="_blank" rel="noopener noreferrer">
+                {post.title}
+                <ArrowTopRightIcon />
+                <span className="absolute inset-0" />
+              </a>
+            ) : (
+              <Link href={href}>
+                {post.title}
+                <span className="absolute inset-0" />
+              </Link>
+            )}
           </h2>
           <h3 className={subTitleStyle({ view })}>{post.excerpt}</h3>
         </div>
@@ -146,14 +157,24 @@ function ListView({ post, isExternal, date, view }: ViewTypeProps) {
   );
 }
 
-function CardView({ post, isExternal, date, view }: ViewTypeProps) {
+function CardView({ post, isExternal, date, view, href }: ViewTypeProps) {
   return (
     <>
       <div className={viewLayout({ view })}>
         <div className={titleWrapper({ view })}>
           <h2 className={titleStyle}>
-            {post.title}
-            {isExternal && <ArrowTopRightIcon />}
+            {isExternal ? (
+              <a href={href} target="_blank" rel="noopener noreferrer">
+                {post.title}
+                <ArrowTopRightIcon />
+                <span className="absolute inset-0 z-10" />
+              </a>
+            ) : (
+              <Link href={href}>
+                {post.title}
+                <span className="absolute inset-0 z-10" />
+              </Link>
+            )}
           </h2>
           <h3 className={subTitleStyle({ view })}>{post.excerpt}</h3>
         </div>
@@ -188,6 +209,7 @@ export default function PostListItem({ post, view }: PostListItemProps) {
       <CardView
         post={post}
         isExternal={isExternal}
+        href={href}
         date={formattedPublishedAt}
         view={view}
       />
@@ -195,27 +217,11 @@ export default function PostListItem({ post, view }: PostListItemProps) {
       <ListView
         post={post}
         isExternal={isExternal}
+        href={href}
         date={formattedPublishedAt}
         view={view}
       />
     );
 
-  return (
-    <li key={post.id}>
-      {isExternal ? (
-        <a
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group block"
-        >
-          {inner}
-        </a>
-      ) : (
-        <Link href={href} className="group block">
-          {inner}
-        </Link>
-      )}
-    </li>
-  );
+  return <li key={post.id}>{inner}</li>;
 }
