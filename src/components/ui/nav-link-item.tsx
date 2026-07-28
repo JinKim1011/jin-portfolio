@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { cva } from "class-variance-authority";
+import { cn } from "@/lib/util";
 
 type navLinkItemProps = {
   label: string;
@@ -9,7 +10,7 @@ type navLinkItemProps = {
   size?: "md" | "sm";
   isActive?: boolean;
   isBadge?: boolean;
-  badgeColor?: string;
+  badgeClassName?: string;
 };
 
 const styleClasses = cva(
@@ -43,7 +44,7 @@ export default function NavLinkItem({
   size,
   isActive,
   isBadge,
-  badgeColor,
+  badgeClassName,
 }: navLinkItemProps) {
   return (
     <Link
