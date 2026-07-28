@@ -68,20 +68,17 @@ const titleWrapper = cva("flex", {
 const titleStyle =
   "text-label text-content-interactive group-hover:text-content-interactive-hover group-hover:underline truncate";
 
-const subTitleStyle = cva(
-  "text-label-small group-hover:text-content-interactive-hover",
-  {
-    variants: {
-      view: {
-        list: "text-content-interactive-muted",
-        card: "text-content-interactive line-clamp-1",
-      },
-    },
-    defaultVariants: {
-      view: "list",
+const subTitleStyle = cva("text-label-small", {
+  variants: {
+    view: {
+      list: "text-content-interactive-muted",
+      card: "text-content-interactive line-clamp-1",
     },
   },
-);
+  defaultVariants: {
+    view: "list",
+  },
+});
 
 const tagWrapper = cva("flex w-fit items-center", {
   variants: { view: { list: "gap-3", card: "gap-1" } },
