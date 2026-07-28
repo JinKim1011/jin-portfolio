@@ -33,7 +33,7 @@ const listItemDivider =
   "relative after:content-[''] after:absolute after:inset-x-2.5 after:bottom-0 after:border-b-[0.5px] after:border-stroke";
 
 const carddItemBase =
-  "flex-col w-[calc(100%+0.75rem)] h-[calc(100%+0.625rem)] px-1.5 -mx-1.5 pt-1.5 -mt-1.5";
+  "flex-col w-[calc(100%+0.75rem)] h-[calc(100%+1.5rem)] px-1.5 -mx-1.5 pt-1.5 -mt-1.5 pb-3 -mb-3";
 
 const viewLayout = cva(
   "flex bg-surface-interactive hover:bg-surface-interactive-hover active:bg-surface-interactive-active press-effect",
