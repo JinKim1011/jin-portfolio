@@ -4,6 +4,7 @@ import { Post, PostView } from "@/types/post";
 import Link from "next/link";
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { cva } from "class-variance-authority";
+import NavLinkItem from "./ui/nav-link-item";
 
 type PostListItemProps = {
   post: Post;
@@ -93,10 +94,15 @@ function ListView({ post, isExternal, date, view }: ViewTypeProps) {
           </h2>
           <h3 className={subTitleStyle({ view })}>{post.excerpt}</h3>
         </div>
-        <div className="flex w-fit gap-2">
-          <span className={"text-label text-content-interactive"}>
-            {post.categories.join(" · ")}
-          </span>
+        <div className="flex w-fit items-center gap-3">
+          {post.categories.map((category) => (
+            <NavLinkItem
+              key={category}
+              href={`/?category=${encodeURIComponent(category)}`}
+              label={category}
+              size="sm"
+            />
+          ))}
           <span className={dateStyle}>{date}</span>
         </div>
       </div>
