@@ -8,6 +8,7 @@ import {
   readDate,
   readMultiSelect,
   normalizeCategories,
+  readCover,
 } from "./properties";
 
 export function mapNotionPageToPost(page: PageObjectResponse): Post {
@@ -15,6 +16,7 @@ export function mapNotionPageToPost(page: PageObjectResponse): Post {
     id: page.id,
     slug: readRichText(page, "slug"),
     title: readTitle(page, "title"),
+    cover: readCover(page),
     excerpt: readRichText(page, "sub-title"),
     categories: normalizeCategories(readMultiSelect(page, "category")),
     publishedAt: readDate(page, "time"),
