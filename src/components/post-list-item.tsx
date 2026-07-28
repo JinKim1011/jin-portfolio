@@ -84,7 +84,7 @@ const subTitleStyle = cva(
 );
 
 const tagWrapper = cva("flex w-fit items-center", {
-  variants: { view: { list: "gap-3", card: "gap-0.5" } },
+  variants: { view: { list: "gap-3", card: "gap-1" } },
   defaultVariants: { view: "list" },
 });
 
@@ -126,11 +126,16 @@ function CardView({ post, isExternal, date, view }: ViewTypeProps) {
           </h2>
           <h3 className={subTitleStyle({ view })}>{post.excerpt}</h3>
         </div>
-        <div className="flex w-fit gap-2">
+        <div className={tagWrapper({ view })}>
           <span className={dateStyle}>{date}</span>
-          <span className="text-label text-content-interactive">
-            {post.categories.join(" · ")}
-          </span>
+          {post.categories.map((category) => (
+            <NavLinkItem
+              key={category}
+              href={`/?category=${encodeURIComponent(category)}`}
+              label={category}
+              size="sm"
+            />
+          ))}
         </div>
       </div>
     </>
