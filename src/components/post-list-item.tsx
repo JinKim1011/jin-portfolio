@@ -44,7 +44,7 @@ function getPostLink(post: Post) {
 }
 
 const ItemBase =
-  "group relative isolate flex bg-surface-interactive hover:bg-surface-interactive-hover active:bg-surface-interactive-active press-effect";
+  "group relative isolate flex bg-surface-interactive hover:bg-surface-interactive-hover active:bg-surface-interactive-active press-effect has-[.tag-wrapper:hover]:!bg-surface-interactive has-[.tag-wrapper:active]:!bg-surface-interactive has-[.tag-wrapper:active]:!transform-none";
 
 const listItemBase =
   "items-center justify-between px-2.5 -mx-2.5 w-[calc(100%+1.25rem)]";
