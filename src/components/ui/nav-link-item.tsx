@@ -49,7 +49,11 @@ export default function NavLinkItem({
     <Link
       href={href}
       aria-current={isActive ? "page" : undefined}
-      className={styleClasses({ active: isActive, size: size })}
+      className={styleClasses({
+        active: isActive,
+        size: size,
+        isBadge: isBadge,
+      })}
     >
       {label}
     </Link>
