@@ -23,6 +23,13 @@ export default function CoverImage({
 }: CoverImageProps) {
   const [failed, setFailed] = useState(false);
 
+  const handleError = () => {
+    if (src) {
+      console.warn("Cover image failed to load", { alt, src });
+    }
+    setFailed(true);
+  };
+
   if (!src || failed) {
     return (
       <div
@@ -43,7 +50,7 @@ export default function CoverImage({
       height={height}
       sizes={sizes}
       className={className}
-      onError={() => setFailed(true)}
+      onError={handleError}
     />
   );
 }
