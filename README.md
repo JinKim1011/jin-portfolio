@@ -4,9 +4,9 @@ Personal portfolio and blog focused on design engineering work, projects, design
 
 ## Stack
 
-- Next.js 15 (App Router) + TypeScript
+- Next.js 16 (App Router) + TypeScript
 - Tailwind CSS · Radix icons
-- Notion API (content)
+- Notion API (content + cover image)
 - Deployed on Vercel
 
 ## Getting started
