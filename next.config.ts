@@ -16,11 +16,6 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "www.notion.so",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
         hostname: "app.notion.com",
         pathname: "/images/page-cover/**",
       },
