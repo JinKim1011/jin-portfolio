@@ -74,7 +74,20 @@ const viewLayout = cva(`${ItemBase}`, {
   },
   defaultVariants: {
     view: "list",
+    isFirst: false,
   },
+  compoundVariants: [
+    {
+      view: "list",
+      isFirst: true,
+      class: `${listItemBottomDivider} ${listItemTopDivider}`,
+    },
+    {
+      view: "list",
+      isFirst: false,
+      class: `${listItemBottomDivider}`,
+    },
+  ],
 });
 
 const coverStyle = cva("shrink-0  object-cover border-[0.5px] border-stroke", {
