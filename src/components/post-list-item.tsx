@@ -56,8 +56,8 @@ const listItemBottomDivider =
 const listItemTopDivider =
   "relative before:content-[''] before:absolute before:inset-x-2.5 before:top-0 before:border-t-[0.5px] before:border-stroke group-hover:before:hidden";
 
-const carddItemBase =
-  "flex-col w-[calc(100%+0.75rem)] h-[calc(100%+1.5rem)] px-1.5 -mx-1.5 pt-1.5 -mt-1.5 pb-3 -mb-3";
+const cardItemBase =
+  "flex-col w-[calc(100%+0.625rem)] h-[calc(100%+0.625rem)] px-1.25 -mx-1.25 pt-1.25 -mt-1.25 pb-1.25 -mb-1.25";
 
 const dateStyle = "text-label-small text-content-muted";
 
@@ -65,7 +65,7 @@ const viewLayout = cva(`${ItemBase}`, {
   variants: {
     view: {
       list: `${listItemBase}`,
-      card: `${carddItemBase}`,
+      card: `${cardItemBase}`,
     },
     isFirst: {
       true: "",
