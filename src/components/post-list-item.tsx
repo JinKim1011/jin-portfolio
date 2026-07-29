@@ -67,6 +67,10 @@ const viewLayout = cva(`${ItemBase}`, {
       list: `${listItemBase}`,
       card: `${carddItemBase}`,
     },
+    isFirst: {
+      true: "",
+      false: "",
+    },
   },
   defaultVariants: {
     view: "list",
