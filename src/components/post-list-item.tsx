@@ -143,7 +143,14 @@ const badgeColor = cva("", {
   },
 });
 
-function ListView({ post, isExternal, date, view, href }: ViewTypeProps) {
+function ListView({
+  post,
+  isExternal,
+  date,
+  view,
+  href,
+  isFirst,
+}: ViewTypeProps) {
   return (
     <>
       <div className={viewLayout({ view })}>
@@ -249,7 +256,11 @@ function CardView({ post, isExternal, date, view, href }: ViewTypeProps) {
   );
 }
 
-export default function PostListItem({ post, view }: PostListItemProps) {
+export default function PostListItem({
+  post,
+  view,
+  isFirst,
+}: PostListItemProps) {
   const { isExternal, href } = getPostLink(post);
   const [y, m, d] = post.publishedAt.split("-");
   const day = d?.slice(0, 2);
@@ -271,6 +282,7 @@ export default function PostListItem({ post, view }: PostListItemProps) {
         href={href}
         date={formattedPublishedAt}
         view={view}
+        isFirst={isFirst}
       />
     );
 
