@@ -82,6 +82,18 @@ const coverStyle = cva("shrink-0  object-cover border-[0.5px] border-stroke", {
   },
 });
 
+const coverSizes = cva(" ", {
+  variants: {
+    view: {
+      list: "57px",
+      card: "(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw",
+    },
+  },
+  defaultVariants: {
+    view: "list",
+  },
+});
+
 const titleWrapper = cva("flex flex-1", {
   variants: {
     view: {
@@ -142,7 +154,7 @@ function ListView({ post, isExternal, date, view, href }: ViewTypeProps) {
               alt={post.title}
               width={57}
               height={32}
-              sizes="57px"
+              sizes={coverSizes({ view })}
               className={coverStyle({ view })}
             />
           )}
@@ -195,7 +207,7 @@ function CardView({ post, isExternal, date, view, href }: ViewTypeProps) {
               alt={post.title}
               width={640}
               height={360}
-              sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              sizes={coverSizes({ view })}
               className={coverStyle({ view })}
             />
           )}
