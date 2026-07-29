@@ -5,6 +5,7 @@ import Link from "next/link";
 import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { cva } from "class-variance-authority";
 import NavLinkItem from "./ui/nav-link-item";
+import Image from "next/image";
 
 type PostListItemProps = {
   post: Post;
@@ -69,7 +70,19 @@ const viewLayout = cva(`${ItemBase}`, {
   },
 });
 
-const titleWrapper = cva("flex", {
+const coverStyle = cva("shrink-0  object-cover border-[0.5px] border-stroke", {
+  variants: {
+    view: {
+      list: "h-8 w-[57px]",
+      card: "mb-3 w-full aspect-video",
+    },
+  },
+  defaultVariants: {
+    view: "list",
+  },
+});
+
+const titleWrapper = cva("flex flex-1", {
   variants: {
     view: {
       list: "gap-3 items-center",
@@ -123,6 +136,16 @@ function ListView({ post, isExternal, date, view, href }: ViewTypeProps) {
     <>
       <div className={viewLayout({ view })}>
         <div className={titleWrapper({ view })}>
+          {post.cover && (
+            <Image
+              src={post.cover}
+              alt={post.title}
+              width={57}
+              height={32}
+              sizes="57px"
+              className={coverStyle({ view })}
+            />
+          )}
           <h2 className={titleStyle}>
             {isExternal ? (
               <a href={href} target="_blank" rel="noopener noreferrer">
@@ -166,6 +189,16 @@ function CardView({ post, isExternal, date, view, href }: ViewTypeProps) {
     <>
       <div className={viewLayout({ view })}>
         <div className={titleWrapper({ view })}>
+          {post.cover && (
+            <Image
+              src={post.cover}
+              alt={post.title}
+              width={640}
+              height={360}
+              sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              className={coverStyle({ view })}
+            />
+          )}
           <h2 className={titleStyle}>
             {isExternal ? (
               <a href={href} target="_blank" rel="noopener noreferrer">
