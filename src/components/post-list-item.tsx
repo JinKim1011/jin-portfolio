@@ -93,7 +93,7 @@ const viewLayout = cva(`${ItemBase}`, {
 const coverStyle = cva("shrink-0  object-cover border-[0.5px] border-stroke", {
   variants: {
     view: {
-      list: "h-8 w-[57px]",
+      list: "h-9 w-[64px]",
       card: "mb-3 w-full aspect-video",
     },
   },
@@ -105,7 +105,7 @@ const coverStyle = cva("shrink-0  object-cover border-[0.5px] border-stroke", {
 const coverSizes = cva(" ", {
   variants: {
     view: {
-      list: "57px",
+      list: "64px",
       card: "(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw",
     },
   },
@@ -179,8 +179,8 @@ function ListView({
             <Image
               src={post.cover}
               alt={post.title}
-              width={57}
-              height={32}
+              width={64}
+              height={36}
               sizes={coverSizes({ view })}
               className={coverStyle({ view })}
             />
