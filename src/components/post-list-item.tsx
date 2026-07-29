@@ -173,7 +173,7 @@ function ListView({
 }: ViewTypeProps) {
   return (
     <>
-      <div className={viewLayout({ view })}>
+      <div className={viewLayout({ view, isFirst })}>
         <div className={titleWrapper({ view })}>
           {post.cover && (
             <Image
