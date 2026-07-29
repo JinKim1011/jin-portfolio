@@ -24,8 +24,13 @@ const postLayout = cva("pb-10", {
 export default function PostList({ posts, view }: PostListProps) {
   return (
     <ul className={postLayout({ view })}>
-      {posts.map((post) => (
-        <PostListItem post={post} key={post.id} view={view} />
+      {posts.map((post, index) => (
+        <PostListItem
+          post={post}
+          key={post.id}
+          view={view}
+          isFirst={index === 0}
+        />
       ))}
     </ul>
   );
