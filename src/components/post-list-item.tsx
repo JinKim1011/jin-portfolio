@@ -94,7 +94,7 @@ const coverStyle = cva("shrink-0  object-cover border-[0.5px] border-stroke", {
   variants: {
     view: {
       list: "h-9 w-[64px]",
-      card: "mb-3 w-full aspect-video",
+      card: "mb-2.5 w-full aspect-video",
     },
   },
   defaultVariants: {
@@ -145,7 +145,7 @@ const subTitleStyle = cva(
 );
 
 const rightAdorn = cva("flex w-fit items-center", {
-  variants: { view: { list: "gap-3", card: "gap-1" } },
+  variants: { view: { list: "gap-3", card: "gap-1 mt-1.25" } },
   defaultVariants: { view: "list" },
 });
 
