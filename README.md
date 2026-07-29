@@ -1,12 +1,12 @@
 ## About
 
-Personal portfolio and blog — design engineering work, projects, design systems, and case studies. Posts are managed in Notion; images are served from Supabase Storage.
+Personal portfolio and blog focused on design engineering work, projects, design systems, and case studies. Posts are managed in Notion.
 
 ## Stack
 
 - Next.js 15 (App Router) + TypeScript
 - Tailwind CSS · Radix icons
-- Notion API (content) · Supabase Storage (images)
+- Notion API (content)
 - Deployed on Vercel
 
 ## Getting started
