@@ -114,10 +114,10 @@ const coverSizes = cva(" ", {
   },
 });
 
-const titleWrapper = cva("flex flex-1", {
+const titleWrapper = cva("flex", {
   variants: {
     view: {
-      list: "gap-3 items-center",
+      list: "gap-3 items-center flex-1",
       card: "flex-col",
     },
   },
