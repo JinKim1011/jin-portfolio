@@ -129,17 +129,20 @@ const titleWrapper = cva("flex flex-1", {
 const titleStyle =
   "text-label text-content-interactive group-hover:text-content-interactive-hover group-hover:underline group-has-[.tag-wrapper:hover]:!text-content-interactive group-has-[.tag-wrapper:hover]:!no-underline truncate";
 
-const subTitleStyle = cva("text-label-small", {
-  variants: {
-    view: {
-      list: "text-content-interactive-muted",
-      card: "text-content-interactive line-clamp-1 mt-0.5",
+const subTitleStyle = cva(
+  "text-label-small text-content-interactive-muted truncate",
+  {
+    variants: {
+      view: {
+        list: "",
+        card: "mt-0.5",
+      },
+    },
+    defaultVariants: {
+      view: "list",
     },
   },
-  defaultVariants: {
-    view: "list",
-  },
-});
+);
 
 const rightAdorn = cva("flex w-fit items-center", {
   variants: { view: { list: "gap-3", card: "gap-1" } },
