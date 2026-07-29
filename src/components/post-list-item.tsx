@@ -50,8 +50,11 @@ const ItemBase =
 const listItemBase =
   "items-center justify-between px-2.5 -mx-2.5 w-[calc(100%+1.25rem)] py-2.5";
 
-const listItemDivider =
+const listItemBottomDivider =
   "relative after:content-[''] after:absolute after:inset-x-2.5 after:bottom-0 after:border-b-[0.5px] after:border-stroke group-hover:after:hidden";
+
+const listItemTopDivider =
+  "relative before:content-[''] before:absolute before:inset-x-2.5 before:top-0 before:border-t-[0.5px] before:border-stroke group-hover:before:hidden";
 
 const carddItemBase =
   "flex-col w-[calc(100%+0.75rem)] h-[calc(100%+1.5rem)] px-1.5 -mx-1.5 pt-1.5 -mt-1.5 pb-3 -mb-3";
