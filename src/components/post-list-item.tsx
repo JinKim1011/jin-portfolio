@@ -64,7 +64,7 @@ const dateStyle = "text-label-small text-content-muted";
 const viewLayout = cva(`${ItemBase}`, {
   variants: {
     view: {
-      list: `${listItemBase} ${listItemDivider}`,
+      list: `${listItemBase}`,
       card: `${carddItemBase}`,
     },
   },
