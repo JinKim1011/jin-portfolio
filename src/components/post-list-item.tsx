@@ -13,13 +13,11 @@ type PostListItemProps = {
   isFirst?: boolean;
 };
 
-type ViewTypeProps = {
+type ViewTypeProps = PostListItemProps & {
   href: string;
-  view: PostView;
   post: Post;
   isExternal: boolean;
   date: string;
-  isFirst?: boolean;
 };
 
 const categoryVariantMap = {
