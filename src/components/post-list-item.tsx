@@ -10,6 +10,7 @@ import Image from "next/image";
 type PostListItemProps = {
   post: Post;
   view: PostView;
+  isFirst?: boolean;
 };
 
 type ViewTypeProps = {
@@ -18,6 +19,7 @@ type ViewTypeProps = {
   post: Post;
   isExternal: boolean;
   date: string;
+  isFirst?: boolean;
 };
 
 const categoryVariantMap = {
