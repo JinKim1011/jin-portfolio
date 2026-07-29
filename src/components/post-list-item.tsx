@@ -86,7 +86,7 @@ const titleWrapper = cva("flex flex-1", {
   variants: {
     view: {
       list: "gap-3 items-center",
-      card: "flex-col gap-0.5",
+      card: "flex-col",
     },
   },
   defaultVariants: {
@@ -101,7 +101,7 @@ const subTitleStyle = cva("text-label-small", {
   variants: {
     view: {
       list: "text-content-interactive-muted",
-      card: "text-content-interactive line-clamp-1",
+      card: "text-content-interactive line-clamp-1 mt-0.5",
     },
   },
   defaultVariants: {
