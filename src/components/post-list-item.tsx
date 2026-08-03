@@ -15,7 +15,6 @@ type PostListItemProps = {
 
 type ViewTypeProps = PostListItemProps & {
   href: string;
-  post: Post;
   isExternal: boolean;
   date: string;
 };
