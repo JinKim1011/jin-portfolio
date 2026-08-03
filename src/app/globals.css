@@ -29,6 +29,12 @@
   --base-red-500: oklch(63.7% 0.237 25.331);
 }
 
+html {
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+}
+
 .dark {
   --base-neutral-0: oklch(14.5% 0 0);
   --base-neutral-50: oklch(20.5% 0 0);
