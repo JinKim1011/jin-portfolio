@@ -2,6 +2,7 @@ export interface Post {
   id: string;
   slug: string;
   title: string;
+  cover: string | null;
   categories: string[];
   excerpt: string;
   publishedAt: string;

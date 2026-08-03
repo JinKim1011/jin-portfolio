@@ -11,9 +11,10 @@
   --base-neutral-600: oklch(55.6% 0 0);
   --base-neutral-900: oklch(14.5% 0 0);
 
+  --base-orange-500: oklch(70.5% 0.213 47.604);
   --base-cyan-500: oklch(71.5% 0.143 215.221);
-  --base-fuchsia-500: oklch(66.7% 0.295 322.15);
-  --base-blue-500: oklch(62.3% 0.214 259.815);
+  --base-teal-500: oklch(70.4% 0.14 182.503);
+  --base-pink-500: oklch(65.6% 0.241 354.308);
 
   --base-amber-50: oklch(98.7% 0.022 95.277);
   --base-amber-100: oklch(96.2% 0.059 95.617);
@@ -37,9 +38,10 @@
   --base-neutral-600: oklch(55.6% 0 0);
   --base-neutral-900: oklch(98.5% 0 0);
 
+  --base-orange-500: oklch(70.5% 0.213 47.604);
   --base-cyan-500: oklch(71.5% 0.143 215.221);
-  --base-fuchsia-500: oklch(66.7% 0.295 322.15);
-  --base-blue-500: oklch(62.3% 0.214 259.815);
+  --base-teal-500: oklch(70.4% 0.14 182.503);
+  --base-pink-500: oklch(65.6% 0.241 354.308);
 
   --base-amber-50: oklch(27.9% 0.077 45.635);
   --base-amber-100: oklch(41.4% 0.112 45.904);
@@ -77,9 +79,11 @@
 
   /* ---------------- SURFACE ---------------- */
   --color-surface: var(--base-neutral-0);
+  --color-surface-muted: var(--base-neutral-50);
 
   --color-surface-interactive: var(--base-neutral-0);
-  --color-surface-interactive-hover: var(--base-neutral-100);
+  --color-surface-interactive-hover: var(--base-neutral-50);
+  --color-surface-interactive-hoverStrong: var(--base-neutral-100);
   --color-surface-interactive-active: var(--base-neutral-200);
   --color-surface-interactive-disabled: var(--base-neutral-0);
 
@@ -164,5 +168,14 @@
     font-size: var(--text-micro);
     font-weight: var(--font-regular);
     line-height: var(--leading-tight);
+  }
+}
+
+@utility press-effect {
+  transition-property: transform;
+  transition-duration: 75ms;
+
+  &:active {
+    transform: translateY(0.125rem);
   }
 }
