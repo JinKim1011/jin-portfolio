@@ -56,7 +56,7 @@ const listItemTopDivider =
   "relative before:content-[''] before:absolute before:inset-x-2.5 before:top-0 before:border-t-[0.5px] before:border-stroke group-hover:before:hidden";
 
 const cardItemBase =
-  "flex-col w-[calc(100%+0.625rem)] h-[calc(100%+0.625rem)] px-1.25 -mx-1.25 pt-1.25 -mt-1.25 pb-1.25 -mb-1.25";
+  "flex-col w-[calc(100%+0.625rem)] h-[calc(100%+0.625rem)] px-[0.3125rem] -mx-[0.3125rem] pt-[0.3125rem] -mt-[0.3125rem] pb-[0.3125rem] -mb-[0.3125rem]";
 
 const dateStyle = "text-label-small text-content-muted";
 
@@ -144,7 +144,7 @@ const subTitleStyle = cva(
 );
 
 const rightAdorn = cva("flex w-fit items-center", {
-  variants: { view: { list: "gap-3", card: "gap-1 mt-1.25" } },
+  variants: { view: { list: "gap-3", card: "gap-1 mt-[0.3125rem]" } },
   defaultVariants: { view: "list" },
 });
 
