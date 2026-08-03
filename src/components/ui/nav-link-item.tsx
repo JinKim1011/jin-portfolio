@@ -4,7 +4,7 @@ import Link from "next/link";
 import { cva } from "class-variance-authority";
 import { cn } from "@/lib/util";
 
-type navLinkItemProps = {
+type NavLinkItemProps = {
   label: string;
   href: string;
   size?: "md" | "sm";
@@ -45,7 +45,7 @@ export default function NavLinkItem({
   isActive,
   isBadge,
   badgeClassName,
-}: navLinkItemProps) {
+}: NavLinkItemProps) {
   return (
     <Link
       href={href}
