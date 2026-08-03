@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ImageIcon } from "@radix-ui/react-icons";
 
 type CoverImageProps = {
@@ -22,6 +22,10 @@ export default function CoverImage({
   className,
 }: CoverImageProps) {
   const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    setFailed(false);
+  }, [src]);
 
   const handleError = () => {
     if (src) {
