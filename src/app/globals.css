@@ -125,6 +125,9 @@ html {
   --color-stroke-feedback-success: var(--base-lime-100);
   --color-stroke-feedback-warning: var(--base-amber-100);
   --color-stroke-feedback-error: var(--base-red-100);
+
+  /* ---------------- HEADER ---------------- */
+  --color-header-stripe: var(--base-neutral-0);
 }
 
 @layer components {
