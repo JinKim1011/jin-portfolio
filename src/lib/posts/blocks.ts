@@ -94,14 +94,14 @@ export async function renderBlock(
         .map((text) => text.plain_text)
         .join("");
       const lang = block.code?.language ?? "text";
-      const { htmlLight, htmlDark } = await highlightCode(raw, lang);
+      const { html } = await highlightCode(raw, lang);
 
       const rawB64 = Buffer.from(raw, "utf8").toString("base64");
 
       return {
         id: block.id,
         type: block.type,
-        html: `<div class="notion-code" data-raw-code-b64="${rawB64}"><div class="shiki-light">${htmlLight}</div><div class="shiki-dark">${htmlDark}</div></div>`,
+        html: `<div class="notion-code" data-raw-code-b64="${rawB64}">${html}</div>`,
       };
     }
     default:
