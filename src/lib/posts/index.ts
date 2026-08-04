@@ -62,7 +62,7 @@ export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
   const blocks = blockRes.results
     .filter((b): b is BlockObjectResponse => "type" in b)
     .map(renderBlock)
-    .filter((b): b is PostBlock => b !== null);
+    .filter((b): b is Promise<PostBlock> => b !== null);
 
   const groupedBlocks: PostBlock[] = [];
   let currentListType: "bulleted_list_item" | "numbered_list_item" | null =
@@ -83,21 +83,22 @@ export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
   };
 
   for (const block of blocks) {
+    const blockType = (await block).type;
     if (
-      block.type === "bulleted_list_item" ||
-      block.type === "numbered_list_item"
+      blockType === "bulleted_list_item" ||
+      blockType === "numbered_list_item"
     ) {
-      if (currentListType && currentListType !== block.type) {
+      if (currentListType && currentListType !== blockType) {
         flushList();
       }
 
-      currentListType = block.type;
-      currentListItems.push(block.html);
+      currentListType = blockType;
+      currentListItems.push((await block).html);
       continue;
     }
 
     flushList();
-    groupedBlocks.push(block);
+    groupedBlocks.push(await block);
   }
 
   flushList();
