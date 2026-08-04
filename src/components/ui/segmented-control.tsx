@@ -43,7 +43,7 @@ export default function SegmentedControl({
             aria-label={option.value}
             className={cn(
               "h-fit w-fit cursor-pointer p-1.5",
-              "bg-surface-interactive hover:bg-surface-interactive-hover active:bg-surface-interactive-active",
+              "bg-surface-interactive hover:bg-surface-interactive-hoverStrong active:bg-surface-interactive-active",
               "press-effect",
               isActive
                 ? "text-content-interactive-active"
