@@ -1,15 +1,10 @@
 import { codeToHtml } from "shiki";
 
 export async function highlightCode(code: string, lang = "text") {
-  const htmlLight = await codeToHtml(code, {
+  const html = await codeToHtml(code, {
     lang,
-    themes: { light: "vscode-light" },
+    themes: { light: "light-plus", dark: "dark-plus" },
   });
 
-  const htmlDark = await codeToHtml(code, {
-    lang,
-    themes: { dark: "vscode-dark-plus" },
-  });
-
-  return { htmlLight, htmlDark };
+  return { html };
 }
