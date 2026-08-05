@@ -180,7 +180,7 @@ html {
   }
 }
 
-@utility press-effect {
+@utility press-effect-translateY {
   transition-property: transform;
   transition-duration: 75ms;
 
