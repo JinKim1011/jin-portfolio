@@ -1,11 +1,12 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { CopyIcon, CheckIcon } from "@radix-ui/react-icons";
 import { cn } from "@/lib/utils/cn";
 import { AnimatePresence, motion } from "motion/react";
 import { easings } from "@/lib/utils/motion-easing";
 import { copyCodeFromElement, copyText } from "@/lib/utils/copy-text";
+import { createRoot } from "react-dom/client";
 
 type CodeCopyButtonProps = {
   text?: string;
@@ -23,10 +24,7 @@ const wrapperClasses =
 const iconClasses =
   "size-3.5 text-content-interactive-muted group-hover:text-content-interactive-hover group-active:text-content-interactive-active";
 
-export default function CodeCopyButton({
-  text,
-  className,
-}: CodeCopyButtonProps) {
+export function CodeCopyButton({ text, className }: CodeCopyButtonProps) {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const [done, setDone] = useState(false);
 
@@ -84,4 +82,30 @@ export default function CodeCopyButton({
       </AnimatePresence>
     </button>
   );
+}
+
+export function CodeCopyHydrator() {
+  useEffect(() => {
+    const containers = Array.from(
+      document.querySelectorAll<HTMLElement>(".notion-code"),
+    );
+    containers.forEach((container) => {
+      const mount = container.querySelector<HTMLElement>(".code-copy-mount");
+      if (!mount) return;
+      if (mount.dataset.mounted) return;
+
+      const computed = getComputedStyle(container).position;
+      if (!computed || computed === "static")
+        container.style.position = "relative";
+
+      try {
+        createRoot(mount).render(<CodeCopyButton />);
+        mount.dataset.mounted = "mounted";
+      } catch (event) {
+        console.warn("Code copy mount failed", event);
+      }
+    });
+  }, []);
+
+  return null;
 }
