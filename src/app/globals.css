@@ -210,6 +210,16 @@ html {
   }
 }
 
+@utility press-effect-scale {
+  transition-property: transform;
+  transition-duration: 75ms;
+  transition-timing-function: var(--ease-out-quad);
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
 .notion-code {
   overflow-x: auto;
   margin: 0 0 0.75rem;
