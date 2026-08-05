@@ -42,7 +42,7 @@ export function CodeCopyButton({ text, className }: CodeCopyButtonProps) {
 
     if (ok) {
       setDone(true);
-      window.setTimeout(() => setDone(false), 1500);
+      window.setTimeout(() => setDone(false), 1200);
     }
   };
 
