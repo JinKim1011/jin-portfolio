@@ -14,7 +14,7 @@ type NavLinkItemProps = {
 };
 
 const styleClasses = cva(
-  "py-0.5 hover:bg-surface-interactive-hoverStrong press-effect active:bg-surface-interactive-active",
+  "py-0.5 hover:bg-surface-interactive-hoverStrong press-effect-translateY active:bg-surface-interactive-active",
   {
     variants: {
       active: {

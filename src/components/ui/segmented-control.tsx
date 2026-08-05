@@ -44,7 +44,7 @@ export default function SegmentedControl({
             className={cn(
               "h-fit w-fit cursor-pointer p-1.5",
               "bg-surface-interactive hover:bg-surface-interactive-hoverStrong active:bg-surface-interactive-active",
-              "press-effect",
+              "press-effect-translateY",
               isActive
                 ? "text-content-interactive-active"
                 : "text-content-interactive-muted",
