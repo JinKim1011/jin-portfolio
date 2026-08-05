@@ -222,6 +222,7 @@ html {
 }
 
 .notion-code {
+  position: relative;
   overflow-x: auto;
   margin: 0 0 0.75rem;
   padding: 0.75rem;
@@ -241,6 +242,14 @@ html {
   font-size: var(--text-small);
   font-weight: var(--font-regular);
   line-height: var(--leading-normal);
+}
+
+.code-copy-mount {
+  position: absolute;
+  top: 0.375rem;
+  right: 0.375rem;
+  z-index: 10;
+  display: inline-block;
 }
 
 html.dark .notion-code .shiki,
