@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { getPostBySlug, getPosts } from "@/lib/posts";
 import CoverImage from "@/components/ui/cover-image";
-import CopyCodeButton from "@/components/code-copy-button";
+import { CodeCopyHydrator } from "@/components/code-copy-button";
 
 type PostDetailPageProps = {
   params: Promise<{ slug: string }>;
@@ -29,7 +29,6 @@ async function PostDetailContent({ params }: PostDetailPageProps) {
   return (
     <article className="font-sans">
       <header className="">
-        <CopyCodeButton />
         <h1>{post.title}</h1>
         <h2>{post.excerpt}</h2>
         <CoverImage
@@ -64,6 +63,7 @@ async function PostDetailContent({ params }: PostDetailPageProps) {
             dangerouslySetInnerHTML={{ __html: block.html }}
           />
         ))}
+        <CodeCopyHydrator />
       </div>
     </article>
   );
