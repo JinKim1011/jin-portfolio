@@ -204,6 +204,7 @@ html {
 @utility press-effect-translateY {
   transition-property: transform;
   transition-duration: 75ms;
+  transition-timing-function: var(--ease-out-quad);
 
   &:active {
     transform: translateY(0.125rem);
