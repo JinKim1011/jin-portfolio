@@ -101,7 +101,18 @@ export async function renderBlock(
       return {
         id: block.id,
         type: block.type,
-        html: `<div class="notion-code" data-raw-code-b64="${rawB64}">${html}</div>`,
+        html: `
+        <div 
+          class="notion-code" 
+          data-raw-code-b64="${rawB64}"
+        >
+          ${html}
+          <span
+            class="code-copy-mount"
+            aria-hidden
+          ></span>
+        </div>
+        `,
       };
     }
     default:
