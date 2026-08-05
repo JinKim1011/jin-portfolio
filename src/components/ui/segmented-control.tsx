@@ -1,7 +1,7 @@
 "use client";
 
 import type { Icon } from "./icon";
-import { cn } from "@/lib/util";
+import { cn } from "@/lib/utils/cn";
 
 type SegmentOption = {
   value: string;

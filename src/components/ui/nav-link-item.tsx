@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { cva } from "class-variance-authority";
-import { cn } from "@/lib/util";
+import { cn } from "@/lib/utils/cn";
 
 type NavLinkItemProps = {
   label: string;
