@@ -151,15 +151,15 @@ html {
 }
 
 @layer components {
-  .text-heading {
-    font-size: var(--text-title1);
+  .text-heading-strong {
+    font-size: var(--text-title);
     font-weight: var(--font-bold);
     line-height: var(--leading-tight);
   }
 
-  .text-heading-small {
-    font-size: var(--text-title2);
-    font-weight: var(--font-bold);
+  .text-heading {
+    font-size: var(--text-title);
+    font-weight: var(--font-semibold);
     line-height: var(--leading-tight);
   }
 
