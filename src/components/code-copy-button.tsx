@@ -51,7 +51,7 @@ export function CodeCopyButton() {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            transition={{ duration: 0.25, ease: easings.easeInOutCirc }}
+            transition={{ duration: 0.2, ease: easings.easeInOutCirc }}
           >
             <CheckIcon aria-hidden className={iconClasses} />
           </motion.span>
@@ -62,7 +62,7 @@ export function CodeCopyButton() {
             initial="hidden"
             animate="visible"
             exit="hidden"
-            transition={{ duration: 0.25, ease: easings.easeInOutCirc }}
+            transition={{ duration: 0.2, ease: easings.easeInOutCirc }}
           >
             <CopyIcon aria-hidden className={iconClasses} />
           </motion.span>
