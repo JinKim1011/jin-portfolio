@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from "react";
 import { CopyIcon, CheckIcon } from "@radix-ui/react-icons";
 import { AnimatePresence, motion } from "motion/react";
 import { easings } from "@/lib/utils/motion-easing";
-import { copyCodeFromElement, copyText } from "@/lib/utils/copy-text";
+import { copyCodeFromElement } from "@/lib/utils/copy-text";
 import { createRoot } from "react-dom/client";
 
 const iconAnimvariants = {
