@@ -29,16 +29,10 @@ export function CodeCopyButton({ text, className }: CodeCopyButtonProps) {
   const [done, setDone] = useState(false);
 
   const handleClick = async () => {
-    let ok = false;
-
-    if (text) {
-      ok = await copyText(text);
-    } else {
-      const element = buttonRef.current?.closest(
-        ".notion-code",
-      ) as HTMLElement | null;
-      ok = await copyCodeFromElement(element);
-    }
+    const element = buttonRef.current?.closest(
+      ".notion-code",
+    ) as HTMLElement | null;
+    const ok = await copyCodeFromElement(element);
 
     if (ok) {
       setDone(true);
