@@ -22,7 +22,7 @@ export async function generateStaticParams() {
     .map((post) => ({ slug: post.slug }));
 }
 
-const coverStyle = "shrink-0 w-full aspect-video object-cover my-5";
+const coverStyle = "shrink-0 w-full aspect-video object-cover";
 const coverSizes = "(max-width: 768px) 100vw, 50vw";
 
 const headerWrapper = "flex flex-col gap-2.5 md:gap-1.5";
@@ -36,7 +36,7 @@ const metaWrapper = "flex items-center gap-2";
 const timeClasses = "text-label text-content-muted";
 const separatorClasses = "text-label-small text-content-muted/30";
 
-const actionsWrapper = "flex mt-12";
+const actionsWrapper = "flex";
 
 async function PostDetailContent({ params }: PostDetailPageProps) {
   const { slug } = await params;
@@ -45,7 +45,7 @@ async function PostDetailContent({ params }: PostDetailPageProps) {
   if (!post) notFound();
 
   return (
-    <article className="py-16 font-sans">
+    <article className="flex flex-col gap-14 py-16 font-sans">
       <header className={headerWrapper}>
         <div className={titleWrapper}>
           <h1 className={titleClasses}>{post.title}</h1>
