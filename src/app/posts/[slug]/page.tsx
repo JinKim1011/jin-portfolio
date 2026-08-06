@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { getPostBySlug, getPosts } from "@/lib/posts";
@@ -9,6 +8,7 @@ import {
   badgeColor,
   getCategoryVariant,
 } from "@/lib/utils/category-badge-variants";
+import { ShareButton } from "@/components/share-button";
 
 type PostDetailPageProps = {
   params: Promise<{ slug: string }>;
@@ -35,6 +35,8 @@ const subTitleClasses =
 const metaWrapper = "flex items-center gap-2";
 const timeClasses = "text-label text-content-muted";
 const separatorClasses = "text-label-small text-content-muted/30";
+
+const actionsWrapper = "flex mt-12";
 
 async function PostDetailContent({ params }: PostDetailPageProps) {
   const { slug } = await params;
@@ -90,6 +92,9 @@ async function PostDetailContent({ params }: PostDetailPageProps) {
           />
         ))}
         <CodeCopyHydrator />
+      </div>
+      <div className={actionsWrapper}>
+        <ShareButton />
       </div>
     </article>
   );
