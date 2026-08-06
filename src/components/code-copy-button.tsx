@@ -2,16 +2,10 @@
 
 import { useRef, useState, useEffect } from "react";
 import { CopyIcon, CheckIcon } from "@radix-ui/react-icons";
-import { cn } from "@/lib/utils/cn";
 import { AnimatePresence, motion } from "motion/react";
 import { easings } from "@/lib/utils/motion-easing";
 import { copyCodeFromElement, copyText } from "@/lib/utils/copy-text";
 import { createRoot } from "react-dom/client";
-
-type CodeCopyButtonProps = {
-  text?: string;
-  className?: string;
-};
 
 const iconAnimvariants = {
   hidden: { opacity: 0, scale: 0.75, filter: "blur(2px)" },
@@ -24,7 +18,7 @@ const wrapperClasses =
 const iconClasses =
   "size-3.5 text-content-interactive-muted group-hover:text-content-interactive-hover group-active:text-content-interactive-active";
 
-export function CodeCopyButton({ text, className }: CodeCopyButtonProps) {
+export function CodeCopyButton() {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const [done, setDone] = useState(false);
 
@@ -47,7 +41,7 @@ export function CodeCopyButton({ text, className }: CodeCopyButtonProps) {
       aria-label="Copy code snippet"
       disabled={done}
       onClick={handleClick}
-      className={cn(wrapperClasses, className)}
+      className={wrapperClasses}
     >
       <AnimatePresence mode="wait" initial={false}>
         {done ? (
