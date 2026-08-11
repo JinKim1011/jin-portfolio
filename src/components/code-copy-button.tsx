@@ -74,9 +74,12 @@ export function CodeCopyButton() {
 
 export function CodeCopyHydrator() {
   useEffect(() => {
+    const roots: Array<ReturnType<typeof createRoot>> = [];
+
     const containers = Array.from(
       document.querySelectorAll<HTMLElement>(".notion-code"),
     );
+
     containers.forEach((container) => {
       const mount = container.querySelector<HTMLElement>(".code-copy-mount");
       if (!mount) return;
@@ -87,12 +90,19 @@ export function CodeCopyHydrator() {
         container.style.position = "relative";
 
       try {
-        createRoot(mount).render(<CodeCopyButton />);
+        const root = createRoot(mount);
+        root.render(<CodeCopyButton />);
+        roots.push(root);
+        // createRoot(mount).render(<CodeCopyButton />);
         mount.dataset.mounted = "mounted";
       } catch (event) {
         console.warn("Code copy mount failed", event);
       }
     });
+
+    return () => {
+      roots.forEach((root) => root.unmount());
+    };
   }, []);
 
   return null;
