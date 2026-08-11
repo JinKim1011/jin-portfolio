@@ -107,10 +107,7 @@ export async function renderBlock(
           data-raw-code-b64="${rawB64}"
         >
           ${html}
-          <span
-            class="code-copy-mount"
-            aria-hidden
-          ></span>
+          <span class="code-copy-mount"></span>
         </div>
         `,
       };
