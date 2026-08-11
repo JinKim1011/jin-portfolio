@@ -1,8 +1,11 @@
 import type { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import type { PostBlock } from "@/types/post";
 import { postBlockClassName } from "@/lib/posts/block-styles";
+import { highlightCode } from "../shiki";
 
-export function renderBlock(block: BlockObjectResponse): PostBlock | null {
+export async function renderBlock(
+  block: BlockObjectResponse,
+): Promise<PostBlock | null> {
   const toText = (rich: { plain_text: string }[] | undefined): string =>
     (rich ?? []).map((t) => escapeHtml(t.plain_text)).join("");
 
@@ -86,12 +89,29 @@ export function renderBlock(block: BlockObjectResponse): PostBlock | null {
           toText(block.quote.rich_text),
         ),
       };
-    case "code":
+    case "code": {
+      const raw = (block.code.rich_text ?? [])
+        .map((text) => text.plain_text)
+        .join("");
+      const lang = block.code?.language ?? "text";
+      const { html } = await highlightCode(raw, lang);
+
+      const rawB64 = Buffer.from(raw, "utf8").toString("base64");
+
       return {
         id: block.id,
         type: block.type,
-        html: `<pre class="${postBlockClassName({ type: "codeBlock" })}"><code class="${postBlockClassName({ type: "code" })}">${toText(block.code.rich_text)}</code></pre>`,
+        html: `
+        <div 
+          class="notion-code" 
+          data-raw-code-b64="${rawB64}"
+        >
+          ${html}
+          <span class="code-copy-mount"></span>
+        </div>
+        `,
       };
+    }
     default:
       return null;
   }

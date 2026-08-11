@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { cva } from "class-variance-authority";
-import { cn } from "@/lib/util";
+import { cn } from "@/lib/utils/cn";
 
 type NavLinkItemProps = {
   label: string;
@@ -14,7 +14,7 @@ type NavLinkItemProps = {
 };
 
 const styleClasses = cva(
-  "py-0.5 hover:bg-surface-interactive-hoverStrong press-effect active:bg-surface-interactive-active",
+  "py-0.5 hover:bg-surface-interactive-hoverStrong press-effect-translateY active:bg-surface-interactive-active",
   {
     variants: {
       active: {

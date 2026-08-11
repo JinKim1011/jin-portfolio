@@ -27,6 +27,27 @@
   --base-red-50: oklch(97.1% 0.013 17.38);
   --base-red-100: oklch(93.6% 0.032 17.717);
   --base-red-500: oklch(63.7% 0.237 25.331);
+
+  --ease-in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  --ease-in-cubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  --ease-in-quart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+  --ease-in-quint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+  --ease-in-expo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+  --ease-in-circ: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+
+  --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+  --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-out-circ: cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  --ease-in-out-quad: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  --ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --ease-in-out-quart: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1);
+  --ease-in-out-expo: cubic-bezier(1, 0, 0, 1);
+  --ease-in-out-circ: cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 
 html {
@@ -70,8 +91,7 @@ html {
   --text-mini: 0.75rem; /* 12px */
   --text-small: 0.875rem; /* 14px */
   --text-regular: 1rem; /* 16px */
-  --text-title2: 1.125rem; /* 18px */
-  --text-title1: 1.25rem; /* 20px */
+  --text-title: 1.125rem; /* 18px */
 
   --font-regular: 400;
   --font-semibold: 600;
@@ -131,15 +151,15 @@ html {
 }
 
 @layer components {
-  .text-heading {
-    font-size: var(--text-title1);
+  .text-heading-strong {
+    font-size: var(--text-title);
     font-weight: var(--font-bold);
     line-height: var(--leading-tight);
   }
 
-  .text-heading-small {
-    font-size: var(--text-title2);
-    font-weight: var(--font-bold);
+  .text-heading {
+    font-size: var(--text-title);
+    font-weight: var(--font-semibold);
     line-height: var(--leading-tight);
   }
 
@@ -180,11 +200,61 @@ html {
   }
 }
 
-@utility press-effect {
+@utility press-effect-translateY {
   transition-property: transform;
   transition-duration: 75ms;
+  transition-timing-function: var(--ease-out-quad);
 
   &:active {
     transform: translateY(0.125rem);
   }
+}
+
+@utility press-effect-scale {
+  transition-property: transform;
+  transition-duration: 75ms;
+  transition-timing-function: var(--ease-out-quad);
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.notion-code {
+  position: relative;
+  overflow-x: auto;
+  margin: 0 0 0.75rem;
+  padding: 0.75rem;
+  background: var(--color-surface-muted);
+  border: 0.5px solid var(--color-stroke);
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.notion-code pre {
+  margin: 0;
+  background-color: transparent !important;
+}
+
+.notion-code code {
+  font-size: var(--text-small);
+  font-weight: var(--font-regular);
+  line-height: var(--leading-normal);
+}
+
+.code-copy-mount {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 10;
+  display: inline-block;
+}
+
+html.dark .notion-code .shiki,
+html.dark .notion-code .shiki span {
+  color: var(--shiki-dark) !important;
+  font-style: var(--shiki-dark-font-style) !important;
+  font-weight: var(--shiki-dark-font-weight) !important;
+  text-decoration: var(--shiki-dark-text-decoration) !important;
 }

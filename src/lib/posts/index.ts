@@ -59,10 +59,13 @@ export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
   const post = mapNotionPageToPost(page);
 
   const blockRes = await notion.blocks.children.list({ block_id: page.id });
-  const blocks = blockRes.results
-    .filter((b): b is BlockObjectResponse => "type" in b)
-    .map(renderBlock)
-    .filter((b): b is PostBlock => b !== null);
+  const blocks = (
+    await Promise.all(
+      blockRes.results
+        .filter((block): block is BlockObjectResponse => "type" in block)
+        .map(renderBlock),
+    )
+  ).filter((block): block is PostBlock => block !== null);
 
   const groupedBlocks: PostBlock[] = [];
   let currentListType: "bulleted_list_item" | "numbered_list_item" | null =
@@ -83,15 +86,16 @@ export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
   };
 
   for (const block of blocks) {
+    const blockType = block.type;
     if (
-      block.type === "bulleted_list_item" ||
-      block.type === "numbered_list_item"
+      blockType === "bulleted_list_item" ||
+      blockType === "numbered_list_item"
     ) {
-      if (currentListType && currentListType !== block.type) {
+      if (currentListType && currentListType !== blockType) {
         flushList();
       }
 
-      currentListType = block.type;
+      currentListType = blockType;
       currentListItems.push(block.html);
       continue;
     }

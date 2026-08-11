@@ -6,6 +6,10 @@ import { ArrowTopRightIcon } from "@radix-ui/react-icons";
 import { cva } from "class-variance-authority";
 import NavLinkItem from "./ui/nav-link-item";
 import CoverImage from "./ui/cover-image";
+import {
+  badgeColor,
+  getCategoryVariant,
+} from "../lib/utils/category-badge-variants";
 
 type PostListItemProps = {
   post: Post;
@@ -19,21 +23,6 @@ type ViewTypeProps = PostListItemProps & {
   date: string;
 };
 
-const categoryVariantMap = {
-  PROJECT: "project",
-  DESIGNSYSTEM: "designSystem",
-  CASESTUDY: "caseStudy",
-  ESSAY: "essay",
-} as const;
-
-function getCategoryVariant(category: string) {
-  const normalized = category.replace(/\s+/g, "");
-
-  return normalized in categoryVariantMap
-    ? categoryVariantMap[normalized as keyof typeof categoryVariantMap]
-    : "none";
-}
-
 function getPostLink(post: Post) {
   const isExternal = post.external && !!post.externalUrl;
 
@@ -44,7 +33,7 @@ function getPostLink(post: Post) {
 }
 
 const ItemBase =
-  "relative isolate flex bg-surface-interactive hover:bg-surface-interactive-hoverStrong active:bg-surface-interactive-active press-effect has-[.tag-wrapper:hover]:!bg-surface-interactive has-[.tag-wrapper:active]:!bg-surface-interactive has-[.tag-wrapper:active]:!transform-none";
+  "relative isolate flex bg-surface-interactive hover:bg-surface-interactive-hoverStrong active:bg-surface-interactive-active press-effect-translateY has-[.tag-wrapper:hover]:!bg-surface-interactive has-[.tag-wrapper:active]:!bg-surface-interactive has-[.tag-wrapper:active]:!transform-none";
 
 const listItemBase =
   "items-center justify-between px-2.5 -mx-2.5 w-[calc(100%+1.25rem)] py-2.5";
@@ -149,21 +138,6 @@ const rightAdorn = cva("flex w-fit items-center", {
 });
 
 const tagWrapper = "tag-wrapper relative z-10 flex w-fit items-center gap-1";
-
-const badgeColor = cva("", {
-  variants: {
-    tag: {
-      project: "text-[var(--base-cyan-500)]",
-      designSystem: "text-[var(--base-teal-500)]",
-      caseStudy: "text-[var(--base-orange-500)]",
-      essay: "text-[var(--base-pink-500)]",
-      none: "text-[var(--base-neutral-400)]",
-    },
-  },
-  defaultVariants: {
-    tag: "none",
-  },
-});
 
 function ListView({
   post,
