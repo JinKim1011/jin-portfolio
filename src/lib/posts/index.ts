@@ -59,10 +59,13 @@ export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
   const post = mapNotionPageToPost(page);
 
   const blockRes = await notion.blocks.children.list({ block_id: page.id });
-  const blocks = blockRes.results
-    .filter((b): b is BlockObjectResponse => "type" in b)
-    .map(renderBlock)
-    .filter((b): b is Promise<PostBlock> => b !== null);
+  const blocks = (
+    await Promise.all(
+      blockRes.results
+        .filter((block): block is BlockObjectResponse => "type" in block)
+        .map(renderBlock),
+    )
+  ).filter((block): block is PostBlock => block !== null);
 
   const groupedBlocks: PostBlock[] = [];
   let currentListType: "bulleted_list_item" | "numbered_list_item" | null =
