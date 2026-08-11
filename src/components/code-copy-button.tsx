@@ -83,7 +83,6 @@ export function CodeCopyHydrator() {
     containers.forEach((container) => {
       const mount = container.querySelector<HTMLElement>(".code-copy-mount");
       if (!mount) return;
-      if (mount.dataset.mounted) return;
 
       const computed = getComputedStyle(container).position;
       if (!computed || computed === "static")
@@ -93,8 +92,6 @@ export function CodeCopyHydrator() {
         const root = createRoot(mount);
         root.render(<CodeCopyButton />);
         roots.push(root);
-        // createRoot(mount).render(<CodeCopyButton />);
-        mount.dataset.mounted = "mounted";
       } catch (event) {
         console.warn("Code copy mount failed", event);
       }
