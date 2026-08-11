@@ -86,7 +86,7 @@ export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
   };
 
   for (const block of blocks) {
-    const blockType = (await block).type;
+    const blockType = block.type;
     if (
       blockType === "bulleted_list_item" ||
       blockType === "numbered_list_item"
@@ -96,12 +96,12 @@ export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
       }
 
       currentListType = blockType;
-      currentListItems.push((await block).html);
+      currentListItems.push(block.html);
       continue;
     }
 
     flushList();
-    groupedBlocks.push(await block);
+    groupedBlocks.push(block);
   }
 
   flushList();
