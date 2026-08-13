@@ -13,10 +13,10 @@ const iconAnimvariants = {
 };
 
 const wrapperClasses =
-  "group press-effect-translateY hover:bg-surface-interactive-hoverStrong cursor-pointer bg-transparent p-1.5";
+  "group press-effect-translateY hover:bg-surface-interactive-hoverStrong cursor-pointer bg-transparent p-1";
 
 const iconClasses =
-  "size-3.5 text-content-interactive-muted group-hover:text-content-interactive-hover group-active:text-content-interactive-active";
+  "size-4 text-content-interactive-muted group-hover:text-content-interactive-hover group-active:text-content-interactive-active";
 
 export function CodeCopyButton() {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
