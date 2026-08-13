@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { ImageIcon } from "@radix-ui/react-icons";
+import { ImageIcon } from "../icons";
 
 type CoverImageProps = {
   src?: string | null;
