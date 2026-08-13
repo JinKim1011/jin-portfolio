@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ImageIcon } from "../icons";
 
 type CoverImageProps = {
@@ -21,20 +21,16 @@ export default function CoverImage({
   sizes,
   className,
 }: CoverImageProps) {
-  const [failed, setFailed] = useState(false);
-
-  useEffect(() => {
-    setFailed(false);
-  }, [src]);
+  const [failedSrc, setFailedSrc] = useState<string | null>(null);
 
   const handleError = () => {
     if (src) {
       console.warn("Cover image failed to load", { alt, src });
+      setFailedSrc(src);
     }
-    setFailed(true);
   };
 
-  if (!src || failed) {
+  if (!src || failedSrc === src) {
     return (
       <div
         className={`${className ?? ""} bg-surface-muted text-content-muted flex items-center justify-center overflow-hidden`}
