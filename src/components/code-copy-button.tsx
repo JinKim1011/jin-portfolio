@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import { CopyIcon, CheckIcon } from "@radix-ui/react-icons";
+import { SquaresIcon, CheckIcon } from "./icons";
 import { AnimatePresence, motion } from "motion/react";
 import { easings } from "@/lib/utils/motion-easing";
 import { copyCodeFromElement } from "@/lib/utils/copy-text";
@@ -64,7 +64,7 @@ export function CodeCopyButton() {
             exit="hidden"
             transition={{ duration: 0.2, ease: easings.easeInOutCirc }}
           >
-            <CopyIcon aria-hidden className={iconClasses} />
+            <SquaresIcon aria-hidden className={iconClasses} />
           </motion.span>
         )}
       </AnimatePresence>
