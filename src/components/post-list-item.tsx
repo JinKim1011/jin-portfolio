@@ -2,7 +2,7 @@
 
 import { Post, PostView } from "@/types/post";
 import Link from "next/link";
-import { ArrowTopRightIcon } from "@radix-ui/react-icons";
+import { ArrowTopRightIcon } from "./icons";
 import { cva } from "class-variance-authority";
 import NavLinkItem from "./ui/nav-link-item";
 import CoverImage from "./ui/cover-image";

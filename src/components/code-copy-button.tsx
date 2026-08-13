@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import { CopyIcon, CheckIcon } from "@radix-ui/react-icons";
+import { SquaresIcon, CheckIcon } from "./icons";
 import { AnimatePresence, motion } from "motion/react";
 import { easings } from "@/lib/utils/motion-easing";
 import { copyCodeFromElement } from "@/lib/utils/copy-text";
@@ -13,10 +13,10 @@ const iconAnimvariants = {
 };
 
 const wrapperClasses =
-  "group press-effect-translateY hover:bg-surface-interactive-hoverStrong cursor-pointer bg-transparent p-1.5";
+  "group press-effect-translateY hover:bg-surface-interactive-hoverStrong cursor-pointer bg-transparent p-1";
 
 const iconClasses =
-  "size-3.5 text-content-interactive-muted group-hover:text-content-interactive-hover group-active:text-content-interactive-active";
+  "size-4 text-content-interactive-muted group-hover:text-content-interactive-hover group-active:text-content-interactive-active";
 
 export function CodeCopyButton() {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
@@ -64,7 +64,7 @@ export function CodeCopyButton() {
             exit="hidden"
             transition={{ duration: 0.2, ease: easings.easeInOutCirc }}
           >
-            <CopyIcon aria-hidden className={iconClasses} />
+            <SquaresIcon aria-hidden className={iconClasses} />
           </motion.span>
         )}
       </AnimatePresence>

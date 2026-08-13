@@ -42,7 +42,7 @@ export default function SegmentedControl({
             aria-checked={isActive}
             aria-label={option.value}
             className={cn(
-              "h-fit w-fit cursor-pointer p-1.5",
+              "h-fit w-fit cursor-pointer p-1",
               "bg-surface-interactive hover:bg-surface-interactive-hoverStrong active:bg-surface-interactive-active",
               "press-effect-translateY",
               isActive
@@ -50,7 +50,7 @@ export default function SegmentedControl({
                 : "text-content-interactive-muted",
             )}
           >
-            <IconComponent aria-hidden className="size-3.5" />
+            <IconComponent aria-hidden className="size-4" />
           </button>
         );
       })}

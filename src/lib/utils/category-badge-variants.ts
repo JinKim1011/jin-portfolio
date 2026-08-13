@@ -11,7 +11,7 @@ export const badgeColor = cva("", {
   variants: {
     tag: {
       project: "text-[var(--base-cyan-500)]",
-      designSystem: "text-[var(--base-teal-500)]",
+      designSystem: "text-[var(--base-emerald-500)]",
       caseStudy: "text-[var(--base-orange-500)]",
       essay: "text-[var(--base-pink-500)]",
       none: "text-[var(--base-neutral-400)]",

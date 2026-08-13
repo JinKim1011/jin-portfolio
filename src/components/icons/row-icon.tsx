@@ -1,0 +1,13 @@
+import type { Icon } from "@/components/ui/icon";
+
+export const RowIcon: Icon = ({ className, ...props }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 20 20"
+    className={className}
+    fill="currentColor"
+    {...props}
+  >
+    <path d="M3.125 13.125h13.75v3.75H3.125zm0-10v3.75h13.75v-3.75zm0 8.75h13.75v-3.75H3.125z" />
+  </svg>
+);

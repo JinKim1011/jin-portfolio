@@ -19,7 +19,7 @@ export default function CategoryNav({
 }: CategoryNavProps) {
   return (
     <div className="flex h-14 items-center justify-between">
-      <nav className="flex flex-wrap gap-3 text-sm">
+      <nav className="flex flex-wrap gap-4 text-sm">
         {tabs.map((category) => {
           const href =
             category === "ALL"

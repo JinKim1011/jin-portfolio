@@ -2,7 +2,7 @@
 
 import SegmentedControl from "./ui/segmented-control";
 import type { PostView } from "@/types/post";
-import { ViewHorizontalIcon, ViewGridIcon } from "@radix-ui/react-icons";
+import { SquareIcon, RowIcon } from "./icons";
 
 type PostViewTypeControlProps = {
   view: PostView;
@@ -14,8 +14,8 @@ export default function PostViewTypeControl({
   onViewChange,
 }: PostViewTypeControlProps) {
   const options = [
-    { value: "list", iconName: ViewHorizontalIcon },
-    { value: "card", iconName: ViewGridIcon },
+    { value: "list", iconName: RowIcon },
+    { value: "card", iconName: SquareIcon },
   ];
 
   const handleViewTypeChange = (selected: string) => {
