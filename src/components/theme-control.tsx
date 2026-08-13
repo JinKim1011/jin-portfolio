@@ -3,7 +3,7 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import SegmentedControl from "./ui/segmented-control";
-import { LaptopIcon, MoonIcon, SunIcon } from "@radix-ui/react-icons";
+import { LaptopIcon, MoonIcon, SunIcon } from "./icons";
 
 type ThemeMode = "light" | "dark" | "system";
 
