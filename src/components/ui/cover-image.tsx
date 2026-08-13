@@ -41,7 +41,7 @@ export default function CoverImage({
         role="img"
         aria-label={alt}
       >
-        <ImageIcon aria-hidden className="size-3.5" />
+        <ImageIcon aria-hidden className="size-4" />
       </div>
     );
   }
