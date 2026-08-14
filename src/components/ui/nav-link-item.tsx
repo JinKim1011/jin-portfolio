@@ -11,6 +11,7 @@ type NavLinkItemProps = {
   isActive?: boolean;
   isBadge?: boolean;
   badgeClassName?: string;
+  hideLabelOnSmall?: boolean;
 };
 
 const styleClasses = cva(
@@ -45,6 +46,7 @@ export default function NavLinkItem({
   isActive,
   isBadge,
   badgeClassName,
+  hideLabelOnSmall = false,
 }: NavLinkItemProps) {
   return (
     <Link
@@ -57,7 +59,9 @@ export default function NavLinkItem({
       })}
     >
       {isBadge && <span className={cn("mr-1", badgeClassName)}>•</span>}
-      <span>{label}</span>
+      <span className={cn(hideLabelOnSmall && "hidden sm:inline")}>
+        {label}
+      </span>
     </Link>
   );
 }
