@@ -122,7 +122,7 @@ const subTitleStyle = cva(
   {
     variants: {
       view: {
-        list: "",
+        list: "hidden sm:inline",
         card: "mt-0.5",
       },
     },
