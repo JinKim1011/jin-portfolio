@@ -102,7 +102,7 @@ const coverSizes = cva(" ", {
   },
 });
 
-const titleWrapper = cva("flex  min-w-0", {
+const titleWrapper = cva("flex min-w-0", {
   variants: {
     view: {
       list: "gap-3 items-center flex-1",
