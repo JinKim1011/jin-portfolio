@@ -102,7 +102,7 @@ const coverSizes = cva(" ", {
   },
 });
 
-const titleWrapper = cva("flex", {
+const titleWrapper = cva("flex min-w-0", {
   variants: {
     view: {
       list: "gap-3 items-center flex-1",
@@ -122,7 +122,7 @@ const subTitleStyle = cva(
   {
     variants: {
       view: {
-        list: "",
+        list: "hidden sm:inline",
         card: "mt-0.5",
       },
     },
@@ -184,6 +184,7 @@ function ListView({
                 label={category}
                 size="sm"
                 isBadge={true}
+                hideLabelOnSmall={true}
                 badgeClassName={badgeColor({
                   tag: getCategoryVariant(category),
                 })}
