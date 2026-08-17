@@ -18,8 +18,7 @@ const wrapperClasses =
 const iconClasses =
   "size-4 text-content-interactive-muted group-hover:text-content-interactive-hover group-active:text-content-interactive-active";
 
-export function CodeCopyButton() {
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
+export function CodeCopyButton({ raw }: { raw: string }) {
   const [done, setDone] = useState(false);
 
   const handleClick = async () => {
@@ -36,7 +35,6 @@ export function CodeCopyButton() {
 
   return (
     <button
-      ref={buttonRef}
       type="button"
       aria-label="Copy code snippet"
       disabled={done}
