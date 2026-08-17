@@ -11,6 +11,7 @@ export const postBlockClassName = cva("", {
       quote: "text-body text-content-default/70",
       codeBlock: "overflow-x-auto p-3",
       code: "font-mono text-caption",
+      image: "mb-3 text-caption text-content-muted",
     },
     listType: {
       bulleted_list_item: "marker:text-content-default/70",
