@@ -1,11 +1,10 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useState } from "react";
 import { SquaresIcon, CheckIcon } from "./icons";
 import { AnimatePresence, motion } from "motion/react";
 import { easings } from "@/lib/utils/motion-easing";
-import { copyCodeFromElement } from "@/lib/utils/copy-text";
-import { createRoot } from "react-dom/client";
+import { copyText } from "@/lib/utils/copy-text";
 
 const iconAnimvariants = {
   hidden: { opacity: 0, scale: 0.75, filter: "blur(2px)" },
@@ -22,10 +21,7 @@ export function CodeCopyButton({ raw }: { raw: string }) {
   const [done, setDone] = useState(false);
 
   const handleClick = async () => {
-    const element = buttonRef.current?.closest(
-      ".notion-code",
-    ) as HTMLElement | null;
-    const ok = await copyCodeFromElement(element);
+    const ok = await copyText(raw);
 
     if (ok) {
       setDone(true);
