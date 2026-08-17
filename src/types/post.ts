@@ -12,11 +12,7 @@ export interface Post {
   externalUrl: string | null;
 }
 
-export interface PostBlock {
-  id: string;
-  type: string;
-  html: string;
-}
+export type PostBlock = StaticBlock | CodeBlock | ImageBlock;
 
 export interface PostDetail extends Post {
   blocks: PostBlock[];
