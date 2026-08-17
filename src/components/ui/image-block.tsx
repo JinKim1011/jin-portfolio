@@ -29,11 +29,7 @@ export function ImageBlock({
         sizes={sizes}
         className={className}
       />
-      {caption ? (
-        <figcaption className="text-caption text-content-muted mt-1">
-          {caption}
-        </figcaption>
-      ) : null}
+      {caption ? <figcaption className="mt-1">{caption}</figcaption> : null}
     </figure>
   );
 }
