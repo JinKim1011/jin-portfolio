@@ -2,7 +2,7 @@ import { PostBlock } from "@/types/post";
 import { ImageBlock } from "./image-block";
 import { CodeBlock } from "./code-block";
 
-export function PostBlockView({ block }: { block: PostBlock }) {
+export default function PostBlockView({ block }: { block: PostBlock }) {
   switch (block.type) {
     case "image":
       return (
