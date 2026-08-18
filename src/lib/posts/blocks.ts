@@ -101,7 +101,7 @@ export async function renderBlock(
       const src =
         media.type === "external" ? media.external.url : media.file.url;
       const caption = (media.caption ?? []).map((t) => t.plain_text).join("");
-      return { id: block.id, type: "image", src, caption, alt: caption || " " };
+      return { id: block.id, type: "image", src, caption, alt: caption || "" };
     }
     default:
       return null;
