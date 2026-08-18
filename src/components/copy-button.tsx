@@ -17,7 +17,7 @@ const wrapperClasses =
 const iconClasses =
   "size-4 text-content-interactive-muted group-hover:text-content-interactive-hover group-active:text-content-interactive-active";
 
-export function CodeCopyButton({ raw }: { raw: string }) {
+export function CopyButton({ raw }: { raw: string }) {
   const [done, setDone] = useState(false);
 
   const handleClick = async () => {
