@@ -6,7 +6,7 @@ import { ImageIcon } from "../icons";
 import { cn } from "@/lib/utils/cn";
 
 type CoverImageProps = {
-  src: string;
+  src: string | null;
   alt: string;
   width: number;
   height: number;
@@ -27,7 +27,7 @@ export default function CoverImage({
 
   return (
     <>
-      {failed ? (
+      {failed || !src ? (
         <div
           role="img"
           aria-label={alt}
