@@ -243,14 +243,6 @@ html {
   line-height: var(--leading-normal);
 }
 
-.code-copy-mount {
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  z-index: 10;
-  display: inline-block;
-}
-
 html.dark .notion-code .shiki,
 html.dark .notion-code .shiki span {
   color: var(--shiki-dark) !important;
