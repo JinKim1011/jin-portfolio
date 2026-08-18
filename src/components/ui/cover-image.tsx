@@ -3,9 +3,10 @@
 import Image from "next/image";
 import { useState } from "react";
 import { ImageIcon } from "../icons";
+import { cn } from "@/lib/utils/cn";
 
 type CoverImageProps = {
-  src?: string | null;
+  src: string | null;
   alt: string;
   width: number;
   height: number;
@@ -21,36 +22,40 @@ export default function CoverImage({
   sizes,
   className,
 }: CoverImageProps) {
-  const [failedSrc, setFailedSrc] = useState<string | null>(null);
-
-  const handleError = () => {
-    if (src) {
-      console.warn("Cover image failed to load", { alt, src });
-      setFailedSrc(src);
-    }
-  };
-
-  if (!src || failedSrc === src) {
-    return (
-      <div
-        className={`${className ?? ""} bg-surface-muted text-content-muted flex items-center justify-center overflow-hidden`}
-        role="img"
-        aria-label={alt}
-      >
-        <ImageIcon aria-hidden className="size-4" />
-      </div>
-    );
-  }
+  const [failed, setFailed] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   return (
-    <Image
-      src={src}
-      alt={alt}
-      width={width}
-      height={height}
-      sizes={sizes}
-      className={className}
-      onError={handleError}
-    />
+    <>
+      {failed || !src ? (
+        <div
+          role="img"
+          aria-label={alt}
+          className={cn(
+            className,
+            "bg-surface-muted text-content-muted flex aspect-video items-center justify-center",
+          )}
+        >
+          <ImageIcon aria-hidden className="size-4" />
+        </div>
+      ) : (
+        <Image
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          sizes={sizes}
+          className={cn(
+            className,
+            ` ${loading ? "bg-surface-muted" : "bg-none"}`,
+          )}
+          onError={() => {
+            console.warn("Post image failed to load", { alt, src });
+            setFailed(true);
+          }}
+          onLoad={() => setLoading(false)}
+        />
+      )}
+    </>
   );
 }

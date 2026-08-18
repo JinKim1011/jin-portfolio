@@ -1,11 +1,10 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useState } from "react";
 import { SquaresIcon, CheckIcon } from "./icons";
 import { AnimatePresence, motion } from "motion/react";
 import { easings } from "@/lib/utils/motion-easing";
-import { copyCodeFromElement } from "@/lib/utils/copy-text";
-import { createRoot } from "react-dom/client";
+import { copyText } from "@/lib/utils/copy-text";
 
 const iconAnimvariants = {
   hidden: { opacity: 0, scale: 0.75, filter: "blur(2px)" },
@@ -18,15 +17,11 @@ const wrapperClasses =
 const iconClasses =
   "size-4 text-content-interactive-muted group-hover:text-content-interactive-hover group-active:text-content-interactive-active";
 
-export function CodeCopyButton() {
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
+export function CopyButton({ raw }: { raw: string }) {
   const [done, setDone] = useState(false);
 
   const handleClick = async () => {
-    const element = buttonRef.current?.closest(
-      ".notion-code",
-    ) as HTMLElement | null;
-    const ok = await copyCodeFromElement(element);
+    const ok = await copyText(raw);
 
     if (ok) {
       setDone(true);
@@ -36,7 +31,6 @@ export function CodeCopyButton() {
 
   return (
     <button
-      ref={buttonRef}
       type="button"
       aria-label="Copy code snippet"
       disabled={done}
@@ -70,37 +64,4 @@ export function CodeCopyButton() {
       </AnimatePresence>
     </button>
   );
-}
-
-export function CodeCopyHydrator() {
-  useEffect(() => {
-    const roots: Array<ReturnType<typeof createRoot>> = [];
-
-    const containers = Array.from(
-      document.querySelectorAll<HTMLElement>(".notion-code"),
-    );
-
-    containers.forEach((container) => {
-      const mount = container.querySelector<HTMLElement>(".code-copy-mount");
-      if (!mount) return;
-
-      const computed = getComputedStyle(container).position;
-      if (!computed || computed === "static")
-        container.style.position = "relative";
-
-      try {
-        const root = createRoot(mount);
-        root.render(<CodeCopyButton />);
-        roots.push(root);
-      } catch (event) {
-        console.warn("Code copy mount failed", event);
-      }
-    });
-
-    return () => {
-      roots.forEach((root) => root.unmount());
-    };
-  }, []);
-
-  return null;
 }

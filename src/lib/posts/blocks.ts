@@ -91,26 +91,17 @@ export async function renderBlock(
       };
     case "code": {
       const raw = (block.code.rich_text ?? [])
-        .map((text) => text.plain_text)
+        .map((t) => t.plain_text)
         .join("");
-      const lang = block.code?.language ?? "text";
-      const { html } = await highlightCode(raw, lang);
-
-      const rawB64 = Buffer.from(raw, "utf8").toString("base64");
-
-      return {
-        id: block.id,
-        type: block.type,
-        html: `
-        <div 
-          class="notion-code" 
-          data-raw-code-b64="${rawB64}"
-        >
-          ${html}
-          <span class="code-copy-mount"></span>
-        </div>
-        `,
-      };
+      const { html } = await highlightCode(raw, block.code.language ?? "text");
+      return { id: block.id, type: "code", highlightedHtml: html, raw };
+    }
+    case "image": {
+      const media = block.image;
+      const src =
+        media.type === "external" ? media.external.url : media.file.url;
+      const caption = (media.caption ?? []).map((t) => t.plain_text).join("");
+      return { id: block.id, type: "image", src, caption, alt: caption || "" };
     }
     default:
       return null;

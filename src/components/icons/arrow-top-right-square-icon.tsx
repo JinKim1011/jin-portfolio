@@ -1,4 +1,4 @@
-import type { Icon } from "@/components/ui/icon";
+import type { Icon } from "@/components/icons/icon";
 
 export const ArrowTopRightIcon: Icon = ({ className, ...props }) => (
   <svg
