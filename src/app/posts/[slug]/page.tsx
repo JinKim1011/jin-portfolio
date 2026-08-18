@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { getPostBySlug, getPosts } from "@/lib/posts";
 import CoverImage from "@/components/ui/cover-image";
-import { CodeCopyHydrator } from "@/components/code-copy-button";
+import PostBlockView from "@/components/post-block-view";
 import NavLinkItem from "@/components/ui/nav-link-item";
 import {
   badgeColor,
@@ -86,12 +86,8 @@ async function PostDetailContent({ params }: PostDetailPageProps) {
       />
       <div>
         {post.blocks.map((block) => (
-          <div
-            key={block.id}
-            dangerouslySetInnerHTML={{ __html: block.html }}
-          />
+          <PostBlockView key={block.id} block={block} />
         ))}
-        <CodeCopyHydrator />
       </div>
       <div className={actionsWrapper}>
         <ShareButton />
