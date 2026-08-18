@@ -220,21 +220,14 @@ html {
   }
 }
 
-.notion-code {
-  position: relative;
-  overflow-x: auto;
-  margin: 0 0 0.75rem;
+.notion-code pre {
+  margin: 0;
   padding: 0.75rem;
-  background: var(--color-surface-muted);
-  border: 0.5px solid var(--color-stroke);
+  overflow-x: auto;
+  background-color: transparent !important;
 
   scrollbar-width: none;
   -ms-overflow-style: none;
-}
-
-.notion-code pre {
-  margin: 0;
-  background-color: transparent !important;
 }
 
 .notion-code code {
