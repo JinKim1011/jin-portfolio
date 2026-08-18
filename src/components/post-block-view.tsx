@@ -1,4 +1,4 @@
-import { PostBlock } from "@/types/post";
+import type { PostBlock } from "@/types/post";
 import { ImageBlock } from "./image-block";
 import { CodeBlock } from "./code-block";
 
