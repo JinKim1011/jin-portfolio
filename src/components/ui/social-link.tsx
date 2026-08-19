@@ -40,6 +40,8 @@ export default function SocialLink({
       className={wrapperClasses}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onFocus={() => setIsHovered(true)}
+      onBlur={() => setIsHovered(false)}
       target={target}
       rel={rel}
     >
