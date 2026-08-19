@@ -1,6 +1,7 @@
 import { getPosts } from "@/lib/posts";
 import Posts from "@/components/posts";
 import { Suspense } from "react";
+import Intro from "@/components/intro";
 
 const CATEGORY_ORDER = ["PROJECT", "CASE STUDY", "DESIGN SYSTEM", "ESSAY"];
 
@@ -15,8 +16,11 @@ export default async function HomePage() {
   const tabs = ["ALL", ...allCategories];
 
   return (
-    <Suspense>
-      <Posts posts={posts} tabs={tabs} />
-    </Suspense>
+    <>
+      <Intro />
+      <Suspense>
+        <Posts posts={posts} tabs={tabs} />
+      </Suspense>
+    </>
   );
 }
