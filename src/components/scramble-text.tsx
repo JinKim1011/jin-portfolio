@@ -28,8 +28,7 @@ export default function ScrambleText<T extends ElementType = "span">({
       aria-label={text}
       className={className}
       ref={ref}
-      onMouseOver={isReplay ? replay : undefined}
-      onFocus={isReplay ? replay : undefined}
+      onMouseEnter={isReplay ? replay : undefined}
       {...props}
     >
       {text}
