@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils/cn";
-import type { IconComponent } from "../icons/icon";
 
 type NavLinkItemProps = {
   label: string;
@@ -13,7 +12,6 @@ type NavLinkItemProps = {
   isBadge?: boolean;
   badgeClassName?: string;
   hideLabelOnSmall?: boolean;
-  leftIcon?: IconComponent;
   className?: string;
 };
 
@@ -50,7 +48,6 @@ export default function NavLinkItem({
   isBadge,
   badgeClassName,
   hideLabelOnSmall = false,
-  leftIcon: LeftIcon,
   className,
 }: NavLinkItemProps) {
   return (
@@ -69,7 +66,6 @@ export default function NavLinkItem({
       <span className={cn(hideLabelOnSmall && "hidden sm:inline")}>
         {label}
       </span>
-      {LeftIcon && <LeftIcon aria-hidden className="ml-0.5 size-3" />}
     </Link>
   );
 }
