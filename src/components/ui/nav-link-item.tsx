@@ -14,6 +14,7 @@ type NavLinkItemProps = {
   badgeClassName?: string;
   hideLabelOnSmall?: boolean;
   className?: string;
+  isReplay?: boolean;
 };
 
 const styleClasses = cva(
@@ -50,6 +51,7 @@ export default function NavLinkItem({
   badgeClassName,
   hideLabelOnSmall = false,
   className,
+  isReplay = false,
 }: NavLinkItemProps) {
   return (
     <Link
