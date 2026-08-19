@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils/cn";
+import ScrambleText from "../scramble-text";
 
 type NavLinkItemProps = {
   label: string;
@@ -63,9 +64,12 @@ export default function NavLinkItem({
       })}
     >
       {isBadge && <span className={cn("mr-1", badgeClassName)}>•</span>}
-      <span className={cn(hideLabelOnSmall && "hidden sm:inline")}>
-        {label}
-      </span>
+      <ScrambleText
+        text={label}
+        className={cn(hideLabelOnSmall && "hidden sm:inline")}
+        playOnMount={false}
+        isReplay={isReplay}
+      />
     </Link>
   );
 }
