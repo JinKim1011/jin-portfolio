@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ScrambleText from "./scramble-text";
 
 export default function Header() {
   return (
@@ -9,8 +10,20 @@ export default function Header() {
         className="relative z-10 mx-auto flex h-14 w-full max-w-3xl items-center justify-between px-5"
       >
         <Link href="/" className="flex flex-col">
-          <span className="text-label text-content-default">JIN KIM</span>
-          <span className="text-label text-content-muted">DESIGN ENGINEER</span>
+          <ScrambleText
+            className="text-label text-content-default"
+            text="JIN KIM"
+            overflow={true}
+            playOnMount={true}
+            isReplay={true}
+          />
+          <ScrambleText
+            className="text-label text-content-muted"
+            text="DESIGN ENGINEER"
+            overflow={true}
+            playOnMount={true}
+            isReplay={false}
+          />
         </Link>
       </div>
     </header>
