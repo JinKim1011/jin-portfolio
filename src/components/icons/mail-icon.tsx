@@ -1,6 +1,6 @@
 import type { IconComponent } from "@/components/icons/icon";
 
-export const ArrowTopRightIcon: IconComponent = ({ className, ...props }) => (
+export const MailIcon: IconComponent = ({ className, ...props }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 20 20"
@@ -8,6 +8,6 @@ export const ArrowTopRightIcon: IconComponent = ({ className, ...props }) => (
     fill="currentColor"
     {...props}
   >
-    <path d="M3.125 3.125v13.75h13.75V3.125zm10.938 9.688h-1.876V9.137L6.95 14.375 5.625 13.05l5.238-5.238H7.188V5.938h6.875z"></path>
+    <path d="M17.5 3.75v3.125l-7.5 3.75-7.5-3.75V3.75zm-15 4.522v7.978h15V8.272l-7.5 3.75z"></path>
   </svg>
 );

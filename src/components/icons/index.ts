@@ -7,3 +7,4 @@ export { CheckIcon } from "./check-icon";
 export { ArrowTopRightIcon } from "./arrow-top-right-square-icon";
 export { SquaresIcon } from "./squares-icon";
 export { ImageIcon } from "./image-icon";
+export { MailIcon } from "./mail-icon";

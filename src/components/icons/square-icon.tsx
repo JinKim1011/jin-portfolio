@@ -1,6 +1,6 @@
-import type { Icon } from "@/components/icons/icon";
+import type { IconComponent } from "@/components/icons/icon";
 
-export const SquareIcon: Icon = ({ className, ...props }) => (
+export const SquareIcon: IconComponent = ({ className, ...props }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 20 20"
