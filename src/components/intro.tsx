@@ -14,7 +14,6 @@ export default function Intro() {
           label="JIN"
           rightIcon={LinkedInLogoIcon}
           target="_blank"
-          rel="noopener noreferrer"
         />
         <span> A DESIGN ENGINEER BASED IN BERLIN.</span>
       </p>
@@ -25,7 +24,6 @@ export default function Intro() {
           label="SHIPS"
           rightIcon={GitHubLogoIcon}
           target="_blank"
-          rel="noopener noreferrer"
         />
         ,
         <br />
