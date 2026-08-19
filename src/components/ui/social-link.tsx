@@ -30,7 +30,6 @@ export default function SocialLink({
   href,
   rightIcon: RightIcon,
   target = "_self",
-  rel = undefined,
 }: SocialLinkProps) {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -43,7 +42,7 @@ export default function SocialLink({
       onFocus={() => setIsHovered(true)}
       onBlur={() => setIsHovered(false)}
       target={target}
-      rel={rel}
+      rel={target === "_blank" ? "noopener noreferrer" : undefined}
     >
       {label}
       <AnimatePresence initial={false}>
