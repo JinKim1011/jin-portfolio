@@ -18,7 +18,7 @@ type NavLinkItemProps = {
 };
 
 const styleClasses = cva(
-  "py-0.5 hover:bg-surface-interactive-hoverStrong press-effect-translateY active:bg-surface-interactive-active",
+  "py-0.5 hover:bg-surface-interactive-hoverStrong press-effect-translateY active:bg-surface-interactive-active inline-flex items-center",
   {
     variants: {
       active: {
@@ -60,8 +60,9 @@ export default function NavLinkItem({
       aria-label={label}
       className={styleClasses({
         active: isActive,
-        size: size,
-        isBadge: isBadge,
+        size,
+        isBadge,
+        className,
       })}
     >
       {isBadge && <span className={cn("mr-1", badgeClassName)}>•</span>}
