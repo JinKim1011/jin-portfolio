@@ -10,7 +10,7 @@ type ScrambleTextProps<T extends ElementType = "span"> = {
   playOnMount?: boolean;
   isReplay?: boolean;
   overflow?: boolean;
-} & Omit<ComponentPropsWithoutRef<T>, "as" | "className">;
+} & Omit<ComponentPropsWithoutRef<T>, "as" | "className" | "children">;
 
 export default function ScrambleText<T extends ElementType = "span">({
   as,
