@@ -1,0 +1,21 @@
+"use client";
+
+import { useScramble, type UseScrambleProps } from "use-scramble";
+
+const SCRAMBLE_DEFAULTS = {
+  speed: 0.6, // base framerate (0–1)
+  tick: 1, // frames before the scrambler walks forward
+  step: 1, // positions revealed per tick (1 is right for short text)
+  scramble: 6, // random cycles per position before locking in
+  range: [33, 60, 62, 45, 95, 47, 91, 93, 123, 125, 61, 43, 42, 94, 63, 35],
+  ignore: [" "], // never scramble spaces — keeps final shape readable
+} satisfies Partial<UseScrambleProps>;
+
+export type UseScrambleCustomOptions = UseScrambleProps;
+
+export function useScrambleCustom(options: UseScrambleCustomOptions) {
+  return useScramble({
+    ...SCRAMBLE_DEFAULTS,
+    ...options,
+  });
+}

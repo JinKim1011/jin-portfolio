@@ -14,7 +14,6 @@ import {
 type PostListItemProps = {
   post: Post;
   view: PostView;
-  isFirst?: boolean;
 };
 
 type ViewTypeProps = PostListItemProps & {
@@ -38,12 +37,6 @@ const ItemBase =
 const listItemBase =
   "items-center justify-between px-2.5 -mx-2.5 w-[calc(100%+1.25rem)] py-2.5";
 
-const listItemBottomDivider =
-  "relative after:content-[''] after:absolute after:inset-x-2.5 after:bottom-0 after:border-b-[0.5px] after:border-stroke group-hover:after:hidden";
-
-const listItemTopDivider =
-  "relative before:content-[''] before:absolute before:inset-x-2.5 before:top-0 before:border-t-[0.5px] before:border-stroke group-hover:before:hidden";
-
 const cardItemBase =
   "flex-col w-[calc(100%+0.625rem)] h-[calc(100%+0.625rem)] px-[0.3125rem] -mx-[0.3125rem] pt-[0.3125rem] -mt-[0.3125rem] pb-[0.3125rem] -mb-[0.3125rem]";
 
@@ -55,27 +48,10 @@ const viewLayout = cva(`${ItemBase}`, {
       list: `${listItemBase}`,
       card: `${cardItemBase}`,
     },
-    isFirst: {
-      true: "",
-      false: "",
-    },
   },
   defaultVariants: {
     view: "list",
-    isFirst: false,
   },
-  compoundVariants: [
-    {
-      view: "list",
-      isFirst: true,
-      class: `${listItemBottomDivider} ${listItemTopDivider}`,
-    },
-    {
-      view: "list",
-      isFirst: false,
-      class: `${listItemBottomDivider}`,
-    },
-  ],
 });
 
 const coverStyle = cva("shrink-0  object-cover border-[0.5px] border-stroke", {
@@ -139,17 +115,10 @@ const rightAdorn = cva("flex w-fit items-center", {
 
 const tagWrapper = "tag-wrapper relative z-10 flex w-fit items-center gap-1";
 
-function ListView({
-  post,
-  isExternal,
-  date,
-  view,
-  href,
-  isFirst,
-}: ViewTypeProps) {
+function ListView({ post, isExternal, date, view, href }: ViewTypeProps) {
   return (
     <>
-      <div className={viewLayout({ view, isFirst })}>
+      <div className={viewLayout({ view })}>
         <div className={titleWrapper({ view })}>
           <CoverImage
             src={post.cover ?? null}
@@ -249,11 +218,7 @@ function CardView({ post, isExternal, date, view, href }: ViewTypeProps) {
   );
 }
 
-export default function PostListItem({
-  post,
-  view,
-  isFirst,
-}: PostListItemProps) {
+export default function PostListItem({ post, view }: PostListItemProps) {
   const { isExternal, href } = getPostLink(post);
   const [y, m, d] = post.publishedAt.split("-");
   const day = d?.slice(0, 2);
@@ -275,7 +240,6 @@ export default function PostListItem({
         href={href}
         date={formattedPublishedAt}
         view={view}
-        isFirst={isFirst}
       />
     );
 

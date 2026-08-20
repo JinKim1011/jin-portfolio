@@ -21,7 +21,7 @@ const iconAnimvariants = {
 const wrapperClasses = [
   "inline-flex overflow-hidden",
   "items-center py-0.5",
-  "text-label text-content-interactive hover:text-content-interactive-hover active:text-content-interactive-active",
+  "text-label text-content-default hover:text-content-interactive-hover active:text-content-interactive-active",
   "border-b border-dotted border-stroke-interactive-active active:border-stroke-interactive-active hover:border-stroke-interactive-hover",
 ].join(" ");
 

@@ -33,6 +33,8 @@ export default function CategoryNav({
               label={category}
               isActive={isActive}
               size="md"
+              isReplay={true}
+              className="hover:text-content-interactive-hover active:text-content-interactive-active"
             />
           );
         })}

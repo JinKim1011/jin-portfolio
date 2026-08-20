@@ -4,6 +4,7 @@ import { getPostBySlug, getPosts } from "@/lib/posts";
 import CoverImage from "@/components/ui/cover-image";
 import PostBlockView from "@/components/post-block-view";
 import NavLinkItem from "@/components/ui/nav-link-item";
+import ScrambleText from "@/components/scramble-text";
 import {
   badgeColor,
   getCategoryVariant,
@@ -48,8 +49,18 @@ async function PostDetailContent({ params }: PostDetailPageProps) {
     <article className="flex flex-col gap-14 py-16 font-sans">
       <header className={headerWrapper}>
         <div className={titleWrapper}>
-          <h1 className={titleClasses}>{post.title}</h1>
-          <h2 className={subTitleClasses}>{post.excerpt}</h2>
+          <ScrambleText
+            text={post.title}
+            className={titleClasses}
+            as="h1"
+            playOnMount={true}
+          />
+          <ScrambleText
+            text={post.excerpt}
+            className={subTitleClasses}
+            as="h2"
+            playOnMount={true}
+          />
         </div>
         <div className={metaWrapper}>
           {post.categories.map((category) => (

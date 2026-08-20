@@ -6,7 +6,7 @@ import { MailIcon } from "./icons";
 
 export default function Intro() {
   return (
-    <div className="text-content-muted text-caption flex flex-col gap-3 pt-10 pb-6">
+    <div className="text-content-muted text-caption border-stroke flex flex-col gap-4 border-b-[0.5px] py-14">
       <p>
         <span>I'M </span>
         <SocialLink
