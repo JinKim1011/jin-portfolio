@@ -21,12 +21,23 @@ const postLayout = cva("pb-10", {
   },
 });
 
+const revealEffect = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.06 } },
+};
+
 export default function PostList({ posts, view }: PostListProps) {
   return (
-    <ul className={postLayout({ view })}>
+    <motion.ul
+      key={pathname}
+      variants={revealEffect}
+      initial="hidden"
+      animate="visible"
+      className={postLayout({ view })}
+    >
       {posts.map((post) => (
         <PostListItem post={post} key={post.id} view={view} />
       ))}
-    </ul>
+    </motion.ul>
   );
 }
