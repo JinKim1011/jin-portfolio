@@ -14,7 +14,6 @@ import {
 type PostListItemProps = {
   post: Post;
   view: PostView;
-  isFirst?: boolean;
 };
 
 type ViewTypeProps = PostListItemProps & {
@@ -55,27 +54,10 @@ const viewLayout = cva(`${ItemBase}`, {
       list: `${listItemBase}`,
       card: `${cardItemBase}`,
     },
-    isFirst: {
-      true: "",
-      false: "",
-    },
   },
   defaultVariants: {
     view: "list",
-    isFirst: false,
   },
-  compoundVariants: [
-    {
-      view: "list",
-      isFirst: true,
-      class: `${listItemBottomDivider} ${listItemTopDivider}`,
-    },
-    {
-      view: "list",
-      isFirst: false,
-      class: `${listItemBottomDivider}`,
-    },
-  ],
 });
 
 const coverStyle = cva("shrink-0  object-cover border-[0.5px] border-stroke", {
@@ -139,17 +121,10 @@ const rightAdorn = cva("flex w-fit items-center", {
 
 const tagWrapper = "tag-wrapper relative z-10 flex w-fit items-center gap-1";
 
-function ListView({
-  post,
-  isExternal,
-  date,
-  view,
-  href,
-  isFirst,
-}: ViewTypeProps) {
+function ListView({ post, isExternal, date, view, href }: ViewTypeProps) {
   return (
     <>
-      <div className={viewLayout({ view, isFirst })}>
+      <div className={viewLayout({ view })}>
         <div className={titleWrapper({ view })}>
           <CoverImage
             src={post.cover ?? null}
@@ -249,11 +224,7 @@ function CardView({ post, isExternal, date, view, href }: ViewTypeProps) {
   );
 }
 
-export default function PostListItem({
-  post,
-  view,
-  isFirst,
-}: PostListItemProps) {
+export default function PostListItem({ post, view }: PostListItemProps) {
   const { isExternal, href } = getPostLink(post);
   const [y, m, d] = post.publishedAt.split("-");
   const day = d?.slice(0, 2);
@@ -275,7 +246,6 @@ export default function PostListItem({
         href={href}
         date={formattedPublishedAt}
         view={view}
-        isFirst={isFirst}
       />
     );
 
