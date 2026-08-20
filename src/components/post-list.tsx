@@ -3,6 +3,8 @@
 import { Post, PostView } from "@/types/post";
 import { cva } from "class-variance-authority";
 import PostListItem from "@/components/post-list-item";
+import { motion } from "motion/react";
+import { usePathname } from "next/navigation";
 
 type PostListProps = {
   posts: Post[];
@@ -27,6 +29,7 @@ const revealEffect = {
 };
 
 export default function PostList({ posts, view }: PostListProps) {
+  const pathname = usePathname();
   return (
     <motion.ul
       key={pathname}
