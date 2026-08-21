@@ -4,7 +4,7 @@ import { Post, PostView } from "@/types/post";
 import { cva } from "class-variance-authority";
 import PostListItem from "@/components/post-list-item";
 import { motion } from "motion/react";
-import { usePathname } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 type PostListProps = {
   posts: Post[];
@@ -29,10 +29,11 @@ const revealEffect = {
 };
 
 export default function PostList({ posts, view }: PostListProps) {
-  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const category = searchParams.get("category") ?? "ALL";
   return (
     <motion.ul
-      key={pathname}
+      key={`${category}-${view}`}
       variants={revealEffect}
       initial="hidden"
       animate="visible"
