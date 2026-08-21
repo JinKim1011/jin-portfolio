@@ -2,6 +2,7 @@
 
 import { Post, PostView } from "@/types/post";
 import { cva } from "class-variance-authority";
+import { easings } from "@/lib/utils/motion-easing";
 import PostListItem from "@/components/post-list-item";
 import { motion } from "motion/react";
 import { useSearchParams } from "next/navigation";
@@ -25,7 +26,7 @@ const postLayout = cva("pb-10", {
 
 const revealEffect = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.06 } },
+  visible: { transition: { staggerChildren: 0.04, ease: easings.easeOutExpo } },
 };
 
 export default function PostList({ posts, view }: PostListProps) {
