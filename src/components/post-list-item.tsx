@@ -10,6 +10,8 @@ import {
   badgeColor,
   getCategoryVariant,
 } from "../lib/utils/category-badge-variants";
+import { motion } from "motion/react";
+import { easings } from "@/lib/utils/motion-easing";
 
 type PostListItemProps = {
   post: Post;
@@ -114,6 +116,14 @@ const rightAdorn = cva("flex w-fit items-center", {
 });
 
 const tagWrapper = "tag-wrapper relative z-10 flex w-fit items-center gap-1";
+
+const revealEffect = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.6, ease: easings.easeOutExpo },
+  },
+};
 
 function ListView({ post, isExternal, date, view, href }: ViewTypeProps) {
   return (
@@ -244,8 +254,8 @@ export default function PostListItem({ post, view }: PostListItemProps) {
     );
 
   return (
-    <li key={post.id} className="group">
+    <motion.li key={post.id} className="group" variants={revealEffect}>
       {inner}
-    </li>
+    </motion.li>
   );
 }
