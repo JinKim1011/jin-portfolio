@@ -7,7 +7,6 @@ import { easings } from "@/lib/utils/motion-easing";
 type RevealEffectProps = {
   children: ReactNode;
   delay?: number;
-  key?: string;
   className?: string;
 };
 
@@ -19,12 +18,10 @@ const variants = {
 export default function RevealEffect({
   children,
   delay = 0,
-  key,
   className,
 }: RevealEffectProps) {
   return (
     <motion.div
-      key={key}
       variants={variants}
       initial="hidden"
       animate="visible"
