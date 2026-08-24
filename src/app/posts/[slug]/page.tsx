@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import { getPostBySlug, getPosts } from "@/lib/posts";
+import { getPostBySlug, getPosts, getRelatedPosts } from "@/lib/posts";
 import CoverImage from "@/components/ui/cover-image";
 import PostBlockView from "@/components/post-block-view";
 import { ShareButton } from "@/components/share-button";
@@ -32,13 +32,7 @@ async function PostDetailContent({ params }: PostDetailPageProps) {
   if (!post) notFound();
 
   const posts = await getPosts();
-  const relatedPosts = posts.filter(
-    (relatedPost) =>
-      relatedPost.id !== post.id &&
-      relatedPost.categories.some((category) =>
-        post.categories.includes(category),
-      ),
-  );
+  const relatedPosts = getRelatedPosts(post, posts);
 
   return (
     <article className="flex flex-col gap-14 pt-16 pb-14 font-sans">
