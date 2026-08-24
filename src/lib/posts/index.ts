@@ -109,7 +109,7 @@ export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
   return { ...post, blocks: groupedBlocks };
 }
 
-export function getRelatedPosts(post: PostDetail, posts: Post[]) {
+function getRelatedPosts(post: PostDetail, posts: Post[]) {
   return posts.filter(
     (relatedPost) =>
       relatedPost.id !== post.id &&
