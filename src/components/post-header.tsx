@@ -6,6 +6,10 @@ import {
 import ScrambleText from "./scramble-text";
 import NavLinkItem from "./ui/nav-link-item";
 
+type PostHeaderProps = {
+  post: Post;
+};
+
 const headerWrapper = "flex flex-col gap-2.5 md:gap-1.5";
 const titleWrapper = "flex flex-col gap-1 md:flex-row md:gap-2";
 const titleClasses = "inline-block text-heading-strong text-content-default";
@@ -15,7 +19,7 @@ const metaWrapper = "flex items-center gap-2";
 const timeClasses = "text-label text-content-muted";
 const separatorClasses = "text-label-small text-content-muted/30";
 
-export default function PostHeader(post: Post) {
+export default function PostHeader({ post }: PostHeaderProps) {
   return (
     <header className={headerWrapper}>
       <div className={titleWrapper}>
