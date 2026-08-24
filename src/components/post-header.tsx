@@ -1,4 +1,4 @@
-import { Post } from "@/types/post";
+import { PostDetail } from "@/types/post";
 import {
   badgeColor,
   getCategoryVariant,
@@ -7,7 +7,7 @@ import ScrambleText from "./scramble-text";
 import NavLinkItem from "./ui/nav-link-item";
 
 type PostHeaderProps = {
-  post: Post;
+  post: PostDetail;
 };
 
 const headerWrapper = "flex flex-col gap-2.5 md:gap-1.5";

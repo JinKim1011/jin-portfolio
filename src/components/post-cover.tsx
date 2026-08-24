@@ -1,9 +1,9 @@
-import { Post } from "@/types/post";
+import { PostDetail } from "@/types/post";
 import RevealEffect from "./reveal-effect";
 import CoverImage from "./ui/cover-image";
 
 type PostCoverProps = {
-  post: Post;
+  post: PostDetail;
 };
 
 const coverStyle = "shrink-0 w-full aspect-video object-cover";
