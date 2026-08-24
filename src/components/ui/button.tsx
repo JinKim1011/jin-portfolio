@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { cn } from "@/lib/utils/cn";
+import Link from "next/link";
 
 type ButtonProps = {
   label: string;
@@ -24,10 +24,19 @@ export default function Button({ label, href, className }: ButtonProps) {
   const classes = cn(buttonClasses, className);
 
   if (href) {
+    const isInternal = href.startsWith("/");
+    if (isInternal) {
+      return (
+        <Link href={href} aria-label={label} className={classes}>
+          {content}
+        </Link>
+      );
+    }
+
     return (
-      <Link href={href} aria-label={label} className={classes}>
+      <a href={href} aria-label={label} className={classes}>
         {content}
-      </Link>
+      </a>
     );
   }
 
