@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import { getPostBySlug, getPosts, getRelatedPosts } from "@/lib/posts";
+import { getPosts, getPostPageData } from "@/lib/posts";
 import PostArticle from "@/components/post-article";
 
 type PostDetailPageProps = {
@@ -17,14 +17,13 @@ export async function generateStaticParams() {
 
 async function PostDetailContent({ params }: PostDetailPageProps) {
   const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  const pageData = await getPostPageData(slug);
 
-  if (!post) notFound();
+  if (!pageData) notFound();
 
-  const posts = await getPosts();
-  const relatedPosts = getRelatedPosts(post, posts);
-
-  return <PostArticle post={post} relatedPosts={relatedPosts} />;
+  return (
+    <PostArticle post={pageData.post} relatedPosts={pageData.relatedPosts} />
+  );
 }
 
 export default function PostDetailPage(props: PostDetailPageProps) {
