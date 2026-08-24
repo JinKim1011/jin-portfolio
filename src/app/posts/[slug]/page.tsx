@@ -36,7 +36,7 @@ async function PostDetailContent({ params }: PostDetailPageProps) {
 
   return (
     <article className="flex flex-col gap-14 pt-16 pb-14 font-sans">
-      <PostHeader {...post} />
+      <PostHeader post={post} />
       <RevealEffect delay={0.1}>
         <CoverImage
           src={post.cover ?? null}
