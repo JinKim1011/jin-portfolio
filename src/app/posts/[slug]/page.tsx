@@ -1,12 +1,7 @@
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { getPostBySlug, getPosts, getRelatedPosts } from "@/lib/posts";
-import PostBlockView from "@/components/post-block-view";
-import RevealEffect from "@/components/reveal-effect";
-import PostHeader from "@/components/post-header";
-import PostFooter from "@/components/post-footer";
-import PostCover from "@/components/post-cover";
-import PostBody from "@/components/post-body";
+import PostArticle from "@/components/post-article";
 
 type PostDetailPageProps = {
   params: Promise<{ slug: string }>;
@@ -29,17 +24,7 @@ async function PostDetailContent({ params }: PostDetailPageProps) {
   const posts = await getPosts();
   const relatedPosts = getRelatedPosts(post, posts);
 
-  return (
-    <article className="flex flex-col gap-14 pt-16 pb-14 font-sans">
-      <PostHeader post={post} />
-
-      <PostCover post={post} />
-
-      <PostBody post={post} />
-
-      <PostFooter relatedPosts={relatedPosts} />
-    </article>
-  );
+  return <PostArticle post={post} relatedPosts={relatedPosts} />;
 }
 
 export default function PostDetailPage(props: PostDetailPageProps) {
