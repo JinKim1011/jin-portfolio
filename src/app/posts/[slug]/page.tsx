@@ -10,6 +10,7 @@ import {
   getCategoryVariant,
 } from "@/lib/utils/category-badge-variants";
 import { ShareButton } from "@/components/share-button";
+import RevealEffect from "@/components/reveal-effect";
 
 type PostDetailPageProps = {
   params: Promise<{ slug: string }>;
@@ -87,19 +88,21 @@ async function PostDetailContent({ params }: PostDetailPageProps) {
           </time>
         </div>
       </header>
-      <CoverImage
-        src={post.cover ?? null}
-        alt={post.title}
-        width={640}
-        height={360}
-        sizes={coverSizes}
-        className={coverStyle}
-      />
-      <div>
+      <RevealEffect delay={0.3}>
+        <CoverImage
+          src={post.cover ?? null}
+          alt={post.title}
+          width={640}
+          height={360}
+          sizes={coverSizes}
+          className={coverStyle}
+        />
+      </RevealEffect>
+      <RevealEffect delay={0.6}>
         {post.blocks.map((block) => (
           <PostBlockView key={block.id} block={block} />
         ))}
-      </div>
+      </RevealEffect>
       <div className={actionsWrapper}>
         <ShareButton />
       </div>
