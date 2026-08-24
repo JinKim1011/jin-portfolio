@@ -6,6 +6,7 @@ import RevealEffect from "@/components/reveal-effect";
 import PostHeader from "@/components/post-header";
 import PostFooter from "@/components/post-footer";
 import PostCover from "@/components/post-cover";
+import PostBody from "@/components/post-body";
 
 type PostDetailPageProps = {
   params: Promise<{ slug: string }>;
@@ -33,11 +34,8 @@ async function PostDetailContent({ params }: PostDetailPageProps) {
       <PostHeader post={post} />
 
       <PostCover post={post} />
-      <RevealEffect delay={0.2}>
-        {post.blocks.map((block) => (
-          <PostBlockView key={block.id} block={block} />
-        ))}
-      </RevealEffect>
+
+      <PostBody post={post} />
 
       <PostFooter relatedPosts={relatedPosts} />
     </article>
