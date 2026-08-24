@@ -11,6 +11,7 @@ import {
 } from "@/lib/utils/category-badge-variants";
 import { ShareButton } from "@/components/share-button";
 import RevealEffect from "@/components/reveal-effect";
+import PostList from "@/components/post-list";
 
 type PostDetailPageProps = {
   params: Promise<{ slug: string }>;
@@ -38,7 +39,7 @@ const metaWrapper = "flex items-center gap-2";
 const timeClasses = "text-label text-content-muted";
 const separatorClasses = "text-label-small text-content-muted/30";
 
-const actionsWrapper = "flex";
+const footerWrapper = "flex flex-col gap-14";
 
 async function PostDetailContent({ params }: PostDetailPageProps) {
   const { slug } = await params;
@@ -112,7 +113,7 @@ async function PostDetailContent({ params }: PostDetailPageProps) {
           <PostBlockView key={block.id} block={block} />
         ))}
       </RevealEffect>
-      <div className={actionsWrapper}>
+      <div className={footerWrapper}>
         <ShareButton />
         <div className="border-stroke flex w-full flex-col border-t-[0.5px] pt-14">
           <h2 className="text-body-strong text-content-default pb-2.5">
