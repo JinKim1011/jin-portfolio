@@ -118,3 +118,14 @@ export function getRelatedPosts(post: PostDetail, posts: Post[]) {
       ),
   );
 }
+
+export async function getPostPageData(slug: string) {
+  const post = await getPostBySlug(slug);
+
+  if (!post) return null;
+
+  const posts = await getPosts();
+  const relatedPosts = getRelatedPosts(post, posts);
+
+  return { post, relatedPosts };
+}
