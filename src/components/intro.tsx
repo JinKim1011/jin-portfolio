@@ -21,7 +21,7 @@ export default function Intro() {
         </p>
       </RevealEffect>
 
-      <RevealEffect delay={0.25}>
+      <RevealEffect delay={0.08}>
         <p>
           <span>DESIGN ONLY HAS VALUE ONCE IT </span>{" "}
           <SocialLink
@@ -34,7 +34,7 @@ export default function Intro() {
         </p>
       </RevealEffect>
 
-      <RevealEffect delay={0.35}>
+      <RevealEffect delay={0.16}>
         <p>
           <span>AND PRODUCTION IS WHERE EVERY DOT </span>
           <SocialLink
