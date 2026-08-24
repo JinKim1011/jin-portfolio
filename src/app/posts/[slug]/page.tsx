@@ -115,8 +115,8 @@ async function PostDetailContent({ params }: PostDetailPageProps) {
       </RevealEffect>
       <div className={footerWrapper}>
         <ShareButton />
-        <div className="border-stroke flex w-full flex-col border-t-[0.5px] pt-14">
-          <h2 className="text-body-strong text-content-default pb-2.5">
+        <div className="border-stroke flex w-full flex-col border-t-[0.5px]">
+          <h2 className="text-label text-content-default pt-5 pb-2.5">
             RELATED POSTS
           </h2>
           <PostList posts={relatedPosts} view="list" />
