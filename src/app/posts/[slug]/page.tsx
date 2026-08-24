@@ -46,6 +46,15 @@ async function PostDetailContent({ params }: PostDetailPageProps) {
 
   if (!post) notFound();
 
+  const posts = await getPosts();
+  const relatedPosts = posts.filter(
+    (relatedPost) =>
+      relatedPost.id !== post.id &&
+      relatedPost.categories.some((category) =>
+        post.categories.includes(category),
+      ),
+  );
+
   return (
     <article className="flex flex-col gap-14 py-16 font-sans">
       <header className={headerWrapper}>
@@ -105,6 +114,12 @@ async function PostDetailContent({ params }: PostDetailPageProps) {
       </RevealEffect>
       <div className={actionsWrapper}>
         <ShareButton />
+        <div className="border-stroke flex w-full flex-col border-t-[0.5px] pt-14">
+          <h2 className="text-body-strong text-content-default pb-2.5">
+            RELATED POSTS
+          </h2>
+          <PostList posts={relatedPosts} view="list" />
+        </div>
       </div>
     </article>
   );
