@@ -3,9 +3,7 @@ import { Suspense } from "react";
 import { getPostBySlug, getPosts, getRelatedPosts } from "@/lib/posts";
 import CoverImage from "@/components/ui/cover-image";
 import PostBlockView from "@/components/post-block-view";
-import { ShareButton } from "@/components/share-button";
 import RevealEffect from "@/components/reveal-effect";
-import PostList from "@/components/post-list";
 import PostHeader from "@/components/post-header";
 import PostFooter from "@/components/post-footer";
 
@@ -24,8 +22,6 @@ export async function generateStaticParams() {
 const coverStyle = "shrink-0 w-full aspect-video object-cover";
 const coverSizes = "(max-width: 768px) 100vw, 50vw";
 
-const footerWrapper = "flex flex-col gap-14";
-
 async function PostDetailContent({ params }: PostDetailPageProps) {
   const { slug } = await params;
   const post = await getPostBySlug(slug);
@@ -38,6 +34,7 @@ async function PostDetailContent({ params }: PostDetailPageProps) {
   return (
     <article className="flex flex-col gap-14 pt-16 pb-14 font-sans">
       <PostHeader post={post} />
+
       <RevealEffect delay={0.1}>
         <CoverImage
           src={post.cover ?? null}
@@ -48,7 +45,7 @@ async function PostDetailContent({ params }: PostDetailPageProps) {
           className={coverStyle}
         />
       </RevealEffect>
-      <RevealEffect delay={0.6}>
+      <RevealEffect delay={0.2}>
         {post.blocks.map((block) => (
           <PostBlockView key={block.id} block={block} />
         ))}
