@@ -10,7 +10,7 @@ type PostHeaderProps = {
   post: PostDetail;
 };
 
-const headerWrapper = "flex flex-col gap-2.5 md:gap-1.5";
+const headerWrapper = "flex flex-col gap-2.5 md:gap-1.5 pt-16";
 const titleWrapper = "flex flex-col gap-1 md:flex-row md:gap-2";
 const titleClasses = "inline-block text-heading-strong text-content-default";
 const subTitleClasses =
