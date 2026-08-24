@@ -12,7 +12,7 @@ type PostListProps = {
   view: PostView;
 };
 
-const postLayout = cva("pb-10", {
+const postLayout = cva("", {
   variants: {
     view: {
       list: "flex flex-col gap-0",

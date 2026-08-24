@@ -108,3 +108,24 @@ export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
 
   return { ...post, blocks: groupedBlocks };
 }
+
+function getRelatedPosts(post: PostDetail, posts: Post[]) {
+  return posts.filter(
+    (relatedPost) =>
+      relatedPost.id !== post.id &&
+      relatedPost.categories.some((category) =>
+        post.categories.includes(category),
+      ),
+  );
+}
+
+export async function getPostPageData(slug: string) {
+  const post = await getPostBySlug(slug);
+
+  if (!post) return null;
+
+  const posts = await getPosts();
+  const relatedPosts = getRelatedPosts(post, posts);
+
+  return { post, relatedPosts };
+}

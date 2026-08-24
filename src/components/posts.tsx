@@ -22,7 +22,7 @@ export default function Posts({ posts, tabs }: PostsProps) {
   const [view, setView] = useState<PostView>("list");
 
   return (
-    <div>
+    <div className="pb-16">
       <CategoryNav
         tabs={tabs}
         active={active}
