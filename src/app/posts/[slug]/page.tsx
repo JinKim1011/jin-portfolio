@@ -6,6 +6,7 @@ import PostBlockView from "@/components/post-block-view";
 import { ShareButton } from "@/components/share-button";
 import RevealEffect from "@/components/reveal-effect";
 import PostList from "@/components/post-list";
+import PostHeader from "@/components/post-header";
 
 type PostDetailPageProps = {
   params: Promise<{ slug: string }>;
