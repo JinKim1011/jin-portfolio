@@ -6,6 +6,7 @@ import PostBlockView from "@/components/post-block-view";
 import RevealEffect from "@/components/reveal-effect";
 import PostHeader from "@/components/post-header";
 import PostFooter from "@/components/post-footer";
+import PostCover from "@/components/post-cover";
 
 type PostDetailPageProps = {
   params: Promise<{ slug: string }>;
@@ -35,16 +36,7 @@ async function PostDetailContent({ params }: PostDetailPageProps) {
     <article className="flex flex-col gap-14 pt-16 pb-14 font-sans">
       <PostHeader post={post} />
 
-      <RevealEffect delay={0.1}>
-        <CoverImage
-          src={post.cover ?? null}
-          alt={post.title}
-          width={640}
-          height={360}
-          sizes={coverSizes}
-          className={coverStyle}
-        />
-      </RevealEffect>
+      <PostCover post={post} />
       <RevealEffect delay={0.2}>
         {post.blocks.map((block) => (
           <PostBlockView key={block.id} block={block} />
