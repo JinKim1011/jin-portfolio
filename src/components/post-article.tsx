@@ -11,7 +11,7 @@ type PostArticleProps = {
 
 export default function PostArticle({ post, relatedPosts }: PostArticleProps) {
   return (
-    <article className="flex flex-col gap-14 pt-16 pb-14 font-sans">
+    <article className="flex flex-col gap-14 font-sans">
       <PostHeader post={post} />
 
       <PostCover post={post} />
