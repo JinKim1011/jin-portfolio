@@ -66,12 +66,22 @@ export default function NavLinkItem({
       })}
     >
       {isBadge && <span className={cn("mr-1", badgeClassName)}>•</span>}
-      <ScrambleText
-        text={label}
-        className={cn(hideLabelOnSmall && "hidden sm:inline")}
-        playOnMount={false}
-        isReplay={isReplay}
-      />
+      <span
+        className={cn(
+          "relative inline-block",
+          hideLabelOnSmall && "hidden sm:inline-block",
+        )}
+      >
+        <span className="invisible">{label}</span>
+
+        <ScrambleText
+          text={label}
+          className="absolute inset-0"
+          playOnMount={false}
+          isReplay={isReplay}
+          overflow={true}
+        />
+      </span>
     </Link>
   );
 }
