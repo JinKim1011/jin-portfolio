@@ -7,7 +7,8 @@ type PostFooterProps = {
   relatedPosts: Post[];
 };
 
-const footerWrapper = "flex flex-col gap-14";
+const footerWrapper = "flex flex-col pb-16";
+const actionWrapper = "flex gap-2 pb-16";
 const relatedPost = "border-stroke flex w-full flex-col border-t-[0.5px]";
 const relatedPostTitle =
   "text-label text-content-default w-fit pt-5 pb-2.5 select-none";
