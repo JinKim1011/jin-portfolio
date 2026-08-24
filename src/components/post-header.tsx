@@ -50,7 +50,7 @@ export default function PostHeader({ post }: PostHeaderProps) {
           />
         ))}
         <span className={separatorClasses}>/</span>
-        <time className={timeClasses}>
+        <time className={timeClasses} dateTime={post.publishedAt}>
           {new Date(post.publishedAt)
             .toLocaleDateString("en-US", {
               month: "2-digit",
