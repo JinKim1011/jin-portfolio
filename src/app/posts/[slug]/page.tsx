@@ -57,7 +57,7 @@ async function PostDetailContent({ params }: PostDetailPageProps) {
   );
 
   return (
-    <article className="flex flex-col gap-14 py-16 font-sans">
+    <article className="flex flex-col gap-14 pt-16 pb-14 font-sans">
       <header className={headerWrapper}>
         <div className={titleWrapper}>
           <ScrambleText
