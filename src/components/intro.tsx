@@ -4,6 +4,7 @@ import SocialLink from "./ui/social-link";
 import { LinkedInLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 import { MailIcon } from "./icons";
 import RevealEffect from "./reveal-effect";
+import { contact } from "@/lib/constants/contact";
 
 export default function Intro() {
   return (
@@ -37,12 +38,7 @@ export default function Intro() {
       <RevealEffect delay={0.16}>
         <p>
           <span>AND PRODUCTION IS WHERE EVERY DOT </span>
-          <SocialLink
-            href="mailto:jinsu.kim1011@gmail.com?subject=Let%27s%20connect&body=Hi%2C%0A%0AI%20came%20across%20your%20portfolio%20and%20I%27d%20love%20to%20connect.%0A%0A"
-            label="CONNECTS"
-            rightIcon={MailIcon}
-          />
-          .
+          <SocialLink href={contact} label="CONNECTS" rightIcon={MailIcon} />.
         </p>
       </RevealEffect>
     </div>
