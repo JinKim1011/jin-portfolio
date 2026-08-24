@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { getPostBySlug, getPosts, getRelatedPosts } from "@/lib/posts";
-import CoverImage from "@/components/ui/cover-image";
 import PostBlockView from "@/components/post-block-view";
 import RevealEffect from "@/components/reveal-effect";
 import PostHeader from "@/components/post-header";
@@ -19,9 +18,6 @@ export async function generateStaticParams() {
     .filter((post) => !post.external)
     .map((post) => ({ slug: post.slug }));
 }
-
-const coverStyle = "shrink-0 w-full aspect-video object-cover";
-const coverSizes = "(max-width: 768px) 100vw, 50vw";
 
 async function PostDetailContent({ params }: PostDetailPageProps) {
   const { slug } = await params;
