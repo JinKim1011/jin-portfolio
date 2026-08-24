@@ -7,6 +7,7 @@ import { ShareButton } from "@/components/share-button";
 import RevealEffect from "@/components/reveal-effect";
 import PostList from "@/components/post-list";
 import PostHeader from "@/components/post-header";
+import PostFooter from "@/components/post-footer";
 
 type PostDetailPageProps = {
   params: Promise<{ slug: string }>;
@@ -52,15 +53,8 @@ async function PostDetailContent({ params }: PostDetailPageProps) {
           <PostBlockView key={block.id} block={block} />
         ))}
       </RevealEffect>
-      <div className={footerWrapper}>
-        <ShareButton />
-        <div className="border-stroke flex w-full flex-col border-t-[0.5px]">
-          <h2 className="text-label text-content-default pt-5 pb-2.5">
-            RELATED POSTS
-          </h2>
-          <PostList posts={relatedPosts} view="list" />
-        </div>
-      </div>
+
+      <PostFooter relatedPosts={relatedPosts} />
     </article>
   );
 }
