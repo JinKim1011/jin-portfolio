@@ -22,17 +22,24 @@ export const renderRichText = (
       if (underline)
         text = `<u class="${postInlineUnderlineClassName}">${text}</u>`;
       if (t.href) {
-        const external = t.href.startsWith("http");
+        const href = t.href.trim();
+        const isSafeHref =
+          href.startsWith("/") ||
+          href.startsWith("#") ||
+          href.startsWith("mailto:") ||
+          href.startsWith("tel:") ||
+          href.startsWith("http://") ||
+          href.startsWith("https://");
 
-        text = `
-        <a 
-            href="${escapeAttr(t.href)}"
-            class="${postInlineLinkClassName}"
-            ${external ? ' target="_blank" rel="noopener noreferrer"' : ""}
-        >   
-            ${text}
-        </a>
-        `;
+        if (isSafeHref) {
+          const external =
+            href.startsWith("http://") || href.startsWith("https://");
+          const extraAttrs = external
+            ? ' target="_blank" rel="noopener noreferrer"'
+            : "";
+
+          text = `<a href="${escapeAttr(href)}" class="${postInlineLinkClassName}"${extraAttrs}>${text}</a>`;
+        }
       }
       return text;
     })
