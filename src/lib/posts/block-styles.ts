@@ -4,9 +4,9 @@ export const postBlockClassName = cva("", {
   variants: {
     type: {
       heading1: "text-heading-strong text-content-default",
-      heading2: "text-heading mt-14 mb-5 text-content-default",
+      heading2: "text-heading mt-16 mb-5 text-content-default",
       heading3: "text-body-strong mb-5 text-content-default",
-      paragraph: "text-body mb-3 text-content-default/70",
+      paragraph: "text-body mb-5 text-content-default/70",
       listItem: "text-body text-content-default/70",
       quote: "text-body text-content-default/70",
     },
