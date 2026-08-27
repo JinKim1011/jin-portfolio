@@ -12,17 +12,20 @@ type ImageBlockProps = {
   caption: string;
 };
 
-const imageStyle = cva("mb-5 h-auto w-full shrink-0 object-cover", {
-  variants: {
-    loading: {
-      true: "bg-surface-muted",
-      false: "bg-none",
+const imageStyle = cva(
+  "mb-5 h-auto w-full shrink-0 object-cover cursor-zoom-in",
+  {
+    variants: {
+      loading: {
+        true: "bg-surface-muted",
+        false: "bg-none",
+      },
+    },
+    defaultVariants: {
+      loading: true,
     },
   },
-  defaultVariants: {
-    loading: true,
-  },
-});
+);
 
 export function ImageBlock({ src, alt, caption }: ImageBlockProps) {
   const [failed, setFailed] = useState(false);
