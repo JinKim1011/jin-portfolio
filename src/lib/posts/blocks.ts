@@ -2,13 +2,11 @@ import type { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoin
 import type { PostBlock } from "@/types/post";
 import { postBlockClassName } from "@/lib/posts/block-styles";
 import { highlightCode } from "../shiki";
+import { renderRichText } from "./rich-text";
 
 export async function renderBlock(
   block: BlockObjectResponse,
 ): Promise<PostBlock | null> {
-  const toText = (rich: { plain_text: string }[] | undefined): string =>
-    (rich ?? []).map((t) => escapeHtml(t.plain_text)).join("");
-
   const withClassName = (tag: string, className: string, content: string) =>
     `<${tag} class="${className}">${content}</${tag}>`;
 
@@ -20,7 +18,7 @@ export async function renderBlock(
         html: withClassName(
           "p",
           postBlockClassName({ type: "paragraph" }),
-          toText(block.paragraph.rich_text),
+          renderRichText(block.paragraph.rich_text),
         ),
       };
     case "heading_1":
@@ -30,7 +28,7 @@ export async function renderBlock(
         html: withClassName(
           "h1",
           postBlockClassName({ type: "heading1" }),
-          toText(block.heading_1.rich_text),
+          renderRichText(block.heading_1.rich_text),
         ),
       };
     case "heading_2":
@@ -40,7 +38,7 @@ export async function renderBlock(
         html: withClassName(
           "h2",
           postBlockClassName({ type: "heading2" }),
-          toText(block.heading_2.rich_text),
+          renderRichText(block.heading_2.rich_text),
         ),
       };
     case "heading_3":
@@ -50,7 +48,7 @@ export async function renderBlock(
         html: withClassName(
           "h3",
           postBlockClassName({ type: "heading3" }),
-          toText(block.heading_3.rich_text),
+          renderRichText(block.heading_3.rich_text),
         ),
       };
     case "bulleted_list_item":
@@ -63,7 +61,7 @@ export async function renderBlock(
             type: "listItem",
             listType: block.type,
           }),
-          toText(block.bulleted_list_item.rich_text),
+          renderRichText(block.bulleted_list_item.rich_text),
         ),
       };
     case "numbered_list_item":
@@ -76,7 +74,7 @@ export async function renderBlock(
             type: "listItem",
             listType: block.type,
           }),
-          toText(block.numbered_list_item.rich_text),
+          renderRichText(block.numbered_list_item.rich_text),
         ),
       };
     case "quote":
@@ -86,7 +84,7 @@ export async function renderBlock(
         html: withClassName(
           "blockquote",
           postBlockClassName({ type: "quote" }),
-          toText(block.quote.rich_text),
+          renderRichText(block.quote.rich_text),
         ),
       };
     case "code": {
@@ -106,8 +104,4 @@ export async function renderBlock(
     default:
       return null;
   }
-}
-
-export function escapeHtml(s: string): string {
-  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }

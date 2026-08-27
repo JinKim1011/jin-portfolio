@@ -12,7 +12,7 @@ const iconAnimvariants = {
 };
 
 const wrapperClasses =
-  "group press-effect-translateY hover:bg-surface-interactive-hoverStrong cursor-pointer bg-transparent p-1";
+  "group press-effect-scale cursor-pointer p-1 bg-surface-muted/20 backdrop-blur-[1px]";
 
 const iconClasses =
   "size-4 text-content-interactive-muted group-hover:text-content-interactive-hover group-active:text-content-interactive-active";
