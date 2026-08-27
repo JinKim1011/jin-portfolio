@@ -2,13 +2,11 @@ import type { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoin
 import type { PostBlock } from "@/types/post";
 import { postBlockClassName } from "@/lib/posts/block-styles";
 import { highlightCode } from "../shiki";
+import { renderRichText } from "./rich-text";
 
 export async function renderBlock(
   block: BlockObjectResponse,
 ): Promise<PostBlock | null> {
-  const toText = (rich: { plain_text: string }[] | undefined): string =>
-    (rich ?? []).map((t) => escapeHtml(t.plain_text)).join("");
-
   const withClassName = (tag: string, className: string, content: string) =>
     `<${tag} class="${className}">${content}</${tag}>`;
 
@@ -106,8 +104,4 @@ export async function renderBlock(
     default:
       return null;
   }
-}
-
-export function escapeHtml(s: string): string {
-  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
