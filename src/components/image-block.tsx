@@ -11,7 +11,7 @@ type ImageBlockProps = {
   caption: string;
 };
 
-const imageStyle = cva("mb-3 h-auto w-full shrink-0 object-cover", {
+const imageStyle = cva("mb-5 h-auto w-full shrink-0 object-cover", {
   variants: {
     loading: {
       true: "bg-surface-muted",
