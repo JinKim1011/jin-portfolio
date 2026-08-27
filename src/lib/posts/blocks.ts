@@ -20,7 +20,7 @@ export async function renderBlock(
         html: withClassName(
           "p",
           postBlockClassName({ type: "paragraph" }),
-          toText(block.paragraph.rich_text),
+          renderRichText(block.paragraph.rich_text),
         ),
       };
     case "heading_1":
@@ -30,7 +30,7 @@ export async function renderBlock(
         html: withClassName(
           "h1",
           postBlockClassName({ type: "heading1" }),
-          toText(block.heading_1.rich_text),
+          renderRichText(block.heading_1.rich_text),
         ),
       };
     case "heading_2":
@@ -40,7 +40,7 @@ export async function renderBlock(
         html: withClassName(
           "h2",
           postBlockClassName({ type: "heading2" }),
-          toText(block.heading_2.rich_text),
+          renderRichText(block.heading_2.rich_text),
         ),
       };
     case "heading_3":
@@ -50,7 +50,7 @@ export async function renderBlock(
         html: withClassName(
           "h3",
           postBlockClassName({ type: "heading3" }),
-          toText(block.heading_3.rich_text),
+          renderRichText(block.heading_3.rich_text),
         ),
       };
     case "bulleted_list_item":
@@ -63,7 +63,7 @@ export async function renderBlock(
             type: "listItem",
             listType: block.type,
           }),
-          toText(block.bulleted_list_item.rich_text),
+          renderRichText(block.bulleted_list_item.rich_text),
         ),
       };
     case "numbered_list_item":
@@ -76,7 +76,7 @@ export async function renderBlock(
             type: "listItem",
             listType: block.type,
           }),
-          toText(block.numbered_list_item.rich_text),
+          renderRichText(block.numbered_list_item.rich_text),
         ),
       };
     case "quote":
@@ -86,7 +86,7 @@ export async function renderBlock(
         html: withClassName(
           "blockquote",
           postBlockClassName({ type: "quote" }),
-          toText(block.quote.rich_text),
+          renderRichText(block.quote.rich_text),
         ),
       };
     case "code": {
