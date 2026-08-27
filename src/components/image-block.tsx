@@ -30,6 +30,7 @@ const imageStyle = cva(
 export function ImageBlock({ src, alt, caption }: ImageBlockProps) {
   const [failed, setFailed] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [zoomOpen, setZoomOpen] = useState(false);
 
   return (
     <figure className="relative">
