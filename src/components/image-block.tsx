@@ -4,6 +4,7 @@ import Image from "next/image";
 import { ImageIcon } from "./icons";
 import { useState } from "react";
 import { cva } from "class-variance-authority";
+import ImageZoomOverlay from "./image-zoom-overlay";
 
 type ImageBlockProps = {
   src: string;
@@ -38,19 +39,28 @@ export function ImageBlock({ src, alt, caption }: ImageBlockProps) {
           <ImageIcon aria-hidden className="size-4" />
         </div>
       ) : (
-        <Image
-          src={src}
-          alt={alt}
-          width={640}
-          height={360}
-          sizes="(max-width: 768px) 100vw, 50vw"
-          className={imageStyle({ loading })}
-          onError={() => {
-            console.warn("Post image failed to load", { alt, src });
-            setFailed(true);
-          }}
-          onLoad={() => setLoading(false)}
-        />
+        <>
+          <Image
+            src={src}
+            alt={alt}
+            width={640}
+            height={360}
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className={imageStyle({ loading })}
+            onError={() => {
+              console.warn("Post image failed to load", { alt, src });
+              setFailed(true);
+            }}
+            onLoad={() => setLoading(false)}
+            onClick={() => setZoomOpen(true)}
+          />
+          <ImageZoomOverlay
+            src={src}
+            alt={alt}
+            open={zoomOpen}
+            onClose={() => setZoomOpen(false)}
+          />
+        </>
       )}
       {caption ? <figcaption className="mt-1">{caption}</figcaption> : null}
     </figure>
