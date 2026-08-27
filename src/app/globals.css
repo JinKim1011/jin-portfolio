@@ -108,7 +108,7 @@ html {
   --color-surface-muted: var(--base-neutral-50);
   --color-surface-overlay: color-mix(
     in oklch,
-    var(--base-neutral-900) 16%,
+    var(--base-neutral-900) 12%,
     transparent
   );
 
