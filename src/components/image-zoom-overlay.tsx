@@ -135,7 +135,7 @@ export default function ImageZoomOverlay({
               contentClass="!h-screen !w-screen flex items-center justify-center"
             >
               <motion.div
-                className="inline-flex"
+                className="inline-flex cursor-grab active:cursor-grabbing"
                 onClick={(e) => e.stopPropagation()}
                 initial={{ opacity: 0, scale: 0.82 }}
                 animate={{ opacity: 1, scale: 1 }}
