@@ -16,6 +16,10 @@ const relatedPostTitle =
   "text-label text-content-default w-fit pt-5 pb-2.5 select-none";
 
 export default function PostFooter({ relatedPosts }: PostFooterProps) {
+  const uniqueCategories = [
+    ...new Set(relatedPosts.flatMap((post) => post.categories)),
+  ];
+
   return (
     <RevealEffect className={footerWrapper} delay={0.3}>
       <div className={actionWrapper}>
@@ -23,7 +27,9 @@ export default function PostFooter({ relatedPosts }: PostFooterProps) {
         <Button label="EMAIL" href={contact} />
       </div>
       <div className={relatedPost}>
-        <h2 className={relatedPostTitle}>RELATED POSTS</h2>
+        <h2 className={relatedPostTitle}>
+          MORE {uniqueCategories.join(", ")} POSTS
+        </h2>
         <PostList posts={relatedPosts} view="list" />
       </div>
     </RevealEffect>
