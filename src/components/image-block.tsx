@@ -59,6 +59,13 @@ export function ImageBlock({ src, alt, caption }: ImageBlockProps) {
             onClick={() => setZoomOpen(true)}
             role="button"
             aria-haspopup="dialog"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                setZoomOpen(true);
+              }
+            }}
           />
           <ImageZoomOverlay
             src={src}
