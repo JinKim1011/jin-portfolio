@@ -57,6 +57,8 @@ export function ImageBlock({ src, alt, caption }: ImageBlockProps) {
             }}
             onLoad={() => setLoading(false)}
             onClick={() => setZoomOpen(true)}
+            role="button"
+            aria-haspopup="dialog"
           />
           <ImageZoomOverlay
             src={src}
