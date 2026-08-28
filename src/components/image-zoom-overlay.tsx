@@ -11,6 +11,7 @@ import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 import { cva } from "class-variance-authority";
 import { easings } from "@/lib/utils/motion-easing";
+import ImageOverlayGuide from "./image-overlay-guide";
 
 type ImageZoomOverlayProps = {
   src: string;
@@ -153,27 +154,7 @@ export default function ImageZoomOverlay({
               </motion.div>
             </TransformComponent>
           </TransformWrapper>
-          <div
-            className={keyboardGuideWrapper}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="flex items-center">
-              <span className="mr-2">FIT TO SCREEN</span>
-              <span className={keyboardStyle}>0</span>
-            </div>
-            <span className={keyboardSeparator}>|</span>
-            <div className="flex items-center">
-              <span className="mr-2">ZOOM IN·OUT</span>
-              <span className={keyboardStyle}>+</span>
-              {","}
-              <span className={keyboardStyle}>-</span>
-            </div>
-            <span className={keyboardSeparator}>|</span>
-            <div className="flex items-center">
-              <span className="mr-2">CLOSE</span>
-              <span className={keyboardStyle}>ESC</span>
-            </div>
-          </div>
+          <ImageOverlayGuide />
         </motion.div>
       ) : null}
     </AnimatePresence>,
