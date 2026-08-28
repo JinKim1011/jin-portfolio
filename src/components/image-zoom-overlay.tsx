@@ -125,7 +125,7 @@ export default function ImageZoomOverlay({
             minScale={1}
             maxScale={5}
             centerOnInit
-            wheel={{ step: 0.02, wheelDisabled: true }}
+            wheel={{ disabled: true }}
             doubleClick={{ mode: "toggle", step: 2 }}
             panning={{ velocityDisabled: true }}
           >
