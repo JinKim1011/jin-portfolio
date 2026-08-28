@@ -153,7 +153,10 @@ export default function ImageZoomOverlay({
               </motion.div>
             </TransformComponent>
           </TransformWrapper>
-          <div className={keyboardGuideWrapper}>
+          <div
+            className={keyboardGuideWrapper}
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="flex items-center">
               <span className="mr-2">FIT TO SCREEN</span>
               <span className={keyboardStyle}>0</span>
