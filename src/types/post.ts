@@ -47,3 +47,9 @@ export interface ImageBlock {
   alt: string;
   caption: string;
 }
+
+export interface CalloutBlock {
+  id: string;
+  type: "callout";
+  html: string;
+}
