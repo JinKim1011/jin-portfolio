@@ -1,10 +1,10 @@
 import { TipIcon } from "./icons";
 
-type CallouyBlockProps = {
+type CalloutBlockProps = {
   html: string;
 };
 
-export default function CalloutBlock({ html }: CallouyBlockProps) {
+export default function CalloutBlock({ html }: CalloutBlockProps) {
   return (
     <div className="border-stroke flex flex-col gap-3 border-t-[0.5] border-b-[0.5px] py-8">
       <div className="text-content-feedback-warning flex items-center gap-1.5">
