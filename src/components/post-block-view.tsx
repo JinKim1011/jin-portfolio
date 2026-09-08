@@ -1,6 +1,7 @@
 import type { PostBlock } from "@/types/post";
 import { ImageBlock } from "./image-block";
 import { CodeBlock } from "./code-block";
+import CalloutBlock from "./callout-block";
 
 export default function PostBlockView({ block }: { block: PostBlock }) {
   switch (block.type) {
@@ -10,6 +11,8 @@ export default function PostBlockView({ block }: { block: PostBlock }) {
       );
     case "code":
       return <CodeBlock html={block.highlightedHtml} raw={block.raw} />;
+    case "callout":
+      return <CalloutBlock html={block.html} />;
     default:
       return <div dangerouslySetInnerHTML={{ __html: block.html }} />;
   }

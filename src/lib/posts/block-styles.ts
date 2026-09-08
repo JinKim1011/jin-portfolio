@@ -9,6 +9,7 @@ export const postBlockClassName = cva("", {
       paragraph: "text-body mb-5 text-content-default/70",
       listItem: "text-body text-content-default/70",
       quote: "text-body text-content-default/70",
+      callout: "text-body text-content-default/70",
     },
     listType: {
       bulleted_list_item: "marker:text-content-default/70",

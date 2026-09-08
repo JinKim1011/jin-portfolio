@@ -12,7 +12,7 @@ export interface Post {
   externalUrl: string | null;
 }
 
-export type PostBlock = StaticBlock | CodeBlock | ImageBlock;
+export type PostBlock = StaticBlock | CodeBlock | ImageBlock | CalloutBlock;
 
 export interface PostDetail extends Post {
   blocks: PostBlock[];
@@ -46,4 +46,10 @@ export interface ImageBlock {
   src: string;
   alt: string;
   caption: string;
+}
+
+export interface CalloutBlock {
+  id: string;
+  type: "callout";
+  html: string;
 }

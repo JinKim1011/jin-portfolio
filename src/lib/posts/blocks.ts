@@ -101,6 +101,17 @@ export async function renderBlock(
       const caption = (media.caption ?? []).map((t) => t.plain_text).join("");
       return { id: block.id, type: "image", src, caption, alt: caption || "" };
     }
+    case "callout": {
+      return {
+        id: block.id,
+        type: block.type,
+        html: withClassName(
+          "div",
+          postBlockClassName({ type: "callout" }),
+          renderRichText(block.callout.rich_text),
+        ),
+      };
+    }
     default:
       return null;
   }
