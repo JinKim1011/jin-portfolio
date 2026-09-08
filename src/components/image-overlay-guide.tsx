@@ -1,5 +1,5 @@
 const keyboardGuideWrapper =
-  "hidden md:flex absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 justify-center gap-3 whitespace-nowrap text-label-small text-content-default bg-surface/50 p-2 backdrop-blur-[1px]";
+  "hidden md:flex absolute bottom-4 left-1/2 z-10 -translate-x-1/2 justify-center gap-3 whitespace-nowrap text-label-small text-content-default bg-surface/50 p-2 backdrop-blur-[1px]";
 
 const keyboardStyle =
   "text-caption bg-surface-muted border-stroke h-fit rounded border-[0.5px] px-1 text-[0.9em]";
