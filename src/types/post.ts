@@ -53,3 +53,10 @@ export interface CalloutBlock {
   type: "callout";
   html: string;
 }
+
+export interface VideoBlock {
+  id: string;
+  type: "video";
+  src: string;
+  caption: string;
+}
