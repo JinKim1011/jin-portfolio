@@ -3,6 +3,7 @@ import type { PostBlock } from "@/types/post";
 import { postBlockClassName } from "@/lib/posts/block-styles";
 import { highlightCode } from "../shiki";
 import { renderRichText } from "./rich-text";
+import { extractYouTubeId } from "@/lib/utils/youtube-id";
 
 export async function renderBlock(
   block: BlockObjectResponse,
@@ -110,6 +111,22 @@ export async function renderBlock(
           postBlockClassName({ type: "callout" }),
           renderRichText(block.callout.rich_text),
         ),
+      };
+    }
+    case "video": {
+      const media = block.video;
+      const url =
+        media.type === "external" ? media.external.url : media.file.url;
+      const caption = (media.caption ?? []).map((t) => t.plain_text).join("");
+      const youtubeId = extractYouTubeId(url);
+
+      if (!youtubeId) return null;
+
+      return {
+        id: block.id,
+        type: "video",
+        src: `https://www.youtube-nocookie.com/embed/${youtubeId}`,
+        caption,
       };
     }
     default:
