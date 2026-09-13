@@ -15,7 +15,7 @@ export default function PostBlockView({ block }: { block: PostBlock }) {
     case "callout":
       return <CalloutBlock html={block.html} />;
     case "video":
-      return <VideoBlock src={block.src} />;
+      return <VideoBlock src={block.src} caption={block.caption} />;
     default:
       return <div dangerouslySetInnerHTML={{ __html: block.html }} />;
   }
