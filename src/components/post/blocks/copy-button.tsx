@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { SquaresIcon, CheckIcon } from "./icons";
+import { SquaresIcon, CheckIcon } from "@/components/icons";
 import { AnimatePresence, motion } from "motion/react";
 import { easings } from "@/lib/utils/motion-easing";
 import { copyText } from "@/lib/utils/copy-text";
@@ -17,7 +17,7 @@ const wrapperClasses =
 const iconClasses =
   "size-4 text-content-interactive-muted group-hover:text-content-interactive-hover group-active:text-content-interactive-active";
 
-export function CopyButton({ raw }: { raw: string }) {
+export default function CopyButton({ raw }: { raw: string }) {
   const [done, setDone] = useState(false);
 
   const handleClick = async () => {
