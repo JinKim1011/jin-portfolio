@@ -3,7 +3,7 @@
 import SocialLink from "@/components/ui/social-link";
 import { LinkedInLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 import { MailIcon } from "@/components/icons";
-import RevealEffect from "@/components/reveal-effect";
+import RevealEffect from "@/components/effects/reveal-effect";
 import { contact } from "@/lib/constants/contact";
 
 export default function Intro() {

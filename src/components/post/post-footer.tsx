@@ -1,5 +1,5 @@
 import { Post } from "@/types/post";
-import RevealEffect from "@/components/reveal-effect";
+import RevealEffect from "@/components/effects/reveal-effect";
 import ShareButton from "@/components/post/share-button";
 import PostList from "@/components/posts/post-list";
 import Button from "@/components/ui/button";

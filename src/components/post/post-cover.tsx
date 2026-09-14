@@ -1,5 +1,5 @@
 import { PostDetail } from "@/types/post";
-import RevealEffect from "@/components/reveal-effect";
+import RevealEffect from "@/components/effects/reveal-effect";
 import CoverImage from "@/components/ui/cover-image";
 
 type PostCoverProps = {

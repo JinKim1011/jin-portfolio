@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils/cn";
-import ScrambleText from "../scramble-text";
+import ScrambleText from "@/components/effects/scramble-text";
 
 type NavLinkItemProps = {
   label: string;

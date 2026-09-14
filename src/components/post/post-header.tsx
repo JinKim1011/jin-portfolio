@@ -3,7 +3,7 @@ import {
   badgeColor,
   getCategoryVariant,
 } from "@/lib/utils/category-badge-variants";
-import ScrambleText from "@/components/scramble-text";
+import ScrambleText from "@/components/effects/scramble-text";
 import NavLinkItem from "@/components/ui/nav-link-item";
 
 type PostHeaderProps = {
