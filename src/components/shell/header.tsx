@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ScrambleText from "../scramble-text";
+import ScrambleText from "@/components/scramble-text";
 
 export default function Header() {
   return (
