@@ -1,4 +1,4 @@
-import { TipIcon } from "./icons";
+import { TipIcon } from "@/components/icons";
 
 type CalloutBlockProps = {
   html: string;
