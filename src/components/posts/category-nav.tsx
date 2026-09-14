@@ -1,8 +1,8 @@
 "use client";
 
 import type { PostView } from "@/types/post";
-import PostViewTypeControl from "./post-view-type-control";
-import NavLinkItem from "./ui/nav-link-item";
+import PostViewTypeControl from "@/components/posts/post-view-type-control";
+import NavLinkItem from "../ui/nav-link-item";
 
 type CategoryNavProps = {
   tabs: string[];
