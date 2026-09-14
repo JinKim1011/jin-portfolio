@@ -75,7 +75,9 @@ export function ImageBlock({ src, alt, caption }: ImageBlockProps) {
           />
         </>
       )}
-      {caption ? <figcaption className="mt-1">{caption}</figcaption> : null}
+      {caption ? (
+        <figcaption className="text-caption mt-1">{caption}</figcaption>
+      ) : null}
     </figure>
   );
 }
