@@ -3,8 +3,8 @@ import {
   badgeColor,
   getCategoryVariant,
 } from "@/lib/utils/category-badge-variants";
-import ScrambleText from "./scramble-text";
-import NavLinkItem from "./ui/nav-link-item";
+import ScrambleText from "@/components/scramble-text";
+import NavLinkItem from "@/components/ui/nav-link-item";
 
 type PostHeaderProps = {
   post: PostDetail;
