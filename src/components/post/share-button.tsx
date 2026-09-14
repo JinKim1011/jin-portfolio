@@ -60,7 +60,7 @@ const buttonCopy = {
   success: "COPIED",
 };
 
-export function ShareButton() {
+export default function ShareButton() {
   const buttonRef = useRef<HTMLButtonElement | null>(null);
   const [done, setDone] = useState(false);
 
