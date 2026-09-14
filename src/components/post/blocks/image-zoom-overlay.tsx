@@ -36,7 +36,7 @@ const imageStyle = cva(
 );
 
 const wrapperStyle =
-  "fixed inset-0 z-50 flex items-center justify-center overflow-hidden overscroll-none touch-none bg-surface-overlay backdrop-blur-[2px]";
+  "fixed inset-0 z-50 flex items-center justify-center overflow-hidden overscroll-none touch-none bg-surface-muted/92 backdrop-blur-[4px]";
 
 export default function ImageZoomOverlay({
   src,
