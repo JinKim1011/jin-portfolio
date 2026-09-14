@@ -1,6 +1,6 @@
 "use client";
 
-import type { IconComponent } from "../icons/icon";
+import type { IconComponent } from "@/components/icons/icon";
 import { cn } from "@/lib/utils/cn";
 
 type SegmentOption = {
