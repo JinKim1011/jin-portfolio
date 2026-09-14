@@ -106,11 +106,6 @@ html {
   /* ---------------- SURFACE ---------------- */
   --color-surface: var(--base-neutral-0);
   --color-surface-muted: var(--base-neutral-50);
-  --color-surface-overlay: color-mix(
-    in oklch,
-    var(--base-neutral-900) 12%,
-    transparent
-  );
 
   --color-surface-interactive: var(--base-neutral-0);
   --color-surface-interactive-hoverWeak: var(--base-neutral-50);
