@@ -1,8 +1,8 @@
 import { Post } from "@/types/post";
-import RevealEffect from "./reveal-effect";
-import { ShareButton } from "./share-button";
-import PostList from "./post-list";
-import Button from "./ui/button";
+import RevealEffect from "@/components/reveal-effect";
+import { ShareButton } from "@/components/share-button";
+import PostList from "@/components/posts/post-list";
+import Button from "@/components/ui/button";
 import { contact } from "@/lib/constants/contact";
 
 type PostFooterProps = {
