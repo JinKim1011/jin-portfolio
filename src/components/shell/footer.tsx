@@ -1,4 +1,4 @@
-import ThemeControl from "./theme-control";
+import ThemeControl from "@/components/shell/theme-control";
 
 export default async function Footer() {
   "use cache";
