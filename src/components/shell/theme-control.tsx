@@ -2,8 +2,8 @@
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import SegmentedControl from "../ui/segmented-control";
-import { LaptopIcon, MoonIcon, SunIcon } from "../icons";
+import SegmentedControl from "@/components/ui/segmented-control";
+import { LaptopIcon, MoonIcon, SunIcon } from "@/components/icons";
 
 type ThemeMode = "light" | "dark" | "system";
 
