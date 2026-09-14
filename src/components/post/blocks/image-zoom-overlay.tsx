@@ -11,7 +11,7 @@ import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 import { cva } from "class-variance-authority";
 import { easings } from "@/lib/utils/motion-easing";
-import ImageOverlayGuide from "./image-overlay-guide";
+import ImageOverlayGuide from "@/components/post/blocks/image-overlay-guide";
 
 type ImageZoomOverlayProps = {
   src: string;
@@ -37,14 +37,6 @@ const imageStyle = cva(
 
 const wrapperStyle =
   "fixed inset-0 z-50 flex items-center justify-center overflow-hidden overscroll-none touch-none bg-surface-overlay backdrop-blur-[2px]";
-
-const keyboardGuideWrapper =
-  "absolute bottom-4 left-1/2 z-10 flex -translate-x-1/2 justify-center gap-3 whitespace-nowrap text-label-small text-content-default bg-surface/50 p-2 backdrop-blur-[1px]";
-
-const keyboardStyle =
-  "text-caption bg-surface-muted border-stroke h-fit rounded border-[0.5px] px-1 text-[0.9em]";
-
-const keyboardSeparator = "text-label-small text-content-muted/50";
 
 export default function ImageZoomOverlay({
   src,
