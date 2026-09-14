@@ -1,6 +1,6 @@
 import { PostDetail } from "@/types/post";
-import RevealEffect from "./reveal-effect";
-import PostBlockView from "./post-block-view";
+import RevealEffect from "@/components/reveal-effect";
+import PostBlockView from "@/components/post/blocks/post-block-view";
 
 type PostBodyProps = {
   post: PostDetail;
