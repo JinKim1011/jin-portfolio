@@ -1,11 +1,11 @@
-import { CopyButton } from "./copy-button";
+import CopyButton from "@/components/post/blocks/copy-button";
 
 type CodeBlockProps = {
   html: string;
   raw: string;
 };
 
-export function CodeBlock({ html, raw }: CodeBlockProps) {
+export default function CodeBlock({ html, raw }: CodeBlockProps) {
   return (
     <div className="notion-code bg-surface-muted relative mb-5">
       <div dangerouslySetInnerHTML={{ __html: html }} />
