@@ -10,7 +10,6 @@ type SocialLinkProps = {
   href: string;
   rightIcon?: IconComponent;
   target?: string;
-  rel?: string;
 };
 
 const iconAnimvariants = {
