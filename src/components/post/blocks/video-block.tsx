@@ -3,7 +3,7 @@ type VideoBlockProps = {
   caption: string;
 };
 
-export function VideoBlock({ src, caption }: VideoBlockProps) {
+export default function VideoBlock({ src, caption }: VideoBlockProps) {
   return (
     <figure className="mb-5">
       <iframe

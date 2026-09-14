@@ -1,9 +1,9 @@
 "use client";
 
-import SocialLink from "./ui/social-link";
+import SocialLink from "@/components/ui/social-link";
 import { LinkedInLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
-import { MailIcon } from "./icons";
-import RevealEffect from "./reveal-effect";
+import { MailIcon } from "@/components/icons";
+import RevealEffect from "@/components/effects/reveal-effect";
 import { contact } from "@/lib/constants/contact";
 
 export default function Intro() {

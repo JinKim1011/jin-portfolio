@@ -2,14 +2,14 @@
 
 import { Post, PostView } from "@/types/post";
 import Link from "next/link";
-import { ArrowTopRightIcon } from "./icons";
+import { ArrowTopRightIcon } from "@/components/icons";
 import { cva } from "class-variance-authority";
-import NavLinkItem from "./ui/nav-link-item";
-import CoverImage from "./ui/cover-image";
+import NavLinkItem from "@/components/ui/nav-link-item";
+import CoverImage from "@/components/ui/cover-image";
 import {
   badgeColor,
   getCategoryVariant,
-} from "../lib/utils/category-badge-variants";
+} from "@/lib/utils/category-badge-variants";
 import { motion } from "motion/react";
 import { easings } from "@/lib/utils/motion-easing";
 

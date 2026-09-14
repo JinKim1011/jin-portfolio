@@ -1,8 +1,8 @@
 import { Post, PostDetail } from "@/types/post";
-import PostHeader from "./post-header";
-import PostCover from "./post-cover";
-import PostBody from "./post-body";
-import PostFooter from "./post-footer";
+import PostHeader from "@/components/post/post-header";
+import PostCover from "@/components/post/post-cover";
+import PostBody from "@/components/post/post-body";
+import PostFooter from "@/components/post/post-footer";
 
 type PostArticleProps = {
   relatedPosts: Post[];

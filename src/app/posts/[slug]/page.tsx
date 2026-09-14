@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import { getPosts, getPostPageData } from "@/lib/posts";
-import PostArticle from "@/components/post-article";
+import PostArticle from "@/components/post/post-article";
 
 type PostDetailPageProps = {
   params: Promise<{ slug: string }>;

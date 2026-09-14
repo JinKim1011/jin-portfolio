@@ -1,8 +1,8 @@
 "use client";
 
 import type { Post, PostView } from "@/types/post";
-import CategoryNav from "@/components/category-nav";
-import PostList from "@/components/post-list";
+import CategoryNav from "@/components/posts/category-nav";
+import PostList from "@/components/posts/post-list";
 import { useSearchParams } from "next/navigation";
 import { useState } from "react";
 

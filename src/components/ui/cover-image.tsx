@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { ImageIcon } from "../icons";
+import { ImageIcon } from "@/components/icons";
 import { cn } from "@/lib/utils/cn";
 
 type CoverImageProps = {

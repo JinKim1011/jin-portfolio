@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { ImageIcon } from "./icons";
+import { ImageIcon } from "@/components/icons";
 import { useState } from "react";
 import { cva } from "class-variance-authority";
-import ImageZoomOverlay from "./image-zoom-overlay";
+import ImageZoomOverlay from "@/components/post/blocks/image-zoom-overlay";
 
 type ImageBlockProps = {
   src: string;
@@ -27,7 +27,7 @@ const imageStyle = cva(
   },
 );
 
-export function ImageBlock({ src, alt, caption }: ImageBlockProps) {
+export default function ImageBlock({ src, alt, caption }: ImageBlockProps) {
   const [failed, setFailed] = useState(false);
   const [loading, setLoading] = useState(true);
   const [zoomOpen, setZoomOpen] = useState(false);

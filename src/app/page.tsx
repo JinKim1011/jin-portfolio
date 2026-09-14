@@ -1,7 +1,7 @@
 import { getPosts } from "@/lib/posts";
-import Posts from "@/components/posts";
+import Posts from "@/components/posts/posts";
 import { Suspense } from "react";
-import Intro from "@/components/intro";
+import Intro from "@/components/posts/intro";
 
 const CATEGORY_ORDER = ["PROJECT", "CASE STUDY", "DESIGN SYSTEM", "ESSAY"];
 

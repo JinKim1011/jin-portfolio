@@ -3,7 +3,7 @@
 import { Post, PostView } from "@/types/post";
 import { cva } from "class-variance-authority";
 import { easings } from "@/lib/utils/motion-easing";
-import PostListItem from "@/components/post-list-item";
+import PostListItem from "@/components/posts/post-list-item";
 import { motion } from "motion/react";
 import { useSearchParams } from "next/navigation";
 

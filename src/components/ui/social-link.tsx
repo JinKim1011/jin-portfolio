@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import { easings } from "@/lib/utils/motion-easing";
-import { IconComponent } from "../icons/icon";
+import { IconComponent } from "@/components/icons/icon";
 import { useState } from "react";
 
 type SocialLinkProps = {
@@ -10,7 +10,6 @@ type SocialLinkProps = {
   href: string;
   rightIcon?: IconComponent;
   target?: string;
-  rel?: string;
 };
 
 const iconAnimvariants = {
