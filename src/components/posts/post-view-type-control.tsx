@@ -1,8 +1,8 @@
 "use client";
 
-import SegmentedControl from "./ui/segmented-control";
+import SegmentedControl from "@/components/ui/segmented-control";
 import type { PostView } from "@/types/post";
-import { SquareIcon, RowIcon } from "./icons";
+import { SquareIcon, RowIcon } from "@/components/icons";
 
 type PostViewTypeControlProps = {
   view: PostView;
