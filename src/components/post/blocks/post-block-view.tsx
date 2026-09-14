@@ -1,8 +1,8 @@
 import type { PostBlock } from "@/types/post";
-import { ImageBlock } from "./image-block";
-import { CodeBlock } from "./code-block";
-import CalloutBlock from "./callout-block";
-import { VideoBlock } from "./video-block";
+import ImageBlock from "@/components/post/blocks/image-block";
+import CodeBlock from "@/components/post/blocks/code-block";
+import CalloutBlock from "@/components/post/blocks/callout-block";
+import VideoBlock from "@/components/post/blocks/video-block";
 
 export default function PostBlockView({ block }: { block: PostBlock }) {
   switch (block.type) {
