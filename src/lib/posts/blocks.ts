@@ -120,12 +120,21 @@ export async function renderBlock(
       const caption = (media.caption ?? []).map((t) => t.plain_text).join("");
       const youtubeId = extractYouTubeId(url);
 
-      if (!youtubeId) return null;
+      if (youtubeId) {
+        return {
+          id: block.id,
+          type: "video",
+          kind: "youtube",
+          src: `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&mute=1&loop=1&playlist=${youtubeId}`,
+          caption,
+        };
+      }
 
       return {
         id: block.id,
         type: "video",
-        src: `https://www.youtube-nocookie.com/embed/${youtubeId}`,
+        kind: "file",
+        src: url,
         caption,
       };
     }
