@@ -38,3 +38,5 @@ export const postInlineLinkClassName =
 
 export const postInlineUnderlineClassName =
   "underline-offset-[6px] decoration-content-muted/50 decoration-dotted";
+
+export const postInlineBoldClassName = "text-content-default text";
