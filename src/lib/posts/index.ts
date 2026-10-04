@@ -5,9 +5,11 @@ import {
 } from "@notionhq/client/build/src/api-endpoints";
 import { cacheLife, cacheTag } from "next/cache";
 import { notion, notionDataSourceId } from "@/lib/notion";
-import { mapNotionPageToPost } from "./mappers";
-import { renderBlock } from "./blocks";
-import { postListClassName } from "./block-styles";
+import { mapNotionPageToPost } from "@/lib/posts/mappers";
+import { renderBlock } from "@/lib/posts/blocks";
+import { postListClassName } from "@/lib/posts/block-styles";
+import { readFileUrl } from "@/lib/posts/properties";
+import { fetchCoverAscii } from "./cover-ascii";
 
 export async function getPosts(): Promise<Post[]> {
   "use cache";
@@ -57,6 +59,8 @@ export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
   cacheTag(`post-id:${page.id}`);
 
   const post = mapNotionPageToPost(page);
+  const coverAsciiUrl = readFileUrl(page, "cover_ascii");
+  const coverAscii = await fetchCoverAscii(coverAsciiUrl);
 
   const blockRes = await notion.blocks.children.list({ block_id: page.id });
   const blocks = (
@@ -106,7 +110,7 @@ export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
 
   flushList();
 
-  return { ...post, blocks: groupedBlocks };
+  return { ...post, coverAscii, blocks: groupedBlocks };
 }
 
 function getRelatedPosts(post: PostDetail, posts: Post[]) {
