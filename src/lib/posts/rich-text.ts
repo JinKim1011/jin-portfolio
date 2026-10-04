@@ -18,7 +18,7 @@ export const renderRichText = (
       if (code)
         text = `<code class="${postInlineCodeClassName}">${text}</code>`;
       if (bold)
-        text = `<span class="${postInlineBoldClassName}">${text}</span>`;
+        text = `<strong class="${postInlineBoldClassName}">${text}</strong>`;
       if (italic) text = `<em>${text}</em>`;
       if (strikethrough) text = `<s>${text}</s>`;
       if (underline)
