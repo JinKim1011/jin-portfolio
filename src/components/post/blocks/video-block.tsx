@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import { PlayIcon, PauseIcon } from "@radix-ui/react-icons";
 
 type VideoBlockProps = {
   src: string;
@@ -49,17 +50,29 @@ export default function VideoBlock({ src, kind, caption }: VideoBlockProps) {
             allowFullScreen
           />
         ) : (
-          <video
-            ref={videoRef}
-            src={src}
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="size-full cursor-pointer object-cover"
-            onPlay={() => setPlaying(true)}
-            onPause={() => setPlaying(false)}
-          />
+          <>
+            <video
+              ref={videoRef}
+              src={src}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="relative size-full cursor-pointer object-cover"
+              onPlay={() => setPlaying(true)}
+              onPause={() => setPlaying(false)}
+            />
+            <span
+              aria-hidden
+              className="bg-surface-muted/50 pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100"
+            >
+              {playing ? (
+                <PauseIcon className="size-10" />
+              ) : (
+                <PlayIcon className="size-10" />
+              )}
+            </span>
+          </>
         )}
       </div>
       {caption ? (
