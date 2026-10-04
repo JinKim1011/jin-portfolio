@@ -4,6 +4,7 @@ import {
   postInlineCodeClassName,
   postInlineLinkClassName,
   postInlineUnderlineClassName,
+  postInlineBoldClassName,
 } from "./block-styles";
 
 export const renderRichText = (
@@ -16,7 +17,8 @@ export const renderRichText = (
 
       if (code)
         text = `<code class="${postInlineCodeClassName}">${text}</code>`;
-      if (bold) text = `<strong>${text}</strong>`;
+      if (bold)
+        text = `<strong class="${postInlineBoldClassName}">${text}</strong>`;
       if (italic) text = `<em>${text}</em>`;
       if (strikethrough) text = `<s>${text}</s>`;
       if (underline)

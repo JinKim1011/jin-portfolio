@@ -58,6 +58,7 @@ export interface CalloutBlock {
 export interface VideoBlock {
   id: string;
   type: "video";
+  kind: "youtube" | "file";
   src: string;
   caption: string;
 }

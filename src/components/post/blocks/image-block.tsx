@@ -12,20 +12,17 @@ type ImageBlockProps = {
   caption: string;
 };
 
-const imageStyle = cva(
-  "mb-5 h-auto w-full shrink-0 object-cover cursor-zoom-in",
-  {
-    variants: {
-      loading: {
-        true: "bg-surface-muted",
-        false: "bg-none",
-      },
-    },
-    defaultVariants: {
-      loading: true,
+const imageStyle = cva("h-auto w-full shrink-0 object-cover cursor-zoom-in", {
+  variants: {
+    loading: {
+      true: "bg-surface-muted",
+      false: "bg-none",
     },
   },
-);
+  defaultVariants: {
+    loading: true,
+  },
+});
 
 export default function ImageBlock({ src, alt, caption }: ImageBlockProps) {
   const [failed, setFailed] = useState(false);
@@ -33,7 +30,7 @@ export default function ImageBlock({ src, alt, caption }: ImageBlockProps) {
   const [zoomOpen, setZoomOpen] = useState(false);
 
   return (
-    <figure className="relative">
+    <figure className="relative mb-5">
       {failed ? (
         <div
           role="img"
@@ -76,7 +73,9 @@ export default function ImageBlock({ src, alt, caption }: ImageBlockProps) {
         </>
       )}
       {caption ? (
-        <figcaption className="text-caption mt-1">{caption}</figcaption>
+        <figcaption className="text-caption text-content-default/70 mt-2">
+          {caption}
+        </figcaption>
       ) : null}
     </figure>
   );
