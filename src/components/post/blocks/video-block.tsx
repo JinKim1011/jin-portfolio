@@ -36,9 +36,11 @@ export default function VideoBlock({ src, kind, caption }: VideoBlockProps) {
             togglePlayback();
           }
         }}
-        role="button"
-        tabIndex={0}
-        aria-label={playing ? "Pause video" : "Play video"}
+        role={kind === "file" ? "button" : undefined}
+        tabIndex={kind === "file" ? 0 : undefined}
+        aria-label={
+          kind === "file" ? (playing ? "Pause video" : "Play video") : undefined
+        }
       >
         {kind === "youtube" ? (
           <iframe
