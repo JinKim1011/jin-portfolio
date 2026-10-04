@@ -13,6 +13,8 @@ export default function VideoBlock({ src, kind, caption }: VideoBlockProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
 
+  const isFile = kind === "file";
+
   const togglePlayback = () => {
     const video = videoRef.current;
 
@@ -36,22 +38,13 @@ export default function VideoBlock({ src, kind, caption }: VideoBlockProps) {
             togglePlayback();
           }
         }}
-        role={kind === "file" ? "button" : undefined}
-        tabIndex={kind === "file" ? 0 : undefined}
+        role={isFile ? "button" : undefined}
+        tabIndex={isFile ? 0 : undefined}
         aria-label={
-          kind === "file" ? (playing ? "Pause video" : "Play video") : undefined
+          isFile ? (playing ? "Pause video" : "Play video") : undefined
         }
       >
-        {kind === "youtube" ? (
-          <iframe
-            src={`${src}?autoplay=1&mute=1&loop=1`}
-            title={caption || "Embedded video"}
-            className="size-full"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
-        ) : (
+        {isFile ? (
           <>
             <video
               ref={videoRef}
@@ -75,6 +68,15 @@ export default function VideoBlock({ src, kind, caption }: VideoBlockProps) {
               )}
             </span>
           </>
+        ) : (
+          <iframe
+            src={`${src}?autoplay=1&mute=1&loop=1`}
+            title={caption || "Embedded video"}
+            className="size-full"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
         )}
       </div>
       {caption ? (
