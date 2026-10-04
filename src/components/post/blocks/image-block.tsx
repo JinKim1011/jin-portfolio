@@ -30,12 +30,12 @@ export default function ImageBlock({ src, alt, caption }: ImageBlockProps) {
   const [zoomOpen, setZoomOpen] = useState(false);
 
   return (
-    <figure className="relative">
+    <figure className="relative mb-5">
       {failed ? (
         <div
           role="img"
           aria-label={alt}
-          className="bg-surface-muted text-content-muted mb-5 flex aspect-video items-center justify-center"
+          className="bg-surface-muted text-content-muted flex aspect-video items-center justify-center"
         >
           <ImageIcon aria-hidden className="size-4" />
         </div>
