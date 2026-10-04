@@ -17,6 +17,7 @@ export type PostBlock =
 
 export interface PostDetail extends Post {
   blocks: PostBlock[];
+  coverAscii: string | null;
 }
 
 export type PostView = "list" | "card";
