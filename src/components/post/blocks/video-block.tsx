@@ -28,7 +28,7 @@ export default function VideoBlock({ src, kind, caption }: VideoBlockProps) {
   return (
     <figure className="mb-5">
       <div
-        className="group relative aspect-video w-full"
+        className="group relative w-full"
         onClick={togglePlayback}
         onKeyDown={(event) => {
           if (event.key === "Enter" || event.key === " ") {
@@ -76,7 +76,9 @@ export default function VideoBlock({ src, kind, caption }: VideoBlockProps) {
         )}
       </div>
       {caption ? (
-        <figcaption className="text-caption mt-1">{caption}</figcaption>
+        <figcaption className="text-caption text-content-default/70 mt-2">
+          {caption}
+        </figcaption>
       ) : null}
     </figure>
   );
