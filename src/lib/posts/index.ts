@@ -9,7 +9,7 @@ import { mapNotionPageToPost } from "@/lib/posts/mappers";
 import { renderBlock } from "@/lib/posts/blocks";
 import { postListClassName } from "@/lib/posts/block-styles";
 import { readFileUrl } from "@/lib/posts/properties";
-import { fetchCoverAscii } from "./cover-ascii";
+import { fetchCoverAscii } from "./ascii/fetch";
 
 export async function getPosts(): Promise<Post[]> {
   "use cache";
