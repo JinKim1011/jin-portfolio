@@ -70,7 +70,7 @@ export default function VideoBlock({ src, kind, caption }: VideoBlockProps) {
           </>
         ) : (
           <iframe
-            src={`${src}?autoplay=1&mute=1&loop=1`}
+            src={src}
             title={caption || "Embedded video"}
             className="size-full"
             loading="lazy"
