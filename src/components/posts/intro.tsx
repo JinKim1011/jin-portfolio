@@ -11,7 +11,7 @@ export default function Intro() {
     <div className="text-content-muted text-caption border-stroke flex flex-col border-b-[0.5px] py-14">
       <RevealEffect>
         <p className="mb-4">
-          <span>I'M </span>
+          <span>I&apos;M </span>
           <SocialLink
             href="https://www.linkedin.com/in/jinsu-kim-293b43bb/"
             label="JIN"
@@ -24,7 +24,7 @@ export default function Intro() {
 
       <RevealEffect delay={0.08}>
         <p>
-          <span>DESIGN ONLY HAS VALUE ONCE IT </span>{" "}
+          <span>DESIGN ONLY HAS VALUE ONCE IT </span>
           <SocialLink
             href="https://github.com/JinKim1011"
             label="SHIPS"
