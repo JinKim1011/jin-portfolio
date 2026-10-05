@@ -1,6 +1,6 @@
 import { PostDetail } from "@/types/post";
 import RevealEffect from "@/components/effects/reveal-effect";
-import CoverImage from "@/components/ui/cover-image";
+import AsciiCanvas from "@/components/post/ascii/ascii-canvas";
 
 type PostCoverProps = {
   post: PostDetail;
@@ -12,8 +12,9 @@ const coverSizes = "(max-width: 768px) 100vw, 50vw";
 export default function PostCover({ post }: PostCoverProps) {
   return (
     <RevealEffect delay={0.1}>
-      <CoverImage
-        src={post.cover ?? null}
+      <AsciiCanvas
+        asciiText={post.coverAscii ?? ""}
+        fallbackImageUrl={post.cover}
         alt={post.title}
         width={640}
         height={360}
