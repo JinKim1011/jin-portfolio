@@ -1,31 +1,29 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 :root {
-  --base-neutral-0: oklch(98.5% 0 0);
-  --base-neutral-50: oklch(97% 0 0);
-  --base-neutral-100: oklch(92.2% 0 0);
-  --base-neutral-200: oklch(87% 0 0);
-  --base-neutral-400: oklch(70.8% 0 0);
+  --base-neutral-0: oklch(14.5% 0 0);
+  --base-neutral-50: oklch(20.5% 0 0);
+  --base-neutral-100: oklch(26.9% 0 0);
+  --base-neutral-200: oklch(37.1% 0 0);
+  --base-neutral-400: oklch(43.9% 0 0);
   --base-neutral-600: oklch(55.6% 0 0);
-  --base-neutral-900: oklch(14.5% 0 0);
+  --base-neutral-900: oklch(98.5% 0 0);
 
   --base-orange-500: oklch(70.5% 0.213 47.604);
   --base-cyan-500: oklch(71.5% 0.143 215.221);
-  --base-teal-500: oklch(70.4% 0.14 182.503);
+  --base-emerald-500: oklch(69.6% 0.17 162.48);
   --base-pink-500: oklch(65.6% 0.241 354.308);
 
-  --base-amber-50: oklch(98.7% 0.022 95.277);
-  --base-amber-100: oklch(96.2% 0.059 95.617);
+  --base-amber-50: oklch(27.9% 0.077 45.635);
+  --base-amber-100: oklch(41.4% 0.112 45.904);
   --base-amber-500: oklch(76.9% 0.188 70.08);
 
-  --base-lime-50: oklch(98.6% 0.031 120.757);
-  --base-lime-100: oklch(96.7% 0.067 122.328);
+  --base-lime-50: oklch(27.4% 0.072 132.109);
+  --base-lime-100: oklch(40.5% 0.101 131.063);
   --base-lime-500: oklch(76.8% 0.233 130.85);
 
-  --base-red-50: oklch(97.1% 0.013 17.38);
-  --base-red-100: oklch(93.6% 0.032 17.717);
+  --base-red-50: oklch(25.8% 0.092 26.042);
+  --base-red-100: oklch(39.6% 0.141 25.723);
   --base-red-500: oklch(63.7% 0.237 25.331);
 
   --ease-in-quad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
@@ -54,33 +52,6 @@ html {
   overflow-y: auto;
   scrollbar-gutter: stable;
   scrollbar-width: thin;
-}
-
-.dark {
-  --base-neutral-0: oklch(14.5% 0 0);
-  --base-neutral-50: oklch(20.5% 0 0);
-  --base-neutral-100: oklch(26.9% 0 0);
-  --base-neutral-200: oklch(37.1% 0 0);
-  --base-neutral-400: oklch(43.9% 0 0);
-  --base-neutral-600: oklch(55.6% 0 0);
-  --base-neutral-900: oklch(98.5% 0 0);
-
-  --base-orange-500: oklch(70.5% 0.213 47.604);
-  --base-cyan-500: oklch(71.5% 0.143 215.221);
-  --base-emerald-500: oklch(69.6% 0.17 162.48);
-  --base-pink-500: oklch(65.6% 0.241 354.308);
-
-  --base-amber-50: oklch(27.9% 0.077 45.635);
-  --base-amber-100: oklch(41.4% 0.112 45.904);
-  --base-amber-500: oklch(76.9% 0.188 70.08);
-
-  --base-lime-50: oklch(27.4% 0.072 132.109);
-  --base-lime-100: oklch(40.5% 0.101 131.063);
-  --base-lime-500: oklch(76.8% 0.233 130.85);
-
-  --base-red-50: oklch(25.8% 0.092 26.042);
-  --base-red-100: oklch(39.6% 0.141 25.723);
-  --base-red-500: oklch(63.7% 0.237 25.331);
 }
 
 @theme {
