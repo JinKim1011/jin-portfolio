@@ -19,9 +19,6 @@ export type DrawAsciiGridOptions = {
 
 const characterWidthRatio = 0.62;
 const lineHeightRatio = 1.08;
-const effectRadius = 120;
-const effectStrength = 2;
-
 export function drawAsciiGrid(
   context: CanvasRenderingContext2D,
   grid: AsciiGrid,
@@ -33,9 +30,6 @@ export function drawAsciiGrid(
     pixelRatio,
     fontFamily,
     color,
-    pointer,
-    reducedMotion,
-    time,
   } = options;
 
   const fontSize = Math.min(
@@ -67,23 +61,7 @@ export function drawAsciiGrid(
 
       const baseX = offsetX + column * characterWidth;
       const baseY = offsetY + row * lineHeight;
-      const distance = Math.hypot(
-        pointer.x - (baseX + characterWidth / 2),
-        pointer.y - (baseY + lineHeight / 2),
-      );
-
-      const influence =
-        pointer.active && !reducedMotion
-          ? Math.max(0, 1 - distance / effectRadius)
-          : 0;
-
-      const wave = Math.sin(distance * 0.08 - time * 0.006);
-
-      context.fillText(
-        character,
-        baseX + wave * influence * effectStrength,
-        baseY,
-      );
+      context.fillText(character, baseX, baseY);
     }
   }
 }
