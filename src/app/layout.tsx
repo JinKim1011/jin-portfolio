@@ -31,11 +31,7 @@ export default function RootLayout({
   const rootClasses = "root layout-root antialiased";
 
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${inter.variable} ${ibmPlexMono.variable}`}
-    >
+    <html lang="en" className={`${inter.variable} ${ibmPlexMono.variable}`}>
       <body className="bg-surface font-mono antialiased">
         <AppProviders>
           <div className={rootClasses}>
