@@ -19,7 +19,6 @@ export function createAsciiCanvasRuntime({
   grid,
   reducedMotion,
 }: CreateRuntimeOptions) {
-  let frameId: number | null = null;
   const pointer: AsciiPointer = {
     x: 0,
     y: 0,
@@ -42,38 +41,16 @@ export function createAsciiCanvasRuntime({
     });
   };
 
-  const stopAnimation = () => {
-    if (frameId !== null) {
-      cancelAnimationFrame(frameId);
-      frameId = null;
-    }
-  };
-
-  const animate = (time: number) => {
-    draw(time);
-
-    if (pointer.active && !reducedMotion) {
-      frameId = requestAnimationFrame(animate);
-    } else {
-      frameId = null;
-    }
-  };
-
   const handlePointerMove = (event: PointerEvent) => {
     const rect = canvas.getBoundingClientRect();
 
     pointer.x = event.clientX - rect.left;
     pointer.y = event.clientY - rect.top;
     pointer.active = true;
-
-    if (!reducedMotion && frameId === null) {
-      frameId = requestAnimationFrame(animate);
-    }
   };
 
   const handlePointerLeave = () => {
     pointer.active = false;
-    stopAnimation();
     draw(performance.now());
   };
 
@@ -90,7 +67,6 @@ export function createAsciiCanvasRuntime({
     },
 
     dispose() {
-      stopAnimation();
       resizeObserver.disconnect();
       canvas.removeEventListener("pointermove", handlePointerMove);
       canvas.removeEventListener("pointerleave", handlePointerLeave);
