@@ -4,7 +4,7 @@ import Image from "next/image";
 import { ImageIcon } from "@/components/icons";
 import { useState } from "react";
 import { cva } from "class-variance-authority";
-import ImageZoomOverlay from "@/components/post/blocks/image-zoom-overlay";
+import dynamic from "next/dynamic";
 
 type ImageBlockProps = {
   src: string;
@@ -23,6 +23,11 @@ const imageStyle = cva("h-auto w-full shrink-0 object-cover cursor-zoom-in", {
     loading: true,
   },
 });
+
+const ImageZoomOverlay = dynamic(
+  () => import("@/components/post/blocks/image-zoom-overlay"),
+  { ssr: false },
+);
 
 export default function ImageBlock({ src, alt, caption }: ImageBlockProps) {
   const [failed, setFailed] = useState(false);
