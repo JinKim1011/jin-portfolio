@@ -44,13 +44,10 @@ export default function ImageZoomOverlay({
   open,
   onClose,
 }: ImageZoomOverlayProps) {
-  const [mounted, setMounted] = useState(false);
   const [loading, setLoading] = useState(true);
   const transformRef = useRef<ReactZoomPanPinchRef | null>(null);
 
   const downPos = useRef<{ x: number; y: number } | null>(null);
-
-  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     if (!open) return;
@@ -92,8 +89,6 @@ export default function ImageZoomOverlay({
     }
     onClose();
   };
-
-  if (!mounted) return null;
 
   return createPortal(
     <AnimatePresence>
