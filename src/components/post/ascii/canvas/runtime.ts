@@ -1,7 +1,4 @@
-import {
-  drawAsciiGrid,
-  type AsciiPointer,
-} from "@/components/post/ascii/canvas/draw-grid";
+import { drawAsciiGrid } from "@/components/post/ascii/canvas/draw-grid";
 import type { AsciiGrid } from "@/lib/posts/ascii/parse";
 
 type CreateRuntimeOptions = {
@@ -14,18 +11,10 @@ type CreateRuntimeOptions = {
 
 export function createAsciiCanvasRuntime({
   container,
-  canvas,
   context,
   grid,
-  reducedMotion,
 }: CreateRuntimeOptions) {
-  const pointer: AsciiPointer = {
-    x: 0,
-    y: 0,
-    active: false,
-  };
-
-  const draw = (time: number) => {
+  const draw = () => {
     const rect = container.getBoundingClientRect();
     const styles = getComputedStyle(container);
 
@@ -35,41 +24,19 @@ export function createAsciiCanvasRuntime({
       pixelRatio: window.devicePixelRatio || 1,
       fontFamily: styles.fontFamily,
       color: styles.color,
-      pointer,
-      reducedMotion,
-      time,
     });
   };
 
-  const handlePointerMove = (event: PointerEvent) => {
-    const rect = canvas.getBoundingClientRect();
-
-    pointer.x = event.clientX - rect.left;
-    pointer.y = event.clientY - rect.top;
-    pointer.active = true;
-  };
-
-  const handlePointerLeave = () => {
-    pointer.active = false;
-    draw(performance.now());
-  };
-
-  const resizeObserver = new ResizeObserver(() => {
-    draw(performance.now());
-  });
+  const resizeObserver = new ResizeObserver(draw);
 
   return {
     start() {
       resizeObserver.observe(container);
-      canvas.addEventListener("pointermove", handlePointerMove);
-      canvas.addEventListener("pointerleave", handlePointerLeave);
-      draw(performance.now());
+      draw();
     },
 
     dispose() {
       resizeObserver.disconnect();
-      canvas.removeEventListener("pointermove", handlePointerMove);
-      canvas.removeEventListener("pointerleave", handlePointerLeave);
     },
   };
 }
