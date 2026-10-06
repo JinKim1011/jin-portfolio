@@ -9,7 +9,6 @@ import { mapNotionPageToPost } from "@/lib/posts/mappers";
 import { renderBlock } from "@/lib/posts/blocks";
 import { postListClassName } from "@/lib/posts/block-styles";
 import { readFileUrl } from "@/lib/posts/properties";
-import { fetchCoverAscii } from "./ascii/fetch";
 
 export async function getPosts(): Promise<Post[]> {
   "use cache";
@@ -60,7 +59,6 @@ export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
 
   const post = mapNotionPageToPost(page);
   const coverAsciiUrl = readFileUrl(page, "cover_ascii");
-  const coverAscii = await fetchCoverAscii(coverAsciiUrl);
 
   const blockRes = await notion.blocks.children.list({ block_id: page.id });
   const blocks = (
@@ -110,7 +108,7 @@ export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
 
   flushList();
 
-  return { ...post, coverAscii, blocks: groupedBlocks };
+  return { ...post, coverAsciiUrl, blocks: groupedBlocks };
 }
 
 function getRelatedPosts(post: PostDetail, posts: Post[]) {
