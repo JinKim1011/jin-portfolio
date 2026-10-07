@@ -12,6 +12,7 @@ export default function PostCover({ post }: PostCoverProps) {
         asciiCoverUrl={`/ascii-covers/${post.slug}.png`}
         coverUrl={post.cover}
         alt={post.title}
+        preload
       />
     </div>
   );
