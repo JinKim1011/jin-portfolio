@@ -33,7 +33,7 @@ export default function CoverImage({
           aria-label={alt}
           className={cn(
             className,
-            "bg-surface-muted text-content-muted flex aspect-video items-center justify-center",
+            "text-content-muted flex aspect-video items-center justify-center",
           )}
         >
           <ImageIcon aria-hidden className="size-4" />

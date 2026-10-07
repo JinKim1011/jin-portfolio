@@ -131,6 +131,7 @@ function ListView({ post, isExternal, date, view, href }: ViewTypeProps) {
       <div className={viewLayout({ view })}>
         <div className={titleWrapper({ view })}>
           <CoverImage
+            key={post.cover ?? "cover-fallback"}
             src={post.cover ?? null}
             alt={post.title}
             width={64}
@@ -183,6 +184,7 @@ function CardView({ post, isExternal, date, view, href }: ViewTypeProps) {
       <div className={viewLayout({ view })}>
         <div className={titleWrapper({ view })}>
           <CoverImage
+            key={post.cover ?? "cover-fallback"}
             src={post.cover ?? null}
             alt={post.title}
             width={640}

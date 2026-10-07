@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "aspectRatio": "original",
+  "style": "ascii",
+  "cellSize": 7,
+  "charset": " .:-=+*#%@",
+  "colorMode": "gray",
+  "ink": "#fcfcfc",
+  "crop": { "x": 0.5, "y": 0.5, "zoom": 1, "rotation": 0 },
+  "backdrop": {
+    "mode": "solid",
+    "color": "#141414",
+    "blur": 0,
+    "opacity": 1
+  },
+  "color": {
+    "brightness": 0,
+    "contrast": 1,
+    "saturation": 1,
+    "grayscale": 0,
+    "tint": "#fcfcfc",
+    "amount": 0,
+    "blend": "source-over"
+  },
+  "dither": {
+    "algorithm": "none",
+    "palette": "mono",
+    "colors": ["#fcfcfc", "#fcfcfc"],
+    "amount": 1,
+    "scale": 2,
+    "threshold": 0.5,
+    "motion": "none",
+    "speed": 1
+  },
+  "mask": { "enabled": false, "invert": false, "shapes": [] },
+  "lights": [],
+  "effects": {
+    "bloom": 0,
+    "characterBloom": 0,
+    "grain": 0,
+    "dust": 0,
+    "scanlines": 0,
+    "crt": 0,
+    "prism": 0,
+    "vignette": 0,
+    "glitch": 0,
+    "pixelate": 0,
+    "blur": 0,
+    "blurType": "gaussian",
+    "angle": 0,
+    "focus": 0.5,
+    "halftone": 0
+  },
+  "motion": { "type": "current", "speed": 1 },
+  "hover": {
+    "effect": "trail",
+    "strength": 0.6,
+    "radius": 0.4,
+    "edgeSafe": true
+  }
+}

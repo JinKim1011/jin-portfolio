@@ -53,3 +53,20 @@ export function readCover(page: PageObjectResponse): string | null {
 
   return null;
 }
+
+export function readFileUrl(
+  page: PageObjectResponse,
+  name: string,
+): string | null {
+  const prop = page.properties[name];
+
+  if (prop?.type !== "files") return null;
+
+  const file = prop.files[0];
+  if (!file) return null;
+
+  if (file.type === "external") return file.external.url;
+  if (file.type === "file") return file.file.url;
+
+  return null;
+}

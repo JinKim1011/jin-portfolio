@@ -8,7 +8,12 @@ export default function PostBlockView({ block }: { block: PostBlock }) {
   switch (block.type) {
     case "image":
       return (
-        <ImageBlock src={block.src} alt={block.alt} caption={block.caption} />
+        <ImageBlock
+          key={block.src}
+          src={block.src}
+          alt={block.alt}
+          caption={block.caption}
+        />
       );
     case "code":
       return <CodeBlock html={block.highlightedHtml} raw={block.raw} />;
