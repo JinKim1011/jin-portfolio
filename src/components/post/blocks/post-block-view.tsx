@@ -13,7 +13,6 @@ export default function PostBlockView({ block }: { block: PostBlock }) {
           src={block.src}
           alt={block.alt}
           caption={block.caption}
-          preload
         />
       );
     case "code":
