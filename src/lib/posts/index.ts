@@ -8,7 +8,6 @@ import { notion, notionDataSourceId } from "@/lib/notion";
 import { mapNotionPageToPost } from "@/lib/posts/mappers";
 import { renderBlock } from "@/lib/posts/blocks";
 import { postListClassName } from "@/lib/posts/block-styles";
-import { readFileUrl } from "@/lib/posts/properties";
 
 export async function getPosts(): Promise<Post[]> {
   "use cache";
