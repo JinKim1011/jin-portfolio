@@ -85,6 +85,7 @@ export default function AsciiCover({
   return (
     <>
       <CoverImage
+        key={coverUrl ?? "cover-fallback"}
         src={coverUrl}
         alt={alt}
         width={640}

@@ -12,7 +12,9 @@ import { readFileUrl } from "@/lib/posts/properties";
 
 export async function getPosts(): Promise<Post[]> {
   "use cache";
-  cacheLife("minutes");
+  // Notion file URLs expire after about an hour. Refresh before that so
+  // cached posts never hand the browser an expired media URL.
+  cacheLife({ stale: 300, revalidate: 60, expire: 45 * 60 });
   cacheTag("posts");
 
   if (!notion || !notionDataSourceId) {
@@ -32,7 +34,7 @@ export async function getPosts(): Promise<Post[]> {
 
 export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
   "use cache";
-  cacheLife("minutes");
+  cacheLife({ stale: 300, revalidate: 60, expire: 45 * 60 });
   cacheTag(`post:${slug}`);
 
   if (!notion || !notionDataSourceId) {
