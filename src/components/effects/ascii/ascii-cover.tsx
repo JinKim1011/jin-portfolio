@@ -15,11 +15,14 @@ type AsciiCoverProps = {
   preload?: boolean;
 };
 
-const settings = normalizeStudioSettings(asciifyConfig);
-
 const studioLimits = {
   maxDimension: 1280,
   maxCells: 24576,
+};
+
+const mobileStudioLimits = {
+  maxDimension: 768,
+  maxCells: 12000,
 };
 
 export default function AsciiCover({
@@ -45,6 +48,12 @@ export default function AsciiCover({
     const controller = new AbortController();
     let disposed = false;
     let studio: Awaited<ReturnType<typeof mountStudio>> | null = null;
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const settings = normalizeStudioSettings({
+      ...asciifyConfig,
+      cellSize: isMobile ? 10 : asciifyConfig.cellSize,
+    });
+    const limits = isMobile ? mobileStudioLimits : studioLimits;
 
     const handleFailure = (error: unknown) => {
       if (disposed || controller.signal.aborted) return;
@@ -56,8 +65,9 @@ export default function AsciiCover({
 
     void mountStudio(canvas, asciiCoverUrl, {
       settings,
-      maxDimension: studioLimits.maxDimension,
-      maxCells: studioLimits.maxCells,
+      maxDimension: limits.maxDimension,
+      maxCells: limits.maxCells,
+      adaptive: true,
       signal: controller.signal,
       onError: handleFailure,
     })
