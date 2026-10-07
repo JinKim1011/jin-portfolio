@@ -10,6 +10,7 @@ type ImageBlockProps = {
   src: string;
   alt: string;
   caption: string;
+  preload?: boolean;
 };
 
 const imageStyle = cva("h-auto w-full shrink-0 object-cover cursor-zoom-in", {
@@ -29,7 +30,12 @@ const ImageZoomOverlay = dynamic(
   { ssr: false },
 );
 
-export default function ImageBlock({ src, alt, caption }: ImageBlockProps) {
+export default function ImageBlock({
+  src,
+  alt,
+  caption,
+  preload,
+}: ImageBlockProps) {
   const [failed, setFailed] = useState(false);
   const [loading, setLoading] = useState(true);
   const [zoomOpen, setZoomOpen] = useState(false);
@@ -68,12 +74,14 @@ export default function ImageBlock({ src, alt, caption }: ImageBlockProps) {
                 setZoomOpen(true);
               }
             }}
+            preload={preload}
           />
           <ImageZoomOverlay
             src={src}
             alt={alt}
             open={zoomOpen}
             onClose={() => setZoomOpen(false)}
+            preload
           />
         </>
       )}
