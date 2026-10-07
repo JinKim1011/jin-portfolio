@@ -73,6 +73,7 @@ export default function VideoBlock({ src, kind, caption }: VideoBlockProps) {
             src={src}
             title={caption || "Embedded video"}
             className="size-full"
+            loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           />
