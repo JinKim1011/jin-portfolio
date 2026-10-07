@@ -134,8 +134,8 @@ function ListView({ post, isExternal, date, view, href }: ViewTypeProps) {
             key={post.cover ?? "cover-fallback"}
             src={post.cover ?? null}
             alt={post.title}
-            width={64}
-            height={36}
+            width={128}
+            height={72}
             sizes={coverSizes({ view })}
             className={coverStyle({ view })}
             preload
@@ -188,8 +188,8 @@ function CardView({ post, isExternal, date, view, href }: ViewTypeProps) {
             key={post.cover ?? "cover-fallback"}
             src={post.cover ?? null}
             alt={post.title}
-            width={640}
-            height={360}
+            width={1280}
+            height={720}
             sizes={coverSizes({ view })}
             className={coverStyle({ view })}
           />
