@@ -12,7 +12,6 @@ type AsciiCoverProps = {
   asciiCoverUrl: string | null;
   coverUrl: string | null;
   alt: string;
-  preload?: boolean;
 };
 
 const studioLimits = {
@@ -29,7 +28,6 @@ export default function AsciiCover({
   asciiCoverUrl,
   coverUrl,
   alt,
-  preload = false,
 }: AsciiCoverProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -99,10 +97,9 @@ export default function AsciiCover({
         key={coverUrl ?? "cover-fallback"}
         src={coverUrl}
         alt={alt}
-        width={1440}
-        height={810}
-        sizes="(max-width: 768px) calc(100vw - 40px), 728px"
-        preload={preload}
+        width={640}
+        height={360}
+        sizes="(max-width: 768px) calc(100vw - 40px), 640px"
         className="absolute inset-0 h-full w-full object-cover"
       />
       <canvas
