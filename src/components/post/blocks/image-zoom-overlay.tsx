@@ -18,7 +18,6 @@ type ImageZoomOverlayProps = {
   alt: string;
   open: boolean;
   onClose: () => void;
-  preload?: boolean;
 };
 
 const imageStyle = cva(
@@ -43,7 +42,7 @@ export default function ImageZoomOverlay({
   src,
   alt,
   open,
-  preload,
+
   onClose,
 }: ImageZoomOverlayProps) {
   const [loading, setLoading] = useState(true);
@@ -133,13 +132,12 @@ export default function ImageZoomOverlay({
                 <Image
                   src={src}
                   alt={alt}
-                  width={640}
-                  height={360}
+                  width={1440}
+                  height={810}
                   onLoad={() => setLoading(false)}
                   sizes="100vw"
                   draggable={false}
                   className={imageStyle({ loading })}
-                  preload={preload}
                 />
               </motion.div>
             </TransformComponent>
