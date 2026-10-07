@@ -12,6 +12,7 @@ type AsciiCoverProps = {
   asciiCoverUrl: string | null;
   coverUrl: string | null;
   alt: string;
+  preload?: boolean;
 };
 
 const settings = normalizeStudioSettings(asciifyConfig);
@@ -25,6 +26,7 @@ export default function AsciiCover({
   asciiCoverUrl,
   coverUrl,
   alt,
+  preload = false,
 }: AsciiCoverProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -90,6 +92,7 @@ export default function AsciiCover({
         width={640}
         height={360}
         sizes="(max-width: 768px) 100vw, 50vw"
+        preload={preload}
         className="absolute inset-0 h-full w-full object-cover"
       />
       <canvas

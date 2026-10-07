@@ -138,6 +138,7 @@ function ListView({ post, isExternal, date, view, href }: ViewTypeProps) {
             height={36}
             sizes={coverSizes({ view })}
             className={coverStyle({ view })}
+            preload
           />
           <h2 className={titleStyle}>
             {isExternal ? (
