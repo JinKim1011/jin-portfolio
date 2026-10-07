@@ -10,7 +10,6 @@ type ImageBlockProps = {
   src: string;
   alt: string;
   caption: string;
-  preload?: boolean;
 };
 
 const imageStyle = cva("h-auto w-full shrink-0 object-cover cursor-zoom-in", {
@@ -30,12 +29,7 @@ const ImageZoomOverlay = dynamic(
   { ssr: false },
 );
 
-export default function ImageBlock({
-  src,
-  alt,
-  caption,
-  preload,
-}: ImageBlockProps) {
+export default function ImageBlock({ src, alt, caption }: ImageBlockProps) {
   const [failed, setFailed] = useState(false);
   const [loading, setLoading] = useState(true);
   const [zoomOpen, setZoomOpen] = useState(false);
@@ -57,7 +51,8 @@ export default function ImageBlock({
             alt={alt}
             width={1440}
             height={810}
-            sizes="(max-width: 768px) 100vw, 728px"
+            sizes="(max-width: 768px) calc(100vw - 40px), 728px"
+            loading="lazy"
             className={imageStyle({ loading })}
             onError={() => {
               console.warn("Post image failed to load", { alt, src });
@@ -74,7 +69,6 @@ export default function ImageBlock({
                 setZoomOpen(true);
               }
             }}
-            preload={preload}
           />
           <ImageZoomOverlay
             src={src}
