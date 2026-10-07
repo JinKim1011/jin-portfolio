@@ -72,7 +72,7 @@ const coverSizes = cva(" ", {
   variants: {
     view: {
       list: "64px",
-      card: "(max-width: 768px) 100vw, 50vw",
+      card: "(max-width: 768px) 100vw, 728px",
     },
   },
   defaultVariants: {
