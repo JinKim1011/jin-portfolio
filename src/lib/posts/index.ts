@@ -60,7 +60,6 @@ export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
   cacheTag(`post-id:${page.id}`);
 
   const post = mapNotionPageToPost(page);
-  const coverAsciiUrl = readFileUrl(page, "cover_ascii");
 
   const blockRes = await notion.blocks.children.list({ block_id: page.id });
   const blocks = (
@@ -110,7 +109,7 @@ export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
 
   flushList();
 
-  return { ...post, coverAsciiUrl, blocks: groupedBlocks };
+  return { ...post, blocks: groupedBlocks };
 }
 
 function getRelatedPosts(post: PostDetail, posts: Post[]) {
