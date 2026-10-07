@@ -13,6 +13,7 @@ type CoverImageProps = {
   sizes?: string;
   className?: string;
   preload?: boolean;
+  unoptimized?: boolean;
 };
 
 export default function CoverImage({
@@ -23,6 +24,7 @@ export default function CoverImage({
   sizes,
   className,
   preload = false,
+  unoptimized = false,
 }: CoverImageProps) {
   const [failed, setFailed] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -48,6 +50,7 @@ export default function CoverImage({
           height={height}
           sizes={sizes}
           preload={preload}
+          unoptimized={unoptimized}
           className={cn(
             className,
             ` ${loading ? "bg-surface-muted" : "bg-none"}`,
