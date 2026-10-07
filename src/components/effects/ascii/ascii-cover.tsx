@@ -48,6 +48,7 @@ export default function AsciiCover({
       if (disposed || controller.signal.aborted) return;
 
       setStatus("failed");
+      controller.abort();
       console.error("Failed to mount ASCII studio", error);
     };
 
@@ -95,9 +96,7 @@ export default function AsciiCover({
         ref={canvasRef}
         className={cn(
           "absolute inset-0 h-full w-full transition-opacity",
-          status === "ready"
-            ? "opacity-100"
-            : "pointer-events-none opacity-0",
+          status === "ready" ? "opacity-100" : "pointer-events-none opacity-0",
         )}
         aria-hidden="true"
       />
