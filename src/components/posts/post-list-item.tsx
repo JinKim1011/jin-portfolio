@@ -72,7 +72,7 @@ const coverSizes = cva(" ", {
   variants: {
     view: {
       list: "64px",
-      card: "(max-width: 768px) 100vw, 728px",
+      card: "(max-width: 768px) calc(100vw - 40px), 640px",
     },
   },
   defaultVariants: {
@@ -138,7 +138,6 @@ function ListView({ post, isExternal, date, view, href }: ViewTypeProps) {
             height={72}
             sizes={coverSizes({ view })}
             className={coverStyle({ view })}
-            unoptimized
           />
           <h2 className={titleStyle}>
             {isExternal ? (
@@ -188,8 +187,8 @@ function CardView({ post, isExternal, date, view, href }: ViewTypeProps) {
             key={post.cover ?? "cover-fallback"}
             src={post.cover ?? null}
             alt={post.title}
-            width={1280}
-            height={720}
+            width={640}
+            height={360}
             sizes={coverSizes({ view })}
             className={coverStyle({ view })}
           />
