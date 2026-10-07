@@ -31,8 +31,6 @@ export default function AsciiCover({
   const [status, setStatus] = useState<RenderStatus>("loading");
 
   useEffect(() => {
-    setStatus("loading");
-
     const canvas = canvasRef.current;
 
     if (!canvas || !asciiCoverUrl) {
@@ -93,18 +91,16 @@ export default function AsciiCover({
         sizes="(max-width: 768px) 100vw, 50vw"
         className="absolute inset-0 h-full w-full object-cover"
       />
-      {status !== "failed" && (
-        <canvas
-          ref={canvasRef}
-          className={cn(
-            "absolute inset-0 h-full w-full transition-opacity",
-            status === "ready"
-              ? "opacity-100"
-              : "pointer-events-none opacity-0",
-          )}
-          aria-hidden="true"
-        />
-      )}
+      <canvas
+        ref={canvasRef}
+        className={cn(
+          "absolute inset-0 h-full w-full transition-opacity",
+          status === "ready"
+            ? "opacity-100"
+            : "pointer-events-none opacity-0",
+        )}
+        aria-hidden="true"
+      />
     </>
   );
 }
