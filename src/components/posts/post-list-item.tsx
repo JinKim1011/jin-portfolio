@@ -56,10 +56,10 @@ const viewLayout = cva(`${ItemBase}`, {
   },
 });
 
-const coverStyle = cva("shrink-0  object-cover border-[0.5px] border-stroke", {
+const coverStyle = cva("shrink-0  object-cover", {
   variants: {
     view: {
-      list: "h-9 w-[64px]",
+      list: "h-9 w-[62px]",
       card: "mb-2.5 w-full aspect-video",
     },
   },
@@ -71,8 +71,8 @@ const coverStyle = cva("shrink-0  object-cover border-[0.5px] border-stroke", {
 const coverSizes = cva(" ", {
   variants: {
     view: {
-      list: "64px",
-      card: "(max-width: 768px) calc(100vw - 40px), 640px",
+      list: "62px",
+      card: "(max-width: 767px) calc(50vw - 25px), 236px",
     },
   },
   defaultVariants: {
@@ -187,7 +187,7 @@ function CardView({ post, isExternal, date, view, href }: ViewTypeProps) {
             key={post.cover ?? "cover-fallback"}
             src={post.cover ?? null}
             alt={post.title}
-            width={640}
+            width={620}
             height={360}
             sizes={coverSizes({ view })}
             className={coverStyle({ view })}
