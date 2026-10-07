@@ -42,6 +42,7 @@ export default function ImageZoomOverlay({
   src,
   alt,
   open,
+
   onClose,
 }: ImageZoomOverlayProps) {
   const [loading, setLoading] = useState(true);
@@ -131,8 +132,8 @@ export default function ImageZoomOverlay({
                 <Image
                   src={src}
                   alt={alt}
-                  width={640}
-                  height={360}
+                  width={1440}
+                  height={810}
                   onLoad={() => setLoading(false)}
                   sizes="100vw"
                   draggable={false}

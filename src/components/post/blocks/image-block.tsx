@@ -49,9 +49,10 @@ export default function ImageBlock({ src, alt, caption }: ImageBlockProps) {
           <Image
             src={src}
             alt={alt}
-            width={640}
-            height={360}
-            sizes="(max-width: 768px) 100vw, 50vw"
+            width={1440}
+            height={810}
+            sizes="(max-width: 768px) calc(100vw - 40px), 728px"
+            loading="lazy"
             className={imageStyle({ loading })}
             onError={() => {
               console.warn("Post image failed to load", { alt, src });

@@ -8,13 +8,16 @@ import { notion, notionDataSourceId } from "@/lib/notion";
 import { mapNotionPageToPost } from "@/lib/posts/mappers";
 import { renderBlock } from "@/lib/posts/blocks";
 import { postListClassName } from "@/lib/posts/block-styles";
-import { readFileUrl } from "@/lib/posts/properties";
 
 export async function getPosts(): Promise<Post[]> {
   "use cache";
   // Notion file URLs expire after about an hour. Refresh before that so
   // cached posts never hand the browser an expired media URL.
-  cacheLife({ stale: 300, revalidate: 60, expire: 45 * 60 });
+  cacheLife({
+    stale: 300,
+    revalidate: 15 * 60,
+    expire: 45 * 60,
+  });
   cacheTag("posts");
 
   if (!notion || !notionDataSourceId) {
@@ -34,7 +37,11 @@ export async function getPosts(): Promise<Post[]> {
 
 export async function getPostBySlug(slug: string): Promise<PostDetail | null> {
   "use cache";
-  cacheLife({ stale: 300, revalidate: 60, expire: 45 * 60 });
+  cacheLife({
+    stale: 300,
+    revalidate: 15 * 60,
+    expire: 45 * 60,
+  });
   cacheTag(`post:${slug}`);
 
   if (!notion || !notionDataSourceId) {
