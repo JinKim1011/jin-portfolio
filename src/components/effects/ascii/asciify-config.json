@@ -2,7 +2,7 @@
   "version": 1,
   "aspectRatio": "original",
   "style": "ascii",
-  "cellSize": 7,
+  "cellSize": 8,
   "charset": " .:-=+*#%@",
   "colorMode": "gray",
   "ink": "#fcfcfc",
@@ -51,7 +51,7 @@
     "focus": 0.5,
     "halftone": 0
   },
-  "motion": { "type": "current", "speed": 1 },
+  "motion": { "type": "none" },
   "hover": {
     "effect": "trail",
     "strength": 0.6,
