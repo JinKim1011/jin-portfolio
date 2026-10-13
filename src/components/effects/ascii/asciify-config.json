@@ -9,7 +9,7 @@
   "crop": { "x": 0.5, "y": 0.5, "zoom": 1, "rotation": 0 },
   "backdrop": {
     "mode": "solid",
-    "color": "#141414",
+    "color": "#0A0A0A",
     "blur": 0,
     "opacity": 1
   },
