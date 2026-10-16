@@ -32,6 +32,13 @@ export async function GET(_request: Request, { params }: RouteContext) {
   const { pageId } = await params;
   const version = new URL(_request.url).searchParams.get("v");
 
+  if (!version) {
+    return Response.json(
+      { error: "Cover version is required" },
+      { status: 400 },
+    );
+  }
+
   if (!notion) {
     return Response.json({ error: "Notion is not configured" }, { status: 503 });
   }
