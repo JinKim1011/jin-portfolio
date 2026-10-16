@@ -30,6 +30,7 @@ export default function AsciiCover({
         sizes="(max-width: 768px) calc(100vw - 40px), 640px"
         preload
         className="absolute inset-0 h-full w-full object-cover"
+        unoptimized
       />
       <canvas
         ref={canvasRef}
