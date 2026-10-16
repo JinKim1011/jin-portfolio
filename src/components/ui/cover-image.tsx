@@ -29,7 +29,7 @@ export default function CoverImage({
   unoptimized = false,
 }: CoverImageProps) {
   const [failed, setFailed] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [load, setload] = useState(true);
 
   return (
     <>
@@ -54,15 +54,12 @@ export default function CoverImage({
           preload={preload}
           loading={loading}
           unoptimized={unoptimized}
-          className={cn(
-            className,
-            ` ${loading ? "bg-surface-muted" : "bg-none"}`,
-          )}
+          className={cn(className, ` ${load ? "bg-surface-muted" : "bg-none"}`)}
           onError={() => {
             console.warn("Post image failed to load", { alt, src });
             setFailed(true);
           }}
-          onLoad={() => setLoading(false)}
+          onLoad={() => setload(false)}
         />
       )}
     </>
