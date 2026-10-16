@@ -22,3 +22,4 @@ Required env vars:
 - `NOTION_TOKEN`
 - `NOTION_DATABASE_ID`
 - `NOTION_WEBHOOK_SECRET`
+- `BLOB_READ_WRITE_TOKEN` (Vercel Blob token for mirrored cover images)
