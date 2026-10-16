@@ -11,10 +11,10 @@ type CoverImageProps = {
   width: number;
   height: number;
   sizes?: string;
+  quality?: number;
   className?: string;
   preload?: boolean;
   loading?: "eager" | "lazy";
-  quality?: number;
   unoptimized?: boolean;
 };
 
@@ -24,8 +24,8 @@ export default function CoverImage({
   width,
   height,
   sizes,
-  className,
   quality,
+  className,
   preload = false,
   loading,
   unoptimized = false,
