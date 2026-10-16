@@ -1,6 +1,7 @@
 import { BlobNotFoundError, head, put } from "@vercel/blob";
+import { isNotionClientError } from "@notionhq/client";
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
-import { notion } from "@/lib/notion";
+import { notion, notionDataSourceId } from "@/lib/notion";
 
 type RouteContext = {
   params: Promise<{ pageId: string }>;
@@ -53,6 +54,48 @@ export async function GET(_request: Request, { params }: RouteContext) {
     );
   }
 
+  let page: PageObjectResponse;
+
+  try {
+    const response = await notion.pages.retrieve({ page_id: pageId });
+
+    if (!("properties" in response)) {
+      return Response.json({ error: "Notion page not found" }, { status: 404 });
+    }
+
+    page = response;
+  } catch (error) {
+    if (isNotionClientError(error) && error.code === "object_not_found") {
+      return Response.json({ error: "Notion page not found" }, { status: 404 });
+    }
+
+    console.error("Failed to retrieve Notion cover page", { pageId, error });
+    return Response.json(
+      { error: "Failed to retrieve cover page" },
+      { status: 502 },
+    );
+  }
+
+  if (
+    !notionDataSourceId ||
+    page.parent.type !== "data_source_id" ||
+    page.parent.data_source_id !== notionDataSourceId
+  ) {
+    return Response.json({ error: "Unauthorized page" }, { status: 404 });
+  }
+
+  const published = page.properties.published;
+  if (published?.type !== "checkbox" || !published.checkbox) {
+    return Response.json({ error: "Cover not found" }, { status: 404 });
+  }
+
+  if (version !== page.last_edited_time) {
+    return Response.json(
+      { error: "Cover version is no longer current" },
+      { status: 409 },
+    );
+  }
+
   const pathname = `notion/covers/${pageId}/${version}`;
 
   try {
@@ -66,19 +109,6 @@ export async function GET(_request: Request, { params }: RouteContext) {
         { status: 502 },
       );
     }
-  }
-
-  const page = await notion.pages.retrieve({ page_id: pageId });
-
-  if (!("properties" in page)) {
-    return Response.json({ error: "Notion page not found" }, { status: 404 });
-  }
-
-  if (version !== page.last_edited_time) {
-    return Response.json(
-      { error: "Cover version is no longer current" },
-      { status: 409 },
-    );
   }
 
   const sourceUrl = getCoverUrl(page);
