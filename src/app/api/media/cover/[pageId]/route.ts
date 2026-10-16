@@ -40,75 +40,45 @@ async function serveBlob(url: string, contentType: string): Promise<Response> {
   });
 }
 
-export async function GET(_request: Request, { params }: RouteContext) {
-  const { pageId } = await params;
-  const version = new URL(_request.url).searchParams.get("v");
-
-  if (!version) {
-    return Response.json(
-      { error: "Cover version is required" },
-      { status: 400 },
-    );
-  }
-
-  if (!notion) {
-    return Response.json(
-      { error: "Notion is not configured" },
-      { status: 503 },
-    );
-  }
-
-  if (!process.env.BLOB_READ_WRITE_TOKEN) {
-    return Response.json(
-      { error: "Vercel Blob is not configured" },
-      { status: 503 },
-    );
-  }
-
-  let page: PageObjectResponse;
-
+async function getPublishedPostPage(
+  notionClient: NonNullable<typeof notion>,
+  pageId: string,
+): Promise<PageObjectResponse | Response> {
   try {
-    const response = await notion.pages.retrieve({ page_id: pageId });
+    const response = await notionClient.pages.retrieve({ page_id: pageId });
 
     if (!("properties" in response)) {
-      return Response.json({ error: "Notion page not found" }, { status: 404 });
+      return errorResponse("Notion page not found", 404);
     }
 
-    page = response;
+    if (
+      !notionDataSourceId ||
+      response.parent.type !== "data_source_id" ||
+      response.parent.data_source_id !== notionDataSourceId
+    ) {
+      return errorResponse("Unauthorized page", 404);
+    }
+
+    const published = response.properties.published;
+    if (published?.type !== "checkbox" || !published.checkbox) {
+      return errorResponse("Cover not found", 404);
+    }
+
+    return response;
   } catch (error) {
     if (isNotionClientError(error) && error.code === "object_not_found") {
-      return Response.json({ error: "Notion page not found" }, { status: 404 });
+      return errorResponse("Notion page not found", 404);
     }
 
     console.error("Failed to retrieve Notion cover page", { pageId, error });
-    return Response.json(
-      { error: "Failed to retrieve cover page" },
-      { status: 502 },
-    );
+    return errorResponse("Failed to retrieve cover page", 502);
   }
+}
 
-  if (
-    !notionDataSourceId ||
-    page.parent.type !== "data_source_id" ||
-    page.parent.data_source_id !== notionDataSourceId
-  ) {
-    return Response.json({ error: "Unauthorized page" }, { status: 404 });
-  }
-
-  const published = page.properties.published;
-  if (published?.type !== "checkbox" || !published.checkbox) {
-    return Response.json({ error: "Cover not found" }, { status: 404 });
-  }
-
-  if (version !== page.last_edited_time) {
-    return Response.json(
-      { error: "Cover version is no longer current" },
-      { status: 409 },
-    );
-  }
-
-  const pathname = `notion/covers/${pageId}/${version}`;
-
+async function serveMirroredCover(
+  pathname: string,
+  pageId: string,
+): Promise<Response | null> {
   try {
     const blob = await head(pathname);
     return serveBlob(blob.url, blob.contentType);
