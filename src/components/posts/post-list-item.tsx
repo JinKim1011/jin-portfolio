@@ -137,9 +137,9 @@ function ListView({ post, isExternal, date, view, href }: ViewTypeProps) {
             width={128}
             height={72}
             sizes={coverSizes({ view })}
+            quality={60}
             className={coverStyle({ view })}
             loading="eager"
-            unoptimized
           />
           <h2 className={titleStyle}>
             {isExternal ? (
@@ -192,9 +192,9 @@ function CardView({ post, isExternal, date, view, href }: ViewTypeProps) {
             width={620}
             height={360}
             sizes={coverSizes({ view })}
+            quality={70}
             className={coverStyle({ view })}
             loading="eager"
-            unoptimized
           />
           <h2 className={titleStyle}>
             {isExternal ? (
