@@ -40,7 +40,10 @@ export async function GET(_request: Request, { params }: RouteContext) {
   }
 
   if (!notion) {
-    return Response.json({ error: "Notion is not configured" }, { status: 503 });
+    return Response.json(
+      { error: "Notion is not configured" },
+      { status: 503 },
+    );
   }
 
   if (!process.env.BLOB_READ_WRITE_TOKEN) {
