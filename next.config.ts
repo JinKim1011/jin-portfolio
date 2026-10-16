@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   cacheComponents: true,
   images: {
+    qualities: [60, 75],
     minimumCacheTTL: 60 * 60,
     remotePatterns: [
       {
