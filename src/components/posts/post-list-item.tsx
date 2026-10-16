@@ -192,8 +192,9 @@ function CardView({ post, isExternal, date, view, href }: ViewTypeProps) {
             width={620}
             height={360}
             sizes={coverSizes({ view })}
-            preload
             className={coverStyle({ view })}
+            loading="eager"
+            unoptimized
           />
           <h2 className={titleStyle}>
             {isExternal ? (
