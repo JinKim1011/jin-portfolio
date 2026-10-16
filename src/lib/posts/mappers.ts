@@ -23,5 +23,6 @@ export function mapNotionPageToPost(page: PageObjectResponse): Post {
     published: readCheckbox(page, "published"),
     external: readCheckbox(page, "external"),
     externalUrl: readUrl(page, "link"),
+    asciiCover: readUrl(page, "asciiCover"),
   };
 }
