@@ -137,6 +137,7 @@ function ListView({ post, isExternal, date, view, href }: ViewTypeProps) {
             width={128}
             height={72}
             sizes={coverSizes({ view })}
+            preload
             className={coverStyle({ view })}
           />
           <h2 className={titleStyle}>
@@ -190,6 +191,7 @@ function CardView({ post, isExternal, date, view, href }: ViewTypeProps) {
             width={620}
             height={360}
             sizes={coverSizes({ view })}
+            preload
             className={coverStyle({ view })}
           />
           <h2 className={titleStyle}>
