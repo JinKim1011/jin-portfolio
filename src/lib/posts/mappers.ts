@@ -16,12 +16,17 @@ export function mapNotionPageToPost(page: PageObjectResponse): Post {
     id: page.id,
     slug: readRichText(page, "slug"),
     title: readTitle(page, "title"),
-    cover: readCover(page),
+    cover: page.cover
+      ? process.env.BLOB_READ_WRITE_TOKEN
+        ? `/api/media/cover/${encodeURIComponent(page.id)}?v=${encodeURIComponent(page.last_edited_time)}`
+        : readCover(page)
+      : null,
     excerpt: readRichText(page, "sub-title"),
     categories: normalizeCategories(readMultiSelect(page, "category")),
     publishedAt: readDate(page, "time"),
     published: readCheckbox(page, "published"),
     external: readCheckbox(page, "external"),
     externalUrl: readUrl(page, "link"),
+    asciiCover: readUrl(page, "asciiCover"),
   };
 }

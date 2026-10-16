@@ -3,7 +3,13 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   cacheComponents: true,
   images: {
+    qualities: [60, 70, 75],
     minimumCacheTTL: 60 * 60,
+    localPatterns: [
+      {
+        pathname: "/api/media/cover/**",
+      },
+    ],
     remotePatterns: [
       {
         protocol: "https",

@@ -7,9 +7,9 @@ export interface Post {
   excerpt: string;
   publishedAt: string;
   published: boolean;
-  // When true, the list links to `externalUrl` instead of a detail page
   external: boolean;
   externalUrl: string | null;
+  asciiCover: string | null;
 }
 
 export type PostBlock =

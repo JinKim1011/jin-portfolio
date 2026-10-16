@@ -134,6 +134,7 @@ export default function ImageZoomOverlay({
                   alt={alt}
                   width={1440}
                   height={810}
+                  unoptimized
                   onLoad={() => setLoading(false)}
                   sizes="100vw"
                   draggable={false}

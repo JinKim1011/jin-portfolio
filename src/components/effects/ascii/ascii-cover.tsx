@@ -28,6 +28,8 @@ export default function AsciiCover({
         width={640}
         height={360}
         sizes="(max-width: 768px) calc(100vw - 40px), 640px"
+        quality={75}
+        preload
         className="absolute inset-0 h-full w-full object-cover"
       />
       <canvas
