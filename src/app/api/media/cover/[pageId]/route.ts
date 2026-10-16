@@ -13,6 +13,21 @@ function getCoverUrl(page: PageObjectResponse) {
     : page.cover.file.url;
 }
 
+async function serveBlob(url: string, contentType: string) {
+  const response = await fetch(url);
+
+  if (!response.ok || !response.body) {
+    throw new Error(`Blob image request failed with status ${response.status}`);
+  }
+
+  return new Response(response.body, {
+    headers: {
+      "Cache-Control": "public, max-age=31536000, immutable",
+      "Content-Type": contentType,
+    },
+  });
+}
+
 export async function GET(_request: Request, { params }: RouteContext) {
   const { pageId } = await params;
   const version = new URL(_request.url).searchParams.get("v");
@@ -32,7 +47,7 @@ export async function GET(_request: Request, { params }: RouteContext) {
 
   try {
     const blob = await head(pathname);
-    return Response.redirect(blob.url, 302);
+    return serveBlob(blob.url, blob.contentType);
   } catch (error) {
     if (!(error instanceof BlobNotFoundError)) {
       console.error("Failed to check mirrored cover image", { pageId, error });
@@ -74,5 +89,8 @@ export async function GET(_request: Request, { params }: RouteContext) {
     cacheControlMaxAge: 31536000,
   });
 
-  return Response.redirect(blob.url, 302);
+  return serveBlob(
+    blob.url,
+    sourceResponse.headers.get("content-type") ?? "application/octet-stream",
+  );
 }
