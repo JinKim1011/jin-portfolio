@@ -137,8 +137,8 @@ function ListView({ post, isExternal, date, view, href }: ViewTypeProps) {
             width={128}
             height={72}
             sizes={coverSizes({ view })}
-            loading="eager"
             className={coverStyle({ view })}
+            loading="eager"
             unoptimized
           />
           <h2 className={titleStyle}>
