@@ -43,7 +43,7 @@ export async function GET(_request: Request, { params }: RouteContext) {
     );
   }
 
-  const pathname = `notion/covers/${pageId}/${version ?? "current"}`;
+  const pathname = `notion/covers/${pageId}/${version}`;
 
   try {
     const blob = await head(pathname);
