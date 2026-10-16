@@ -121,8 +121,36 @@ async function mirrorCover(
       cacheControlMaxAge: 31536000,
     });
 
-  return serveBlob(
-    blob.url,
-    sourceResponse.headers.get("content-type") ?? "application/octet-stream",
-  );
+    return serveBlob(blob.url, contentType);
+  } catch (error) {
+    console.error("Failed to mirror Notion cover image", { pageId, error });
+    return errorResponse("Failed to mirror cover image", 502);
+  }
+}
+
+export async function GET(_request: Request, { params }: RouteContext) {
+  const { pageId } = await params;
+  const version = new URL(_request.url).searchParams.get("v");
+
+  if (!version) return errorResponse("Cover version is required", 400);
+  if (!notion) return errorResponse("Notion is not configured", 503);
+  if (!notionDataSourceId) {
+    return errorResponse("Notion data source is not configured", 503);
+  }
+  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+    return errorResponse("Vercel Blob is not configured", 503);
+  }
+
+  const page = await getPublishedPostPage(notion, pageId);
+  if (page instanceof Response) return page;
+
+  if (version !== page.last_edited_time) {
+    return errorResponse("Cover version is no longer current", 409);
+  }
+
+  const pathname = `notion/covers/${pageId}/${version}`;
+  const mirroredCover = await serveMirroredCover(pathname, pageId);
+  if (mirroredCover) return mirroredCover;
+
+  return mirrorCover(page, pathname, pageId);
 }
