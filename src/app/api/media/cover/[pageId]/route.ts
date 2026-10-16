@@ -83,15 +83,20 @@ async function serveMirroredCover(
     const blob = await head(pathname);
     return serveBlob(blob.url, blob.contentType);
   } catch (error) {
-    if (!(error instanceof BlobNotFoundError)) {
-      console.error("Failed to check mirrored cover image", { pageId, error });
-      return Response.json(
-        { error: "Failed to check mirrored cover image" },
-        { status: 502 },
-      );
+    if (error instanceof BlobNotFoundError) {
+      return null;
     }
-  }
 
+    console.error("Failed to check mirrored cover image", { pageId, error });
+    return errorResponse("Failed to check mirrored cover image", 502);
+  }
+}
+
+async function mirrorCover(
+  page: PageObjectResponse,
+  pathname: string,
+  pageId: string,
+): Promise<Response> {
   const sourceUrl = getCoverUrl(page);
   if (!sourceUrl) {
     return Response.json({ error: "Cover image not found" }, { status: 404 });
