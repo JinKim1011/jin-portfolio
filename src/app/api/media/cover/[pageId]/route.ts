@@ -59,8 +59,16 @@ export async function GET(_request: Request, { params }: RouteContext) {
   }
 
   const page = await notion.pages.retrieve({ page_id: pageId });
+
   if (!("properties" in page)) {
     return Response.json({ error: "Notion page not found" }, { status: 404 });
+  }
+
+  if (version !== page.last_edited_time) {
+    return Response.json(
+      { error: "Cover version is no longer current" },
+      { status: 409 },
+    );
   }
 
   const sourceUrl = getCoverUrl(page);
