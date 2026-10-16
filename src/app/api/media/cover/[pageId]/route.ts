@@ -10,8 +10,8 @@ type RouteContext = {
 const COVER_CACHE_CONTROL = "public, max-age=31536000, immutable";
 const DEFAULT_CONTENT_TYPE = "application/octet-stream";
 
-function errorResponse(error: string, status: number) {
-  return Response.json({ error }, { status });
+function errorResponse(message: string, status: number) {
+  return Response.json({ message }, { status });
 }
 
 function getCoverUrl(page: PageObjectResponse): string | null {
