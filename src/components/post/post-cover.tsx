@@ -9,7 +9,7 @@ export default function PostCover({ post }: PostCoverProps) {
   return (
     <div className="relative aspect-video w-full overflow-hidden">
       <AsciiCover
-        asciiCoverUrl={`/ascii-covers/${post.slug}.png`}
+        asciiCoverUrl={post.asciiCover}
         coverUrl={post.cover}
         alt={post.title}
       />
