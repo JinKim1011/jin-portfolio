@@ -99,29 +99,27 @@ async function mirrorCover(
 ): Promise<Response> {
   const sourceUrl = getCoverUrl(page);
   if (!sourceUrl) {
-    return Response.json({ error: "Cover image not found" }, { status: 404 });
+    return errorResponse("Cover image not found", 404);
   }
 
-  const sourceResponse = await fetch(sourceUrl);
-  if (!sourceResponse.ok || !sourceResponse.body) {
-    console.error("Failed to fetch Notion cover image", {
-      pageId,
-      status: sourceResponse.status,
+  try {
+    const sourceResponse = await fetch(sourceUrl);
+    if (!sourceResponse.ok || !sourceResponse.body) {
+      console.error("Failed to fetch Notion cover image", {
+        pageId,
+        status: sourceResponse.status,
+      });
+      return errorResponse("Failed to fetch cover image", 502);
+    }
+
+    const contentType = getContentType(sourceResponse);
+    const blob = await put(pathname, sourceResponse.body, {
+      access: "public",
+      addRandomSuffix: false,
+      allowOverwrite: false,
+      contentType,
+      cacheControlMaxAge: 31536000,
     });
-    return Response.json(
-      { error: "Failed to fetch cover image" },
-      { status: 502 },
-    );
-  }
-
-  const blob = await put(pathname, sourceResponse.body, {
-    access: "public",
-    addRandomSuffix: false,
-    allowOverwrite: false,
-    contentType:
-      sourceResponse.headers.get("content-type") ?? "application/octet-stream",
-    cacheControlMaxAge: 31536000,
-  });
 
   return serveBlob(
     blob.url,
