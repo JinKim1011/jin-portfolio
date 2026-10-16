@@ -21,7 +21,11 @@ function getCoverUrl(page: PageObjectResponse): string | null {
     : page.cover.file.url;
 }
 
-async function serveBlob(url: string, contentType: string) {
+function getContentType(response: Response): string {
+  return response.headers.get("content-type") ?? DEFAULT_CONTENT_TYPE;
+}
+
+async function serveBlob(url: string, contentType: string): Promise<Response> {
   const response = await fetch(url);
 
   if (!response.ok || !response.body) {
@@ -30,7 +34,7 @@ async function serveBlob(url: string, contentType: string) {
 
   return new Response(response.body, {
     headers: {
-      "Cache-Control": "public, max-age=31536000, immutable",
+      "Cache-Control": COVER_CACHE_CONTROL,
       "Content-Type": contentType,
     },
   });
