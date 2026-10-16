@@ -13,6 +13,7 @@ type CoverImageProps = {
   sizes?: string;
   className?: string;
   preload?: boolean;
+  loading?: "eager" | "lazy";
   unoptimized?: boolean;
 };
 
@@ -24,6 +25,7 @@ export default function CoverImage({
   sizes,
   className,
   preload = false,
+  loading,
   unoptimized = false,
 }: CoverImageProps) {
   const [failed, setFailed] = useState(false);
@@ -50,6 +52,7 @@ export default function CoverImage({
           height={height}
           sizes={sizes}
           preload={preload}
+          loading={loading}
           unoptimized={unoptimized}
           className={cn(
             className,
