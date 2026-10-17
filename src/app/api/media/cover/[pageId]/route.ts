@@ -1,7 +1,6 @@
 import { BlobNotFoundError, head, put } from "@vercel/blob";
-import { isNotionClientError } from "@notionhq/client";
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
-import { notion, notionDataSourceId } from "@/lib/notion";
+import { getCurrentPublishedPage } from "@/lib/notion/published-page";
 
 type RouteContext = {
   params: Promise<{ pageId: string }>;
@@ -38,41 +37,6 @@ async function serveBlob(url: string, contentType: string): Promise<Response> {
       "Content-Type": contentType,
     },
   });
-}
-
-async function getPublishedPostPage(
-  notionClient: NonNullable<typeof notion>,
-  pageId: string,
-): Promise<PageObjectResponse | Response> {
-  try {
-    const response = await notionClient.pages.retrieve({ page_id: pageId });
-
-    if (!("properties" in response)) {
-      return errorResponse("Notion page not found", 404);
-    }
-
-    if (
-      !notionDataSourceId ||
-      response.parent.type !== "data_source_id" ||
-      response.parent.data_source_id !== notionDataSourceId
-    ) {
-      return errorResponse("Unauthorized page", 404);
-    }
-
-    const published = response.properties.published;
-    if (published?.type !== "checkbox" || !published.checkbox) {
-      return errorResponse("Cover not found", 404);
-    }
-
-    return response;
-  } catch (error) {
-    if (isNotionClientError(error) && error.code === "object_not_found") {
-      return errorResponse("Notion page not found", 404);
-    }
-
-    console.error("Failed to retrieve Notion cover page", { pageId, error });
-    return errorResponse("Failed to retrieve cover page", 502);
-  }
 }
 
 async function serveMirroredCover(
@@ -132,21 +96,12 @@ export async function GET(_request: Request, { params }: RouteContext) {
   const { pageId } = await params;
   const version = new URL(_request.url).searchParams.get("v");
 
-  if (!version) return errorResponse("Cover version is required", 400);
-  if (!notion) return errorResponse("Notion is not configured", 503);
-  if (!notionDataSourceId) {
-    return errorResponse("Notion data source is not configured", 503);
-  }
   if (!process.env.BLOB_READ_WRITE_TOKEN) {
     return errorResponse("Vercel Blob is not configured", 503);
   }
 
-  const page = await getPublishedPostPage(notion, pageId);
+  const page = await getCurrentPublishedPage(pageId, version, "Cover");
   if (page instanceof Response) return page;
-
-  if (version !== page.last_edited_time) {
-    return errorResponse("Cover version is no longer current", 409);
-  }
 
   const pathname = `notion/covers/${pageId}/${version}`;
   const mirroredCover = await serveMirroredCover(pathname, pageId);
