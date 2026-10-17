@@ -27,6 +27,8 @@ export function mapNotionPageToPost(page: PageObjectResponse): Post {
     published: readCheckbox(page, "published"),
     external: readCheckbox(page, "external"),
     externalUrl: readUrl(page, "link"),
-    asciiCover: readUrl(page, "asciiCover"),
+    asciiCover: readUrl(page, "asciiCover")
+      ? `/api/media/ascii/${encodeURIComponent(page.id)}?v=${encodeURIComponent(page.last_edited_time)}`
+      : null,
   };
 }
