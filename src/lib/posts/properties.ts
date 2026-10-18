@@ -70,3 +70,9 @@ export function readFileUrl(
 
   return null;
 }
+
+export function hasAsciiCover(page: PageObjectResponse): boolean {
+  const property = page.properties.asciiCover;
+
+  return property?.type === "files" && property.files.length > 0;
+}
