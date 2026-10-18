@@ -26,6 +26,10 @@ export async function GET(request: Request, { params }: RouteContext) {
   const { pageId } = await params;
   const version = new URL(request.url).searchParams.get("v");
 
+  if (!process.env.BLOB_READ_WRITE_TOKEN) {
+    return errorResponse("Vercel Blob is not configured", 503);
+  }
+
   const page = await getCurrentPublishedPage(pageId, version, "ASCII cover");
   if (page instanceof Response) return page;
 
