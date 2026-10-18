@@ -19,8 +19,8 @@ function getAsciiCoverUrl(page: PageObjectResponse): string | null {
   const file = property.files[0];
   if (!file) return null;
 
-  if (file.type === "external") return null;
   if (file.type === "file") return file.file.url;
+  if (file.type === "external") return file.external.url;
 
   return null;
 }
