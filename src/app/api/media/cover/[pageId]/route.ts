@@ -1,6 +1,9 @@
 import { BlobNotFoundError, head, put } from "@vercel/blob";
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { getCurrentPublishedPage } from "@/lib/notion/published-page";
+import { serveBlob } from "@/lib/notion/serve-blob";
+import { errorResponse } from "@/lib/utils/error-response";
+import { serveMirroredAsset } from "@/lib/notion/serve-mirrored-asset";
 
 type RouteContext = {
   params: Promise<{ pageId: string }>;
@@ -8,10 +11,6 @@ type RouteContext = {
 
 const COVER_CACHE_CONTROL = "public, max-age=31536000, immutable";
 const DEFAULT_CONTENT_TYPE = "application/octet-stream";
-
-function errorResponse(message: string, status: number) {
-  return Response.json({ message }, { status });
-}
 
 function getCoverUrl(page: PageObjectResponse): string | null {
   if (!page.cover) return null;
@@ -22,38 +21,6 @@ function getCoverUrl(page: PageObjectResponse): string | null {
 
 function getContentType(response: Response): string {
   return response.headers.get("content-type") ?? DEFAULT_CONTENT_TYPE;
-}
-
-async function serveBlob(url: string, contentType: string): Promise<Response> {
-  const response = await fetch(url);
-
-  if (!response.ok || !response.body) {
-    throw new Error(`Blob image request failed with status ${response.status}`);
-  }
-
-  return new Response(response.body, {
-    headers: {
-      "Cache-Control": COVER_CACHE_CONTROL,
-      "Content-Type": contentType,
-    },
-  });
-}
-
-async function serveMirroredCover(
-  pathname: string,
-  pageId: string,
-): Promise<Response | null> {
-  try {
-    const blob = await head(pathname);
-    return serveBlob(blob.url, blob.contentType);
-  } catch (error) {
-    if (error instanceof BlobNotFoundError) {
-      return null;
-    }
-
-    console.error("Failed to check mirrored cover image", { pageId, error });
-    return errorResponse("Failed to check mirrored cover image", 502);
-  }
 }
 
 async function mirrorCover(
