@@ -43,27 +43,11 @@ export async function GET(request: Request, { params }: RouteContext) {
   if (mirroredCover) return mirroredCover;
 
   const sourceUrl = getAsciiCoverUrl(page);
-  if (!sourceUrl) return errorResponse("ASCII cover not found", 404);
-
-  try {
-    const sourceResponse = await fetch(sourceUrl, { cache: "no-store" });
-    if (!sourceResponse.ok || !sourceResponse.body) {
-      console.error("Failed to fetch Notion ASCII cover", {
-        pageId,
-        status: sourceResponse.status,
-      });
-      return errorResponse("Failed to fetch ASCII cover", 502);
-    }
-
-    return new Response(sourceResponse.body, {
-      headers: {
-        "Cache-Control": ASCII_CACHE_CONTROL,
-        "Content-Type":
-          sourceResponse.headers.get("content-type") ?? DEFAULT_CONTENT_TYPE,
-      },
-    });
-  } catch (error) {
-    console.error("Failed to serve Notion ASCII cover", { pageId, error });
-    return errorResponse("Failed to serve ASCII cover", 502);
-  }
+  return mirrorAsset(
+    pathname,
+    pageId,
+    sourceUrl,
+    DEFAULT_CONTENT_TYPE,
+    ASCII_CACHE_CONTROL,
+  );
 }
