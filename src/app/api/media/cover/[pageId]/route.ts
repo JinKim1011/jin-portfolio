@@ -4,7 +4,7 @@ import { getCurrentPublishedPage } from "@/lib/notion/published-page";
 import { serveBlob } from "@/lib/notion/serve-blob";
 import { errorResponse } from "@/lib/utils/error-response";
 import { serveMirroredAsset } from "@/lib/notion/serve-mirrored-asset";
-import { getContentType } from "@/lib/notion/get-content-type";
+import { mirrorAsset } from "@/lib/notion/mirror-asset";
 
 type RouteContext = {
   params: Promise<{ pageId: string }>;
@@ -75,5 +75,12 @@ export async function GET(_request: Request, { params }: RouteContext) {
   );
   if (mirroredCover) return mirroredCover;
 
-  return mirrorCover(page, pathname, pageId);
+  const sourceUrl = getCoverUrl(page);
+  return mirrorAsset(
+    pathname,
+    pageId,
+    sourceUrl,
+    DEFAULT_CONTENT_TYPE,
+    COVER_CACHE_CONTROL,
+  );
 }
