@@ -1,5 +1,8 @@
 import type { PageObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { getCurrentPublishedPage } from "@/lib/notion/published-page";
+import { errorResponse } from "@/lib/utils/error-response";
+import { serveMirroredAsset } from "@/lib/notion/serve-mirrored-asset";
+import { mirrorAsset } from "@/lib/notion/mirror-asset";
 
 type RouteContext = {
   params: Promise<{ pageId: string }>;
