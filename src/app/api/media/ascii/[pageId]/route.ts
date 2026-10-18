@@ -8,10 +8,6 @@ type RouteContext = {
 const ASCII_CACHE_CONTROL = "public, max-age=31536000, immutable";
 const DEFAULT_CONTENT_TYPE = "application/octet-stream";
 
-function errorResponse(message: string, status: number) {
-  return Response.json({ message }, { status });
-}
-
 function getAsciiCoverUrl(page: PageObjectResponse): string | null {
   const property = page.properties.asciiCover;
   return property?.type === "url" ? property.url : null;
