@@ -33,6 +33,15 @@ export async function GET(request: Request, { params }: RouteContext) {
   const page = await getCurrentPublishedPage(pageId, version, "ASCII cover");
   if (page instanceof Response) return page;
 
+  const pathname = `notion/ascii-covers/${pageId}/${version}`;
+
+  const mirroredCover = await serveMirroredAsset(
+    pathname,
+    pageId,
+    ASCII_CACHE_CONTROL,
+  );
+  if (mirroredCover) return mirroredCover;
+
   const sourceUrl = getAsciiCoverUrl(page);
   if (!sourceUrl) return errorResponse("ASCII cover not found", 404);
 
