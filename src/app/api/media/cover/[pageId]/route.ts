@@ -4,6 +4,7 @@ import { getCurrentPublishedPage } from "@/lib/notion/published-page";
 import { serveBlob } from "@/lib/notion/serve-blob";
 import { errorResponse } from "@/lib/utils/error-response";
 import { serveMirroredAsset } from "@/lib/notion/serve-mirrored-asset";
+import { getContentType } from "@/lib/notion/get-content-type";
 
 type RouteContext = {
   params: Promise<{ pageId: string }>;
@@ -17,10 +18,6 @@ function getCoverUrl(page: PageObjectResponse): string | null {
   return page.cover.type === "external"
     ? page.cover.external.url
     : page.cover.file.url;
-}
-
-function getContentType(response: Response): string {
-  return response.headers.get("content-type") ?? DEFAULT_CONTENT_TYPE;
 }
 
 async function mirrorCover(
