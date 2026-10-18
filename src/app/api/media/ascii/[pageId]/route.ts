@@ -10,7 +10,16 @@ const DEFAULT_CONTENT_TYPE = "application/octet-stream";
 
 function getAsciiCoverUrl(page: PageObjectResponse): string | null {
   const property = page.properties.asciiCover;
-  return property?.type === "url" ? property.url : null;
+
+  if (property?.type !== "files") return null;
+
+  const file = property.files[0];
+  if (!file) return null;
+
+  if (file.type === "external") return null;
+  if (file.type === "file") return file.file.url;
+
+  return null;
 }
 
 export async function GET(request: Request, { params }: RouteContext) {
