@@ -9,15 +9,18 @@ import {
   readMultiSelect,
   normalizeCategories,
   readCover,
+  hasAsciiCover,
 } from "./properties";
 
 export function mapNotionPageToPost(page: PageObjectResponse): Post {
+  const hasBlobStorage = Boolean(process.env.BLOB_READ_WRITE_TOKEN);
+
   return {
     id: page.id,
     slug: readRichText(page, "slug"),
     title: readTitle(page, "title"),
     cover: page.cover
-      ? process.env.BLOB_READ_WRITE_TOKEN
+      ? hasBlobStorage
         ? `/api/media/cover/${encodeURIComponent(page.id)}?v=${encodeURIComponent(page.last_edited_time)}`
         : readCover(page)
       : null,
@@ -27,6 +30,9 @@ export function mapNotionPageToPost(page: PageObjectResponse): Post {
     published: readCheckbox(page, "published"),
     external: readCheckbox(page, "external"),
     externalUrl: readUrl(page, "link"),
-    asciiCover: readUrl(page, "asciiCover"),
+    asciiCover:
+      hasBlobStorage && hasAsciiCover(page)
+        ? `/api/media/ascii/${encodeURIComponent(page.id)}?v=${encodeURIComponent(page.last_edited_time)}`
+        : null,
   };
 }
