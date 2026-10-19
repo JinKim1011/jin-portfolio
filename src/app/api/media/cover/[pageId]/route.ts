@@ -29,7 +29,7 @@ export async function GET(_request: Request, { params }: RouteContext) {
   const page = await getCurrentPublishedPage(pageId, version, "Cover");
   if (page instanceof Response) return page;
 
-  const pathname = `notion/covers/${pageId}/${version}`;
+  const pathname = `notion/covers/${pageId}/${page.last_edited_time}`;
   const mirroredCover = await serveMirroredAsset(
     pathname,
     pageId,
