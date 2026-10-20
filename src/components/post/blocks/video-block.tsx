@@ -53,9 +53,16 @@ export default function VideoBlock({ src, kind, caption }: VideoBlockProps) {
               loop
               muted
               playsInline
+              preload="metadata"
               className="relative size-full cursor-pointer object-cover"
               onPlay={() => setPlaying(true)}
               onPause={() => setPlaying(false)}
+              onError={(event) => {
+                console.error("Video failed to load", {
+                  src,
+                  error: event.currentTarget.error,
+                });
+              }}
             />
             <span
               aria-hidden
