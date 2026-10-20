@@ -15,13 +15,21 @@ export default function VideoBlock({ src, kind, caption }: VideoBlockProps) {
 
   const isFile = kind === "file";
 
-  const togglePlayback = () => {
+  const togglePlayback = async () => {
     const video = videoRef.current;
 
     if (!video) return;
 
     if (video.paused) {
-      void video.play();
+      try {
+        await video.play();
+      } catch (error) {
+        if (error instanceof DOMException && error.name === "AbortError") {
+          return;
+        }
+
+        console.error("Video playback failed", { src, error });
+      }
     } else {
       video.pause();
     }
