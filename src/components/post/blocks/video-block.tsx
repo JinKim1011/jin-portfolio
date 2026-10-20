@@ -15,13 +15,21 @@ export default function VideoBlock({ src, kind, caption }: VideoBlockProps) {
 
   const isFile = kind === "file";
 
-  const togglePlayback = () => {
+  const togglePlayback = async () => {
     const video = videoRef.current;
 
     if (!video) return;
 
     if (video.paused) {
-      void video.play();
+      try {
+        await video.play();
+      } catch (error) {
+        if (error instanceof DOMException && error.name === "AbortError") {
+          return;
+        }
+
+        console.error("Video playback failed", { src, error });
+      }
     } else {
       video.pause();
     }
@@ -53,9 +61,16 @@ export default function VideoBlock({ src, kind, caption }: VideoBlockProps) {
               loop
               muted
               playsInline
+              preload="metadata"
               className="relative size-full cursor-pointer object-cover"
               onPlay={() => setPlaying(true)}
               onPause={() => setPlaying(false)}
+              onError={(event) => {
+                console.error("Video failed to load", {
+                  src,
+                  error: event.currentTarget.error,
+                });
+              }}
             />
             <span
               aria-hidden
