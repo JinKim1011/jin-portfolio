@@ -3,6 +3,7 @@
 import SocialLink from "@/components/ui/social-link";
 import { LinkedInLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 import { MailIcon } from "@/components/icons";
+import { TerminalLoading } from "@/components/loading";
 import CareerLink from "@/components/ui/career-link";
 import RevealEffect from "@/components/effects/reveal-effect";
 import { careerLinkItems } from "@/lib/constants/career";
@@ -10,7 +11,7 @@ import { contact } from "@/lib/constants/contact";
 
 export default function Intro() {
   return (
-    <div className="text-content-muted text-caption border-stroke flex flex-col border-b-[0.5px] py-14">
+    <div className="text-content-muted text-caption border-stroke flex flex-col border-b-[0.5px] py-11">
       <RevealEffect>
         <p className="mb-4">
           <span>I&apos;M </span>
@@ -44,11 +45,15 @@ export default function Intro() {
         </p>
       </RevealEffect>
 
-      <RevealEffect delay={0.24} className="mt-6 flex flex-col">
+      <div className="mt-4 flex flex-col">
+        <TerminalLoading
+          aria-hidden="true"
+          className="-ml-2 [--duration:1.2s]"
+        />
         {careerLinkItems.map((item) => (
           <CareerLink key={item.label} {...item} />
         ))}
-      </RevealEffect>
+      </div>
     </div>
   );
 }

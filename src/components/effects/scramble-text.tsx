@@ -10,6 +10,8 @@ type ScrambleTextProps<T extends ElementType = "span"> = {
   playOnMount?: boolean;
   isReplay?: boolean;
   overflow?: boolean;
+  overdrive?: boolean | number;
+  speed?: number;
 } & Omit<ComponentPropsWithoutRef<T>, "as" | "className" | "children">;
 
 export default function ScrambleText<T extends ElementType = "span">({
@@ -19,10 +21,18 @@ export default function ScrambleText<T extends ElementType = "span">({
   playOnMount = false,
   isReplay = false,
   overflow = true,
+  overdrive = true,
+  speed = 0.6,
   ...props
 }: ScrambleTextProps<T>) {
   const Component = as || "span";
-  const { ref, replay } = useScrambleCustom({ text, playOnMount, overflow });
+  const { ref, replay } = useScrambleCustom({
+    text,
+    playOnMount,
+    overflow,
+    overdrive,
+    speed,
+  });
   return (
     <Component
       aria-label={text}
