@@ -10,7 +10,7 @@ import { contact } from "@/lib/constants/contact";
 
 export default function Intro() {
   return (
-    <div className="text-content-muted text-caption border-stroke flex flex-col border-b-[0.5px] py-14">
+    <div className="text-content-muted text-caption border-stroke flex flex-col border-b-[0.5px] py-11">
       <RevealEffect>
         <p className="mb-4">
           <span>I&apos;M </span>
