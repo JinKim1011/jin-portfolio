@@ -3,7 +3,9 @@
 import SocialLink from "@/components/ui/social-link";
 import { LinkedInLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 import { MailIcon } from "@/components/icons";
+import CareerLink from "@/components/ui/career-link";
 import RevealEffect from "@/components/effects/reveal-effect";
+import { careerLinkItems } from "@/lib/constants/career";
 import { contact } from "@/lib/constants/contact";
 
 export default function Intro() {
@@ -40,6 +42,12 @@ export default function Intro() {
           <span>AND PRODUCTION IS WHERE EVERY DOT </span>
           <SocialLink href={contact} label="CONNECTS" rightIcon={MailIcon} />.
         </p>
+      </RevealEffect>
+
+      <RevealEffect delay={0.24} className="mt-6 flex flex-col">
+        {careerLinkItems.map((item) => (
+          <CareerLink key={item.label} {...item} />
+        ))}
       </RevealEffect>
     </div>
   );
