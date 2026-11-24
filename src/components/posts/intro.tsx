@@ -3,6 +3,7 @@
 import SocialLink from "@/components/ui/social-link";
 import { LinkedInLogoIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
 import { MailIcon } from "@/components/icons";
+import { TerminalLoading } from "@/components/loading";
 import CareerLink from "@/components/ui/career-link";
 import RevealEffect from "@/components/effects/reveal-effect";
 import { careerLinkItems } from "@/lib/constants/career";
@@ -44,11 +45,12 @@ export default function Intro() {
         </p>
       </RevealEffect>
 
-      <RevealEffect delay={0.24} className="mt-6 flex flex-col">
+      <div className="mt-4 flex flex-col">
+        <TerminalLoading aria-hidden="true" className="[--duration:1.2s]" />
         {careerLinkItems.map((item) => (
           <CareerLink key={item.label} {...item} />
         ))}
-      </RevealEffect>
+      </div>
     </div>
   );
 }
