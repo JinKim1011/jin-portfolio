@@ -5,6 +5,7 @@ import { easings } from "@/lib/utils/motion-easing";
 import { useState } from "react";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { ArrowTopRightIcon } from "@/components/icons";
+import ScrambleText from "@/components/effects/scramble-text";
 
 export type CareerLinkProps = {
   label: string;
@@ -54,7 +55,14 @@ export default function CareerLink({
     >
       <div className="flex w-22">
         <span className={labelClasses}>
-          {label}
+          <ScrambleText
+            text={label}
+            overflow={false}
+            overdrive={false}
+            speed={0.4}
+            playOnMount={true}
+            isReplay={false}
+          />
           <AnimatePresence initial={false}>
             {isHovered && (
               <motion.span
@@ -73,9 +81,23 @@ export default function CareerLink({
         </span>
       </div>
       <div className={periodClasses}>
-        <span>{startedAt}</span>
+        <ScrambleText
+          text={startedAt}
+          overflow={false}
+          overdrive={false}
+          speed={0.3}
+          playOnMount={true}
+          isReplay={false}
+        />
         <ArrowRightIcon className="size-3" />
-        <span>{endedAt ?? `....`}</span>
+        <ScrambleText
+          text={endedAt ?? `....`}
+          overflow={false}
+          overdrive={false}
+          speed={0.3}
+          playOnMount={true}
+          isReplay={false}
+        />
       </div>
     </motion.a>
   );
