@@ -45,7 +45,7 @@ export default function Intro() {
         </p>
       </RevealEffect>
 
-      <div className="mt-6 flex flex-col">
+      <div className="mt-4 flex flex-col">
         <TerminalLoading
           aria-hidden="true"
           className="-ml-2 [--duration:1.2s]"
