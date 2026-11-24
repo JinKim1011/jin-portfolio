@@ -20,7 +20,7 @@ const iconAnimvariants = {
 };
 
 const wrapperClasses = [
-  "flex overflow-hidden",
+  "flex overflow-hidden w-fit",
   "items-center py-0.75 gap-3",
   "text-label text-content-default",
 ].join(" ");
