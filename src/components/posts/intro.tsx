@@ -45,8 +45,11 @@ export default function Intro() {
         </p>
       </RevealEffect>
 
-      <div className="mt-4 flex flex-col">
-        <TerminalLoading aria-hidden="true" className="[--duration:1.2s]" />
+      <div className="mt-6 flex flex-col">
+        <TerminalLoading
+          aria-hidden="true"
+          className="-ml-2 [--duration:1.2s]"
+        />
         {careerLinkItems.map((item) => (
           <CareerLink key={item.label} {...item} />
         ))}
