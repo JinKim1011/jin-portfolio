@@ -52,7 +52,7 @@ export default function CareerLink({
       target={target}
       rel={target === "_blank" ? "noopener noreferrer" : undefined}
     >
-      <div className="flex w-28">
+      <div className="flex w-22">
         <span className={labelClasses}>
           {label}
           <AnimatePresence initial={false}>
