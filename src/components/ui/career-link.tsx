@@ -53,7 +53,7 @@ export default function CareerLink({
       target={target}
       rel={target === "_blank" ? "noopener noreferrer" : undefined}
     >
-      <div className="flex w-22">
+      <div className="flex w-24">
         <span className={labelClasses}>
           <ScrambleText
             text={label}

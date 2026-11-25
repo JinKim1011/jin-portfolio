@@ -21,7 +21,7 @@ export default function Intro() {
             rightIcon={LinkedInLogoIcon}
             target="_blank"
           />
-          <span> A DESIGN ENGINEER BASED IN BERLIN.</span>
+          <span> A DESIGNER BASED IN BERLIN.</span>
         </p>
       </RevealEffect>
 
